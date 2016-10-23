@@ -72,34 +72,34 @@ API
 - pyco.ConcurrentExecutor_
 
 
-.. _pyco.map: http://pyco.readthedocs.io/api.html#pyco.map
-.. _pyco.run: http://pyco.readthedocs.io/api.html#pyco.run
-.. _pyco.each: http://pyco.readthedocs.io/api.html#pyco.each
-.. _pyco.some: http://pyco.readthedocs.io/api.html#pyco.some
-.. _pyco.race: http://pyco.readthedocs.io/api.html#pyco.race
-.. _pyco.once: http://pyco.readthedocs.io/api.html#pycoonce
-.. _pyco.wait: http://pyco.readthedocs.io/api.html#pycowait
-.. _pyco.wraps: http://pyco.readthedocs.io/api.html#pycowraps
-.. _pyco.defer: http://pyco.readthedocs.io/api.html#pycodefer
-.. _pyco.apply: http://pyco.readthedocs.io/api.html#pycoapply
-.. _pyco.every: http://pyco.readthedocs.io/api.html#pycoevery
-.. _pyco.until: http://pyco.readthedocs.io/api.html#pycountil
-.. _pyco.times: http://pyco.readthedocs.io/api.html#pycotimes
-.. _pyco.series: http://pyco.readthedocs.io/api.html#pycosearies
-.. _pyco.gather: http://pyco.readthedocs.io/api.html#pycogather
-.. _pyco.repeat: http://pyco.readthedocs.io/api.html#pycorepeat
-.. _pyco.reduce: http://pyco.readthedocs.io/api.html#pycoreduce
-.. _pyco.filter: http://pyco.readthedocs.io/api.html#pycofilter
-.. _pyco.whilst: http://pyco.readthedocs.io/api.html#pycowhilst
-.. _pyco.partial: http://pyco.readthedocs.io/api.html#pycopartial
-.. _pyco.timeout: http://pyco.readthedocs.io/api.html#pycotimeout
-.. _pyco.compose: http://pyco.readthedocs.io/api.html#pycocompose
-.. _pyco.throttle: http://pyco.readthedocs.io/api.html#pycothrottle
-.. _pyco.constant: http://pyco.readthedocs.io/api.html#pycoconstant
-.. _pyco.dropwhile: http://pyco.readthedocs.io/api.html#pycodropwhile
-.. _pyco.filterfalse: http://pyco.readthedocs.io/api.html#pycofilterfalse
-.. _pyco.concurrent: http://pyco.readthedocs.io/api.html#pycoconcurrent
-.. _pyco.ConcurrentExecutor: http://pyco.readthedocs.io/api.html#pycoConcurrentExecutor
+.. _pyco.map: http://pyco.readthedocs.io/en/latest/api.html#pyco.map
+.. _pyco.run: http://pyco.readthedocs.io/en/latest/api.html#pyco.run
+.. _pyco.each: http://pyco.readthedocs.io/en/latest/api.html#pyco.each
+.. _pyco.some: http://pyco.readthedocs.io/en/latest/api.html#pyco.some
+.. _pyco.race: http://pyco.readthedocs.io/en/latest/api.html#pyco.race
+.. _pyco.once: http://pyco.readthedocs.io/en/latest/api.html#pycoonce
+.. _pyco.wait: http://pyco.readthedocs.io/en/latest/api.html#pycowait
+.. _pyco.wraps: http://pyco.readthedocs.io/en/latest/api.html#pycowraps
+.. _pyco.defer: http://pyco.readthedocs.io/en/latest/api.html#pycodefer
+.. _pyco.apply: http://pyco.readthedocs.io/en/latest/api.html#pycoapply
+.. _pyco.every: http://pyco.readthedocs.io/en/latest/api.html#pycoevery
+.. _pyco.until: http://pyco.readthedocs.io/en/latest/api.html#pycountil
+.. _pyco.times: http://pyco.readthedocs.io/en/latest/api.html#pycotimes
+.. _pyco.series: http://pyco.readthedocs.io/en/latest/api.html#pycosearies
+.. _pyco.gather: http://pyco.readthedocs.io/en/latest/api.html#pycogather
+.. _pyco.repeat: http://pyco.readthedocs.io/en/latest/api.html#pycorepeat
+.. _pyco.reduce: http://pyco.readthedocs.io/en/latest/api.html#pycoreduce
+.. _pyco.filter: http://pyco.readthedocs.io/en/latest/api.html#pycofilter
+.. _pyco.whilst: http://pyco.readthedocs.io/en/latest/api.html#pycowhilst
+.. _pyco.partial: http://pyco.readthedocs.io/en/latest/api.html#pycopartial
+.. _pyco.timeout: http://pyco.readthedocs.io/en/latest/api.html#pycotimeout
+.. _pyco.compose: http://pyco.readthedocs.io/en/latest/api.html#pycocompose
+.. _pyco.throttle: http://pyco.readthedocs.io/en/latest/api.html#pycothrottle
+.. _pyco.constant: http://pyco.readthedocs.io/en/latest/api.html#pycoconstant
+.. _pyco.dropwhile: http://pyco.readthedocs.io/en/latest/api.html#pycodropwhile
+.. _pyco.filterfalse: http://pyco.readthedocs.io/en/latest/api.html#pycofilterfalse
+.. _pyco.concurrent: http://pyco.readthedocs.io/en/latest/api.html#pycoconcurrent
+.. _pyco.ConcurrentExecutor: http://pyco.readthedocs.io/en/latest/api.html#pycoConcurrentExecutor
 
 Examples
 ^^^^^^^^
