@@ -1,0 +1,47 @@
+# -*- coding: utf-8 -*-
+import asyncio
+from .each import each
+
+
+@asyncio.coroutine
+def map(coro, iterable, limit=0, loop=None, timeout=None,
+        return_exceptions=False, *args, **kw):
+    """
+    Concurrently maps values yielded from an iterable, passing then
+    into an asynchronous coroutine.
+
+    Mapped values will be returned as list.
+    Items order will be preserved based on origin iterable order.
+
+    Concurrency level can be configurable via ``limit`` param.
+
+    All coroutines will be executed in the same loop.
+
+    This function is not thread safe.
+
+    Arguments:
+        coro (coroutinefunction): map coroutine function to use.
+        iterable (iter): an iterable collection yielding coroutines functions.
+            Asynchronous iterables are not supported.
+        limit (int): max concurrency limit. Use ``0`` for no limit.
+        loop (asyncio.BaseEventLoop): optional event loop to use.
+        timeout (int|float): timeout can be used to control the maximum number
+            of seconds to wait before returning. timeout can be an int or
+            float. If timeout is not specified or None, there is no limit to
+            the wait time.
+        *args (mixed): optional variadic arguments to be passed to the
+            coroutine map function.
+
+    Returns:
+        list: ordered list of values yielded by coroutines
+
+    Usage::
+
+        results = await pyco.map(pow, [1, 2, 3, 4, 5], limit=2)
+        print('Results:', results)
+        [1, 4, 27, 256, 3125]
+    """
+    # Call each iterable but collecting yielded values
+    return (yield from each(coro, iterable,
+                            limit=limit, loop=loop,
+                            timeout=timeout, collect=True))

@@ -1,0 +1,153 @@
+pyco |Build Status| |PyPI| |Coverage Status| |Documentation Status|
+===================================================================
+
+Small utility library for generic coroutine-driven, asynchronous-oriented programming in Python +3.4.
+
+Built on top of `asyncio`_, pyco provides missing capabilities from Python `stdlib`
+to write asynchronous cooperative multitasking in a nice-ish way + some convenient functional helpers.
+
+Note: pyco is still beta.
+
+Features
+--------
+
+-  Simple and idiomatic API.
+-  Built-in configurable control-flow concurrency support.
+-  Built-in iterables and functors.
+-  Compose, throttle, partial, until, race and other functional helpers for coroutines.
+-  Coroutines control flow and higher-order functions goodness.
+-  Good interoperability with `asyncio` and Python `stdlib` functions.
+-  Ports Python stdlib higher-order functions and iterables for the coroutines world.
+-  Works with `async/await`_ and `yield from`_ coroutines syntax.
+-  Small and dependency free.
+-  Compatible with Python +3.4.
+
+Installation
+------------
+
+Using ``pip`` package manager:
+
+.. code-block:: bash
+
+    pip install pyco
+
+Or install the latest sources from Github:
+
+.. code-block:: bash
+
+    pip install -e git+git://github.com/h2non/pyco.git#egg=pyco
+
+
+API
+---
+
+- pyco.run_
+- pyco.partial_
+- pyco.apply_
+- pyco.constant_
+- pyco.throttle_
+- pyco.compose_
+- pyco.wraps_
+- pyco.once_
+- pyco.times_
+- pyco.defer_
+- pyco.timeout_
+- pyco.wait_
+- pyco.gather_
+- pyco.each_
+- pyco.series_
+- pyco.map_
+- pyco.filter_
+- pyco.reduce_
+- pyco.some_
+- pyco.every_
+- pyco.filterfalse_
+- pyco.dropwhile_
+- pyco.repeat_
+- pyco.until_
+- pyco.whilst_
+- pyco.race_
+- pyco.ConcurrentExecutor_
+
+
+.. _pyco.map: http://pyco.readthedocs.io/api.html#pyco.map
+.. _pyco.run: http://pyco.readthedocs.io/api.html#pyco.run
+.. _pyco.each: http://pyco.readthedocs.io/api.html#pyco.each
+.. _pyco.some: http://pyco.readthedocs.io/api.html#pyco.some
+.. _pyco.race: http://pyco.readthedocs.io/api.html#pyco.race
+.. _pyco.once: http://pyco.readthedocs.io/api.html#pycoonce
+.. _pyco.wait: http://pyco.readthedocs.io/api.html#pycowait
+.. _pyco.wraps: http://pyco.readthedocs.io/api.html#pycowraps
+.. _pyco.defer: http://pyco.readthedocs.io/api.html#pycodefer
+.. _pyco.apply: http://pyco.readthedocs.io/api.html#pycoapply
+.. _pyco.every: http://pyco.readthedocs.io/api.html#pycoevery
+.. _pyco.until: http://pyco.readthedocs.io/api.html#pycountil
+.. _pyco.times: http://pyco.readthedocs.io/api.html#pycotimes
+.. _pyco.series: http://pyco.readthedocs.io/api.html#pycosearies
+.. _pyco.gather: http://pyco.readthedocs.io/api.html#pycogather
+.. _pyco.repeat: http://pyco.readthedocs.io/api.html#pycorepeat
+.. _pyco.reduce: http://pyco.readthedocs.io/api.html#pycoreduce
+.. _pyco.filter: http://pyco.readthedocs.io/api.html#pycofilter
+.. _pyco.whilst: http://pyco.readthedocs.io/api.html#pycowhilst
+.. _pyco.partial: http://pyco.readthedocs.io/api.html#pycopartial
+.. _pyco.timeout: http://pyco.readthedocs.io/api.html#pycotimeout
+.. _pyco.compose: http://pyco.readthedocs.io/api.html#pycocompose
+.. _pyco.throttle: http://pyco.readthedocs.io/api.html#pycothrottle
+.. _pyco.constant: http://pyco.readthedocs.io/api.html#pycoconstant
+.. _pyco.dropwhile: http://pyco.readthedocs.io/api.html#pycodropwhile
+.. _pyco.filterfalse: http://pyco.readthedocs.io/api.html#pycofilterfalse
+.. _pyco.concurrent: http://pyco.readthedocs.io/api.html#pycoconcurrent
+.. _pyco.ConcurrentExecutor: http://pyco.readthedocs.io/api.html#pycoConcurrentExecutor
+
+Example:
+
+.. code-block:: python
+
+    import pyco
+    import aiohttp
+    import asyncio
+
+    async def fetch(url):
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as resp:
+                return resp
+
+    async def fetch_urls():
+        urls = [
+            'https://www.google.com',
+            'https://www.yahoo.com',
+            'https://www.bing.com',
+            'https://www.baidu.com',
+            'https://duckduckgo.com',
+        ]
+
+        # Map concurrent executor with 3 concurrent limit
+        responses = await pyco.map(fetch, urls, limit=3)
+
+        for res in responses:
+            print('Response:', res.status)
+
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(fetch_urls())
+
+
+License
+-------
+
+MIT - Tomas Aparicio
+
+.. _asynchronous: http://python.org
+.. _asyncio: https://docs.python.org/3.5/library/asyncio.html
+.. _Python: http://python.org
+.. _annotated API reference: https://h2non.github.io/pyco
+.. _async/await: https://www.python.org/dev/peps/pep-0492/
+.. _yield from: https://www.python.org/dev/peps/pep-0380/
+
+.. |Build Status| image:: https://travis-ci.org/h2non/pyco.svg?branch=master
+   :target: https://travis-ci.org/h2non/pyco
+.. |PyPI| image:: https://img.shields.io/pypi/v/pyco.svg?maxAge=2592000?style=flat-square
+   :target: https://pypi.python.org/pypi/pyco
+.. |Coverage Status| image:: https://coveralls.io/repos/github/h2non/pyco/badge.svg?branch=master
+   :target: https://coveralls.io/github/h2non/pyco?branch=master
+.. |Documentation Status| image:: https://readthedocs.org/projects/pyco/badge/?version=latest
+   :target: http://pyco.readthedocs.io/en/latest/?badge=latest
