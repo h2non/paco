@@ -72,7 +72,7 @@ def race(iterable, loop=None, timeout=None, *args, **kw):
             coro = coro(*args, **kw)
 
         # Store future tasks
-        coros.append(asyncio.ensure_future(resolver(index, coro)))
+        coros.append(asyncio.async(resolver(index, coro)))
 
     # Run coroutines concurrently
     yield from asyncio.wait(coros, timeout=timeout, loop=loop)

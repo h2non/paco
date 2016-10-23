@@ -31,7 +31,10 @@ def decorate(fn):
 
         def wrapper(coro, *_args, **_kw):
             assert_corofunction(coro=coro)
-            return fn(*(coro, *(*args, *_args)), **{**kw, **_kw})
+            _args = ((coro,) + (args + _args))
+            kwargs = kw.copy()
+            kwargs.update(_kw)
+            return fn(*_args, **kwargs)
         return wrapper
 
     return decorator
