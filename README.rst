@@ -1,5 +1,5 @@
-pyco |Build Status| |PyPI| |Coverage Status| |Documentation Status|
-===================================================================
+pyco |Build Status| |PyPI| |Coverage Status| |Documentation Status| |Stability| |Quality| |Versions|
+====================================================================================================
 
 Small utility library for generic coroutine-driven, asynchronous-oriented programming in Python +3.4.
 
@@ -156,3 +156,12 @@ MIT - Tomas Aparicio
    :target: https://coveralls.io/github/h2non/pyco?branch=master
 .. |Documentation Status| image:: https://readthedocs.org/projects/pyco/badge/?version=latest
    :target: http://pyco.readthedocs.io/en/latest/?badge=latest
+.. |Quality| image:: https://codeclimate.com/github/h2non/pyco/badges/gpa.svg
+   :target: https://codeclimate.com/github/h2non/pyco
+   :alt: Code Climate
+.. |Stability| image:: https://img.shields.io/pypi/status/pyco.svg
+   :target: https://pypi.python.org/pypi/pyco
+   :alt: Stability
+.. |Versions| image:: https://img.shields.io/pypi/pyversions/pyco.svg
+   :target: https://pypi.python.org/pypi/pyco
+   :alt: Python Versions

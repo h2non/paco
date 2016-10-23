@@ -2,7 +2,7 @@
 """
 pyco
 ====
-An utility library for asyncronous coroutines primitives for Python +3.4.
+Utility library for asynchronous coroutine-driven programming for Python +3.4.
 
 :copyright: (c) 2016 Tomas Aparicio
 :license: MIT
@@ -52,7 +52,7 @@ setup(
     version='0.1.0',
     author='Tomas Aparicio',
     description=(
-        'Asynchronous higher-order functions goodness Python +3.4.'
+        'Small utility for asynchronous coroutines programming in Python +3.4.'
     ),
     url='https://github.com/h2non/pyco',
     license='MIT',
@@ -66,9 +66,12 @@ setup(
         'Intended Audience :: Developers',
         'Intended Audience :: System Administrators',
         'Operating System :: OS Independent',
+        'Development Status :: 3 - Beta',
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
-        'Topic :: Software Development'
+        'Topic :: Software Development',
+        'Topic :: Software Development :: Libraries :: Python Modules',
     ],
 )
