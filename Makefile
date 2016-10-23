@@ -38,7 +38,7 @@ clean:
 
 release: clean publish
 	@echo "$(OK_COLOR)==> Exporting to $(filename)...$(NO_COLOR)"
-	@tar czf $(filename) pyco setup.py README.md LICENSE
+	@tar czf $(filename) pyco setup.py README.rst LICENSE
 
 publish:
 	@python setup.py sdist register upload
