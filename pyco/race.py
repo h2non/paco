@@ -6,10 +6,11 @@ from .assertions import assert_iter
 @asyncio.coroutine
 def race(iterable, loop=None, timeout=None, *args, **kw):
     """
-    Make an iterator that drops elements from the iterable as long as the
-    predicate is true; afterwards, returns every element.
-    Note, the iterator does not produce any output until the predicate
-    first becomes false, so it may have a lengthy start-up time.
+    Runs the tasks array of functions concurrently, without waiting until
+    the previous function has completed.
+
+    Once any of the tasks completes, the coroutine
+    main callback is immediately called.
 
     This function implements the same interface as Python standard
     `itertools.dropwhile()` function.
@@ -19,7 +20,12 @@ def race(iterable, loop=None, timeout=None, *args, **kw):
     Arguments:
         iterable (iterable): an iterable collection yielding
             coroutines functions or coroutine objects.
+        *args (mixed): mixed variadic arguments to pass to coroutines.
         loop (asyncio.BaseEventLoop): optional event loop to use.
+        timeout (int|float): timeout can be used to control the maximum number
+            of seconds to wait before returning. timeout can be an int or
+            float. If timeout is not specified or None, there is no limit to
+            the wait time.
 
     Raises:
         TypeError: if ``iterable`` argument is not iterable.

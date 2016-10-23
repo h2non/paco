@@ -25,6 +25,10 @@ Task = namedtuple('Task', ['index', 'coro'])
 
 @asyncio.coroutine
 def safe_run(coro, return_exceptions=False):
+    """
+    Executes a given coroutine and optionally catches exceptions, returning
+    them as value. This function is intended to be used internally.
+    """
     try:
         result = yield from coro
     except Exception as err:
@@ -39,6 +43,10 @@ def safe_run(coro, return_exceptions=False):
 def collect(coro, index, results,
             preserve_order=False,
             return_exceptions=False):
+    """
+    Collect is used internally to execute coroutines and collect the returned
+    value. This function is intended to be used internally.
+    """
     result = yield from safe_run(coro, return_exceptions=return_exceptions)
 
     if preserve_order:
@@ -52,12 +60,16 @@ class ConcurrentExecutor(object):
     Concurrent executes a set of asynchronous coroutines
     with a simple throttle concurrency configurable concurrency limit.
 
-    Implements an observer pub/sub interface, allowing API consumers to
-    subscribe functions or coroutines to events.
+    Provides an observer pub/sub interface, allowing API consumers to
+    subscribe normal functions or coroutines to certain events that happen
+    internally.
 
-    ConcurrentExecutor is a low-level implementation that powers .
+    ConcurrentExecutor is a low-level implementation that powers most of the
+    utility functions provided in `pyco`.
+
     For most cases you won't need to rely on it, instead you can
-    use the utility functions that provides a higher and simpler abstraction.
+    use the high-level API functions that provides a simpler abstraction for
+    the majority of the use cases.
 
     This class is not thread safe.
 
@@ -93,7 +105,7 @@ class ConcurrentExecutor(object):
         self.pool = deque()
         self.observer = Observer()
         self.loop = loop or asyncio.get_event_loop()
-        self.throttler = asyncio.Semaphore(self.limit, loop=self.loop)
+        self.semaphore = asyncio.Semaphore(self.limit, loop=self.loop)
 
         # Register coroutines in the pool
         if isiter(coros):
@@ -111,7 +123,7 @@ class ConcurrentExecutor(object):
 
         self.pool.clear()
         self.observer.clear()
-        self.throttler = asyncio.Semaphore(self.limit, loop=self.loop)
+        self.semaphore = asyncio.Semaphore(self.limit, loop=self.loop)
 
     def cancel(self):
         """
@@ -263,7 +275,7 @@ class ConcurrentExecutor(object):
         scheduling semaphore-based algorithm.
         """
         # Run when a slot is available
-        with (yield from self.throttler):
+        with (yield from self.semaphore):
             return (yield from self._run_coro(task))
 
     @asyncio.coroutine

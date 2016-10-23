@@ -8,11 +8,12 @@ def dropwhile(coro, iterable, loop=None):
     """
     Make an iterator that drops elements from the iterable as long as the
     predicate is true; afterwards, returns every element.
-    Note, the iterator does not produce any output until the predicate
-    first becomes false, so it may have a lengthy start-up time.
 
-    This function implements the same interface as Python standard
-    `itertools.dropwhile()` function.
+    Note, the iterator does not produce any output until the predicate first
+    becomes false, so it may have a lengthy start-up time.
+
+    This function is pretty much equivalent to Python standard
+    `itertools.dropwhile()`, but designed to be used with async coroutines.
 
     This function is a coroutine.
 
@@ -31,7 +32,11 @@ def dropwhile(coro, iterable, loop=None):
 
     Usage::
 
-        await pyco.dropwhile(coro, [1, 2, 3, 4, 5])
+        async def filter(num):
+            return num < 4
+
+        await pyco.dropwhile(filter, [1, 2, 3, 4, 5, 1])
+        => [4, 5, 1]
     """
     drop = False
 

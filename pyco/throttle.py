@@ -23,7 +23,9 @@ def throttle(coro, limit=1, timeframe=1,
     leading and/or trailing edge of the wait timeout.
 
     Subsequent calls to the throttled coroutine
-    return the result of the last func invocation.
+    return the result of the last coroutine invocation.
+
+    This function can be used as decorator.
 
     Arguments:
         coro (coroutinefunction):

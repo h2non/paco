@@ -1,27 +1,20 @@
 # -*- coding: utf-8 -*-
 import asyncio
 from .decorator import decorate
+from .assertions import assert_corofunction
 
 
 @decorate
-def defer(coro, seconds=None):
+def defer(coro, delay=1):
     """
-    Make an iterator that drops elements from the iterable as long as the
-    predicate is true; afterwards, returns every element.
-    Note, the iterator does not produce any output until the predicate
-    first becomes false, so it may have a lengthy start-up time.
+    Returns a coroutine function wrapper that will defer the given coroutine
+    execution for a certain amount of seconds in a non-blocking way.
 
-    This function implements the same interface as Python standard
-    `itertools.dropwhile()` function.
-
-    All coroutines will be executed in the same loop.
+    This function can be used as decorator.
 
     Arguments:
-        coro (coroutine function): coroutine function to call with values
-            to reduce.
-        iterable (iterable): an iterable collection yielding
-            coroutines functions.
-        loop (asyncio.BaseEventLoop): optional event loop to use.
+        coro (coroutinefunction): coroutine function to defer.
+        delay (int/float): number of seconds to defer execution.
 
     Raises:
         TypeError: if coro argument is not a coroutine function.
@@ -31,19 +24,23 @@ def defer(coro, seconds=None):
 
     Usage::
 
+        # Usage as function
         await pyco.defer(coro, 1)
         await pyco.defer(coro, 0.5)
 
-        @pyco.defer(seconds=1)
+        # Usage as decorator
+        @pyco.defer(delay=1)
         async def task(n):
             return n * n
         await task(2)
         => 4
     """
+    assert_corofunction(coro=coro)
+
     @asyncio.coroutine
     def wrapper(*args, **kw):
         # Wait until we're done
-        yield from asyncio.sleep(seconds)
+        yield from asyncio.sleep(delay)
         return (yield from coro(*args, **kw))
 
     return wrapper

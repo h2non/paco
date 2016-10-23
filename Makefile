@@ -1,7 +1,7 @@
 OK_COLOR=\033[32;01m
 NO_COLOR=\033[0m
 
-all: lint unit
+all: test
 
 export PYTHONPATH:=${PWD}
 version=`python -c 'import paco; print(paco.version)'`

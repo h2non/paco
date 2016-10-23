@@ -7,9 +7,12 @@ from .gather import gather
 def series(*coros_or_futures, timeout=None,
            loop=None, return_exceptions=False):
     """
-    Wait for the Futures and coroutine objects given by the sequence
-    futures to complete, with optional concurrency limit.
-    Coroutines will be wrapped in Tasks.
+    Run the given coroutine functions in series, each one
+    running once the previous execution has completed.
+
+    If any coroutines raises an exception, no more
+    coroutines are executed. Otherwise, the coroutines returned values
+    will be returned as `list`.
 
     ``timeout`` can be used to control the maximum number of seconds to
     wait before returning. timeout can be an int or float.
@@ -20,13 +23,12 @@ def series(*coros_or_futures, timeout=None,
     the first raised exception will be immediately propagated to the
     returned future.
 
-    ``return_when`` indicates when this function should return.
-    It must be one of the following constants of the concurrent.futures module.
-
     All futures must share the same event loop.
 
     This functions is mostly compatible with Python standard
     ``asyncio.wait()``.
+
+    This function is a coroutine.
 
     Arguments:
         *coros_or_futures (iter|list):
@@ -42,7 +44,7 @@ def series(*coros_or_futures, timeout=None,
             optional variadic argument to pass to the coroutines function.
 
     Returns:
-        tuple: Returns two sets of Future: (done, pending).
+        list: coroutines returned results.
 
     Raises:
         TypeError: in case of invalid coroutine object.

@@ -11,14 +11,16 @@ Note: pyco is still beta.
 Features
 --------
 
--  Simple and idiomatic API.
+-  Simple and idiomatic API, extending Python `stdlib` with async coroutines gotchas.
 -  Built-in configurable control-flow concurrency support.
--  Built-in iterables and functors.
--  Compose, throttle, partial, until, race and other functional helpers for coroutines.
+-  Useful iterables, decorators and functors.
+-  Provides coroutine-ready compose, throttle, partial, until, race and other functional helpers.
+-  Asynchronous coroutine port of Python built-in functions: `filter`, `map`, `dropwhile`, `filterfalse`, `reduce`...
 -  Coroutines control flow and higher-order functions goodness.
+-  Better `asyncio.gather()` and `asyncio.wait()` implementations with optional concurrency control and ordered results.
 -  Good interoperability with `asyncio` and Python `stdlib` functions.
--  Ports Python stdlib higher-order functions and iterables for the coroutines world.
--  Works with `async/await`_ and `yield from`_ coroutines syntax.
+-  Partially ports Python `stdlib` higher-order functions and iterables to be used in async coroutines world.
+-  Works with both `async/await`_ and `yield from`_ coroutines syntax.
 -  Small and dependency free.
 -  Compatible with Python +3.4.
 
@@ -99,7 +101,10 @@ API
 .. _pyco.concurrent: http://pyco.readthedocs.io/api.html#pycoconcurrent
 .. _pyco.ConcurrentExecutor: http://pyco.readthedocs.io/api.html#pycoConcurrentExecutor
 
-Example:
+Examples
+^^^^^^^^
+
+Asynchronously execute multiple HTTP requests concurrently.
 
 .. code-block:: python
 
@@ -121,11 +126,11 @@ Example:
             'https://duckduckgo.com',
         ]
 
-        # Map concurrent executor with 3 concurrent limit
+        # Map concurrent executor with concurrent limit of 3
         responses = await pyco.map(fetch, urls, limit=3)
 
         for res in responses:
-            print('Response:', res.status)
+            print('Status:', res.status)
 
     loop = asyncio.get_event_loop()
     loop.run_until_complete(fetch_urls())

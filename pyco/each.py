@@ -12,7 +12,7 @@ def each(coro, iterable, limit=0, loop=None,
     an asynchronous coroutine.
 
     You can optionally collect yielded values passing collect=True param,
-    which would be equivalent to .map().
+    which would be equivalent to `pyco.map()``.
 
     Mapped values will be returned as an ordered list.
     Items order is preserved based on origin iterable order.
@@ -21,27 +21,38 @@ def each(coro, iterable, limit=0, loop=None,
 
     All coroutines will be executed in the same loop.
 
-    This function is not thread safe.
+    This function is a coroutine.
 
     Arguments:
+        coro (coroutinefunction): coroutine iterator function that accepts
+            iterable values.
         iterable (iter): an iterable collection yielding
             coroutines functions. Asynchronous iterables are not supported.
-        limit (int): max concurrency execution limit.
+        limit (int): max iteration concurrency limit. Use ``0`` for no limit.
         collect (bool): return yielded values from coroutines. Default False.
         loop (asyncio.BaseEventLoop): optional event loop to use.
+        return_exceptions (bool): enable/disable returning exceptions in case
+            of error. `collect` param must be True.
         timeout (int|float): timeout can be used to control the maximum number
             of seconds to wait before returning. timeout can be an int or
             float. If timeout is not specified or None, there is no limit to
             the wait time.
-        *args (mixed): optional variadic argument to pass to the
-            coroutines function.
+        *args (mixed): optional variadic arguments to pass to the
+            coroutine iterable function.
 
     Returns:
         results (list): ordered list of values yielded by coroutines
 
+    Raises:
+        TypeError: in case of invalid input arguments.
+
     Usage::
 
-        await pyco.each(pow, [1, 2, 3, 4, 5], limit=3)
+        async def mul2(num):
+            return mul * 2
+
+        await pyco.each(mul2, [1, 2, 3, 4, 5], limit=3)
+        => [2, 4, 6, 8, 10]
     """
     assert_corofunction(coro=coro)
     assert_iter(iterable=iterable)

@@ -8,6 +8,12 @@ from .assertions import assert_corofunction, assert_iter
 def assert_true(element):
     """
     Asserts that a given coroutine yields a true-like value.
+
+    Arguments:
+        element (mixed): element to evaluate.
+
+    Returns:
+        bool
     """
     return element
 
@@ -15,37 +21,42 @@ def assert_true(element):
 @asyncio.coroutine
 def filter(coro, iterable, assert_fn=None, limit=0, loop=None):
     """
-    Construct an iterator from those elements of iterable for which function
-    returns true. iterable may be either a sequence, a container which supports
-    iteration, or an iterator.
+    Returns a list of all the values in coll which pass an asynchronous truth
+    test coroutine.
 
-    Since reduction concurrency can be enable, there is no guarantees
-    that passed values to the reducer function would be in order.
+    Operations are executed concurrently by default, but results
+    will be in order.
 
-    This function implements the same interface as Python standard
+    You can configure the concurrency via `limit` param.
+
+    This function is the asynchronous equivalent port Python built-in
     `filter()` function.
 
-    All coroutines will be executed in the same loop.
+    This function is a coroutine.
 
     Arguments:
-        coro (coroutine function): coroutine function to call with values
-            to reduce.
+        coro (coroutine function): coroutine filter function to call accepting
+            iterable values.
         iterable (iterable): an iterable collection yielding
             coroutines functions.
-        assert_fn (coroutine function): optional assertion function.
-        limit (int): reduction concurrency limit. Use ``0`` for no limit.
+        assert_fn (coroutinefunction): optional assertion function.
+        limit (int): max filtering concurrency limit. Use ``0`` for no limit.
         loop (asyncio.BaseEventLoop): optional event loop to use.
 
     Raises:
         TypeError: if coro argument is not a coroutine function.
 
     Returns:
-        filtered values (list): ordered list containing values that passed
+        list: ordered list containing values that passed
             the filter.
 
     Usage::
 
-        await pyco.filter(coro, [1, 2, 3, 4, 5], limit=2)
+        async def iseven(num):
+            return num % 2 == 0
+
+        await pyco.filter(coro, [1, 2, 3, 4, 5], limit=3)
+        => [2, 4]
     """
     assert_corofunction(coro=coro)
     assert_iter(iterable=iterable)

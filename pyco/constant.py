@@ -7,8 +7,8 @@ def constant(value, delay=None):
     Returns a coroutine function that when called, always returns
     the provided value.
 
-    arguments:
-        value (mixed): value to constantly return.
+    Arguments:
+        value (mixed): value to constantly return when coroutine is called.
         delay (int/float): optional return value delay in seconds.
 
     Returns:

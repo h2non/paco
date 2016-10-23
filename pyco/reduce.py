@@ -13,34 +13,34 @@ def reduce(coro, iterable, right=False, initializer=None, loop=None):
     Reduction will be executed sequentially without concurrency,
     so passed values would be in order.
 
-    This function implements the same interface as Python standard
-    `functools.reduce()`.
+    This function is the asynchronous coroutine equivalent to Python standard
+    `functools.reduce()` function.
 
-    All coroutines will be executed in the same loop.
+    This function is a coroutine.
 
     Arguments:
         coro (coroutine function): coroutine function to call with values
             to reduce.
-        right (bool): reduce iterable from right to left.
         iterable (iterable): an iterable collection yielding
             coroutines functions.
+        right (bool): reduce iterable from right to left.
         initializer (mixed): initial accumulator value used in
             the first reduction call.
         loop (asyncio.BaseEventLoop): optional event loop to use.
 
     Raises:
-        TypeError: if coro argument is not a coroutine function.
+        TypeError: if input arguments are not valid.
 
     Returns:
-        reduced value (mixed): accumulated reduced value.
+        mixed: accumulated final reduced value.
 
     Usage::
 
-        >>> async def reducer(acc, num):
-        ...   return acc * num
-        ...
-        >>> await pyco.reduce(reducer, [1, 2, 3, 4, 5], initializer=0)
-        >>> 10
+        async def reducer(acc, num):
+           return acc + num
+
+        await pyco.reduce(reducer, [1, 2, 3, 4, 5], initializer=0)
+        => 10
     """
     assert_corofunction(coro=coro)
     assert_iter(iterable=iterable)

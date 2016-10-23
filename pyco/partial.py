@@ -10,6 +10,8 @@ def partial(coro, *args, **kw):
     Partial function implementation designed
     for coroutines, allowing variadic input arguments.
 
+    This function can be used as decorator.
+
     arguments:
         coro (coroutinefunction): coroutine function to wrap.
         *args (mixed): mixed variadic arguments for partial application.
@@ -22,8 +24,8 @@ def partial(coro, *args, **kw):
 
     Usage::
 
-        >>> task = pyco.partial(coro, 1, foo='bar')
-        >>> await task(2, bar='foo')
+        task = pyco.partial(coro, 1, foo='bar')
+        await task(2, bar='foo')
     """
     assert_corofunction(coro=coro)
 

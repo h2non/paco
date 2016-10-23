@@ -33,7 +33,7 @@ def wait(*coros_or_futures, limit=0, timeout=None, loop=None,
         *coros_or_futures (iter|list):
             an iterable collection yielding coroutines functions.
         limit (int):
-            optional concurrency execution limit. Use ``0`` to disable.
+            optional concurrency execution limit. Use ``0`` for no limit.
         timeout (int/float):
             maximum number of seconds to wait before returning.
         return_exceptions (bool):

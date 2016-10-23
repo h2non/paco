@@ -8,6 +8,8 @@ def decorate(fn):
     Generic decorator for coroutines helper functions allowing
     multiple variadic initialization arguments.
 
+    This function is intended to be used internally.
+
     Arguments:
         fn (function): target function to decorate.
 
@@ -31,10 +33,9 @@ def decorate(fn):
 
         def wrapper(coro, *_args, **_kw):
             assert_corofunction(coro=coro)
+            # Merge call arguments
             _args = ((coro,) + (args + _args))
-            kwargs = kw.copy()
-            kwargs.update(_kw)
-            return fn(*_args, **kwargs)
+            kw.update(_kw)
+            return fn(*_args, **kw)
         return wrapper
-
     return decorator

@@ -17,9 +17,11 @@ def wraps(fn):
     Usage::
 
         def mult(num, foo=None):
-            return num * num
+            return num * 2
+
         coro = pyco.wrap(mult)
         await coro(2, foo='bar')
+        => 4
     """
     @asyncio.coroutine
     def wrapper(*args, **kw):

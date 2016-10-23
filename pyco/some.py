@@ -6,34 +6,37 @@ from .assertions import assert_corofunction, assert_iter
 
 
 @asyncio.coroutine
-def some(coro, iterable, limit=10, loop=None):
+def some(coro, iterable, limit=0, timeout=None, loop=None):
     """
-    Make an iterator that drops elements from the iterable as long as the
-    predicate is true; afterwards, returns every element.
-    Note, the iterator does not produce any output until the predicate
-    first becomes false, so it may have a lengthy start-up time.
+    Returns `True` if at least one element in the iterable satisfies the
+    asynchronous coroutine test. If any iteratee call returns `True`,
+    iteration stops and `True` will be returned.
 
-    This function implements the same interface as Python standard
-    `itertools.dropwhile()` function.
-
-    All coroutines will be executed in the same loop.
+    This function is a coroutine.
 
     Arguments:
-        coro (coroutine function): coroutine function to call with values
-            to reduce.
-        iterable (iterable): an iterable collection yielding
-            coroutines functions.
+        coro (coroutine function): coroutine function for test values.
+        iterable (iterable): an iterable.
+        limit (int): max concurrency limit. Use ``0`` for no limit.
+        timeout can be used to control the maximum number
+            of seconds to wait before returning. timeout can be an int or
+            float. If timeout is not specified or None, there is no limit to
+            the wait time.
         loop (asyncio.BaseEventLoop): optional event loop to use.
 
     Raises:
-        TypeError: if coro argument is not a coroutine function.
+        TypeError: if input arguments are not valid.
 
     Returns:
-        list: ordered list of resultant filtered values.
+        bool: `True` if at least on value passes the test, otherwise `False`.
 
     Usage::
 
-        await pyco.some(coro, [1, 2, 3, 4, 5])
+        async def test(num):
+            return num > 3
+
+        await pyco.some(test, [1, 2, 3, 4, 5])
+        => True
     """
     assert_corofunction(coro=coro)
     assert_iter(iterable=iterable)
@@ -67,6 +70,6 @@ def some(coro, iterable, limit=10, loop=None):
         pool.add(partial(tester, element))
 
     # Wait until all coroutines finish
-    yield from pool.run()
+    yield from pool.run(timeout=timeout)
 
     return passes

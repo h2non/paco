@@ -7,28 +7,24 @@ from .assertions import assert_corofunction
 @asyncio.coroutine
 def whilst(coro, coro_test, assert_coro=None, *args, **kw):
     """
-    Make an iterator that drops elements from the iterable as long as the
-    predicate is true; afterwards, returns every element.
-    Note, the iterator does not produce any output until the predicate
-    first becomes false, so it may have a lengthy start-up time.
+    Repeatedly call `coro` coroutine function while `coro_test` returns `True`.
 
-    This function implements the same interface as Python standard
-    `itertools.dropwhile()` function.
+    This function is the inverse of `pyco.until()`.
 
-    All coroutines will be executed in the same loop.
+    This function is a coroutine.
 
     Arguments:
-        coro (coroutine function): coroutine function to call with values
-            to reduce.
-        iterable (iterable): an iterable collection yielding
-            coroutines functions.
-        loop (asyncio.BaseEventLoop): optional event loop to use.
+        coro (coroutinefunction): coroutine function to execute.
+        coro_test (coroutinefunction): coroutine function to test.
+        assert_coro (coroutinefunction): optional assertion coroutine used
+            to determine if the test passed or not.
+        *args (mixed): optional variadic arguments to pass to `coro` function.
 
     Raises:
-        TypeError: if coro argument is not a coroutine function.
+        TypeError: if input arguments are invalid.
 
     Returns:
-        filtered values (list): ordered list of resultant values.
+        list: result values returned by `coro`.
 
     Usage::
 

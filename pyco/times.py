@@ -9,14 +9,16 @@ ExceptionMessage = 'coroutine cannot be executed more than {} times'
 @decorate
 def times(coro, limit=1, raise_exception=False, return_value=None):
     """
-    Creates a continuation coroutine function with some arguments
-    already applied.
+    Wraps a given coroutine function to be executed only a certain amount
+    of times.
 
-    Useful as a shorthand when combined with other control flow functions.
-    Any arguments passed to the returned function are added to the arguments
-    originally passed to apply.
+    If the execution limit is exceeded, the last execution return value will
+    be returned as result.
 
-    This is similar to partial.
+    You can optionally define a custom return value on exceeded via
+    `return_value` param.
+
+    This function can be used as decorator.
 
     arguments:
         coro (coroutinefunction): coroutine function to wrap.

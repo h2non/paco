@@ -13,8 +13,8 @@ def compose(*coros):
     Composing coroutine functions f(), g(), and h() would produce
     the result of f(g(h())).
 
-    arguments:
-        *coros (coroutinefunction): coroutine function to compose.
+    Arguments:
+        *coros (coroutinefunction): variadic coroutine functions to compose.
 
     Raises:
         RuntimeError: if cannot execute a coroutine function.
@@ -24,8 +24,8 @@ def compose(*coros):
 
     Usage::
 
-        coro = pyco.compose(sum, mul, sum)
-        coro(1)
+        coro = pyco.compose(sum1, mul2, sum1)
+        await coro(1)
         => 5
     """
     # Make list to inherit built-in type methods

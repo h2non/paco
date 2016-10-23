@@ -6,36 +6,39 @@ from .assertions import assert_corofunction, assert_iter
 
 
 @asyncio.coroutine
-def every(coro, iterable, limit=0, loop=None):
+def every(coro, iterable, limit=1, loop=None):
     """
-    Make an iterator that drops elements from the iterable as long as the
-    predicate is true; afterwards, returns every element.
-    Note, the iterator does not produce any output until the predicate
-    first becomes false, so it may have a lengthy start-up time.
+    Returns `True` if every element in a given iterable satisfies the coroutine
+    asynchronous test.
 
-    This function implements the same interface as Python standard
-    `itertools.dropwhile()` function.
+    If any iteratee coroutine call returns `False`, the process is inmediately
+    stopped, and `False` will be returned.
+
+    You can increase the concurrency limit for a fast race condition scenario.
 
     This function is a coroutine.
-
-    All coroutines must run in the same loop.
 
     Arguments:
         coro (coroutine function): coroutine function to call with values
             to reduce.
         iterable (iterable): an iterable collection yielding
             coroutines functions.
+        limit (int): max concurrency execution limit. Use ``0`` for no limit.
         loop (asyncio.BaseEventLoop): optional event loop to use.
 
     Raises:
-        TypeError: if coro argument is not a coroutine function.
+        TypeError: if input arguments are not valid.
 
     Returns:
-        bool: True if all the values passes the test, otherwise False.
+        bool: `True` if all the values passes the test, otherwise `False`.
 
     Usage::
 
-        await pyco.some(coro, [1, 2, 3, 4, 5])
+        async def test(num):
+            return num > 10
+
+        await pyco.some(test, [1, 2, 3, 4, 5])
+        => True
     """
     assert_corofunction(coro=coro)
     assert_iter(iterable=iterable)
@@ -50,7 +53,7 @@ def every(coro, iterable, limit=0, loop=None):
     # Create concurrent executor
     pool = ConcurrentExecutor(limit=limit, loop=loop)
 
-    # Reducer partial function for deferred coroutine execution
+    # Tester function to guarantee the file is canceled.
     @asyncio.coroutine
     def tester(element):
         nonlocal passes

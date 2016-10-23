@@ -15,7 +15,7 @@ def gather(*coros_or_futures, limit=0, loop=None, timeout=None,
     the list of results (in the order of the original sequence,
     not necessarily the order of results arrival).
 
-    If return_exceptions is True, exceptions in the tasks are treated the
+    If return_exceptions is `True`, exceptions in the tasks are treated the
     same as successful results, and gathered in the result list; otherwise,
     the first raised exception will be immediately propagated to the
     returned future.
@@ -23,32 +23,34 @@ def gather(*coros_or_futures, limit=0, loop=None, timeout=None,
     All futures must share the same event loop.
 
     This functions is mostly compatible with Python standard
-    ``asyncio.gather``.
+    ``asyncio.gather``, but providing ordered results and concurrency control
+    flow.
 
     This function is a coroutine.
 
     Arguments:
-        *coros_or_futures (iter|list):
-            an iterable collection yielding coroutines functions.
-        limit (int):
-            concurrency execution limit. Defaults to 10.
-        loop (asyncio.BaseEventLoop):
-            optional event loop to use.
-        *args (mixed):
-            optional variadic argument to pass to the coroutines function.
+        *coros_or_futures (coroutines|list): an iterable collection yielding
+            coroutines functions or futures.
+        limit (int): max concurrency limit. Use ``0`` for no limit.
+        timeout can be used to control the maximum number
+            of seconds to wait before returning. timeout can be an int or
+            float. If timeout is not specified or None, there is no limit to
+            the wait time.
+        preserve_order (bool): preserves results order.
+        return_exceptions (bool): returns exceptions as valid results.
+        loop (asyncio.BaseEventLoop): optional event loop to use.
 
     Returns:
-        list: coroutines results
+        list: coroutines returned results.
 
     Usage::
 
-        results = await pyco.gather(
+        await pyco.gather(
           task(1, foo='bar'),
           task(2, foo='bar'),
           task(3, foo='bar'),
           task(4, foo='bar'),
           limit=2, return_exceptions=True)
-        print('Results:', results)
     """
     # If no coroutines to schedule, return empty list (as Python stdlib)
     if len(coros_or_futures) == 0:

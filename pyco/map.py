@@ -8,16 +8,17 @@ def map(coro, iterable, limit=0, loop=None, timeout=None,
         return_exceptions=False, *args, **kw):
     """
     Concurrently maps values yielded from an iterable, passing then
-    into an asynchronous coroutine.
+    into an asynchronous coroutine function.
 
     Mapped values will be returned as list.
     Items order will be preserved based on origin iterable order.
 
     Concurrency level can be configurable via ``limit`` param.
 
-    All coroutines will be executed in the same loop.
+    This function is the asynchronous equivalent port Python built-in
+    `map()` function.
 
-    This function is not thread safe.
+    This function is a coroutine.
 
     Arguments:
         coro (coroutinefunction): map coroutine function to use.
@@ -29,6 +30,7 @@ def map(coro, iterable, limit=0, loop=None, timeout=None,
             of seconds to wait before returning. timeout can be an int or
             float. If timeout is not specified or None, there is no limit to
             the wait time.
+        return_exceptions (bool): returns exceptions as valid results.
         *args (mixed): optional variadic arguments to be passed to the
             coroutine map function.
 
@@ -37,9 +39,8 @@ def map(coro, iterable, limit=0, loop=None, timeout=None,
 
     Usage::
 
-        results = await pyco.map(pow, [1, 2, 3, 4, 5], limit=2)
-        print('Results:', results)
-        [1, 4, 27, 256, 3125]
+        await pyco.map(mul2, [1, 2, 3, 4, 5], limit=3)
+        [2, 4, 6, 8, 10]
     """
     # Call each iterable but collecting yielded values
     return (yield from each(coro, iterable,
