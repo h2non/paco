@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import asyncio
-from pyco import race
+from paco import race
 from .helpers import run_in_loop
 
 

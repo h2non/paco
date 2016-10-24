@@ -14,7 +14,7 @@ def apply(coro, *args, **kw):
     Any arguments passed to the returned function are added to the arguments
     originally passed to apply.
 
-    This is similar to `pyco.partial()`.
+    This is similar to `paco.partial()`.
 
     This function can be used as decorator.
 
@@ -32,7 +32,7 @@ def apply(coro, *args, **kw):
 
     Usage::
 
-        task = pyco.apply(coro, 1, 2, foo='bar')
+        task = paco.apply(coro, 1, 2, foo='bar')
         await task()
     """
     assert_corofunction(coro=coro)

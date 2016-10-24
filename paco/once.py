@@ -27,7 +27,7 @@ def once(coro, raise_exception=False, return_value=None):
 
     Usage::
 
-        task = pyco.once(coro, return_value='exceeded')
+        task = paco.once(coro, return_value='exceeded')
         task(1, foo='bar')
         => 1
         task(2, foo='baz')

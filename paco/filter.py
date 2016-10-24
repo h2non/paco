@@ -55,7 +55,7 @@ def filter(coro, iterable, assert_fn=None, limit=0, loop=None):
         async def iseven(num):
             return num % 2 == 0
 
-        await pyco.filter(coro, [1, 2, 3, 4, 5], limit=3)
+        await paco.filter(coro, [1, 2, 3, 4, 5], limit=3)
         => [2, 4]
     """
     assert_corofunction(coro=coro)

@@ -3,36 +3,36 @@ API documentation
 
 .. toctree::
 
-   pyco.map <http://pyco.readthedocs.io/en/latest/api.html#pyco.map>
-   pyco.run <http://pyco.readthedocs.io/en/latest/api.html#pyco.run>
-   pyco.each <http://pyco.readthedocs.io/en/latest/api.html#pyco.each>
-   pyco.some <http://pyco.readthedocs.io/en/latest/api.html#pyco.some>
-   pyco.race <http://pyco.readthedocs.io/en/latest/api.html#pyco.race>
-   pyco.once <http://pyco.readthedocs.io/en/latest/api.html#pycoonce>
-   pyco.wait <http://pyco.readthedocs.io/en/latest/api.html#pycowait>
-   pyco.wraps <http://pyco.readthedocs.io/en/latest/api.html#pycowraps>
-   pyco.defer <http://pyco.readthedocs.io/en/latest/api.html#pycodefer>
-   pyco.apply <http://pyco.readthedocs.io/en/latest/api.html#pycoapply>
-   pyco.every <http://pyco.readthedocs.io/en/latest/api.html#pycoevery>
-   pyco.until <http://pyco.readthedocs.io/en/latest/api.html#pycountil>
-   pyco.times <http://pyco.readthedocs.io/en/latest/api.html#pycotimes>
-   pyco.series <http://pyco.readthedocs.io/en/latest/api.html#pycosearies>
-   pyco.gather <http://pyco.readthedocs.io/en/latest/api.html#pycogather>
-   pyco.repeat <http://pyco.readthedocs.io/en/latest/api.html#pycorepeat>
-   pyco.reduce <http://pyco.readthedocs.io/en/latest/api.html#pycoreduce>
-   pyco.filter <http://pyco.readthedocs.io/en/latest/api.html#pycofilter>
-   pyco.whilst <http://pyco.readthedocs.io/en/latest/api.html#pycowhilst>
-   pyco.partial <http://pyco.readthedocs.io/en/latest/api.html#pycopartial>
-   pyco.timeout <http://pyco.readthedocs.io/en/latest/api.html#pycotimeout>
-   pyco.compose <http://pyco.readthedocs.io/en/latest/api.html#pycocompose>
-   pyco.throttle <http://pyco.readthedocs.io/en/latest/api.html#pycothrottle>
-   pyco.constant <http://pyco.readthedocs.io/en/latest/api.html#pycoconstant>
-   pyco.dropwhile <http://pyco.readthedocs.io/en/latest/api.html#pycodropwhile>
-   pyco.filterfalse <http://pyco.readthedocs.io/en/latest/api.html#pycofilterfalse>
-   pyco.concurrent <http://pyco.readthedocs.io/en/latest/api.html#pycoconcurrent>
-   pyco.ConcurrentExecutor <http://pyco.readthedocs.io/en/latest/api.html#pycoConcurrentExecutor>
+   paco.map <http://paco.readthedocs.io/en/latest/api.html#paco.map>
+   paco.run <http://paco.readthedocs.io/en/latest/api.html#paco.run>
+   paco.each <http://paco.readthedocs.io/en/latest/api.html#paco.each>
+   paco.some <http://paco.readthedocs.io/en/latest/api.html#paco.some>
+   paco.race <http://paco.readthedocs.io/en/latest/api.html#paco.race>
+   paco.once <http://paco.readthedocs.io/en/latest/api.html#pacoonce>
+   paco.wait <http://paco.readthedocs.io/en/latest/api.html#pacowait>
+   paco.wraps <http://paco.readthedocs.io/en/latest/api.html#pacowraps>
+   paco.defer <http://paco.readthedocs.io/en/latest/api.html#pacodefer>
+   paco.apply <http://paco.readthedocs.io/en/latest/api.html#pacoapply>
+   paco.every <http://paco.readthedocs.io/en/latest/api.html#pacoevery>
+   paco.until <http://paco.readthedocs.io/en/latest/api.html#pacountil>
+   paco.times <http://paco.readthedocs.io/en/latest/api.html#pacotimes>
+   paco.series <http://paco.readthedocs.io/en/latest/api.html#pacosearies>
+   paco.gather <http://paco.readthedocs.io/en/latest/api.html#pacogather>
+   paco.repeat <http://paco.readthedocs.io/en/latest/api.html#pacorepeat>
+   paco.reduce <http://paco.readthedocs.io/en/latest/api.html#pacoreduce>
+   paco.filter <http://paco.readthedocs.io/en/latest/api.html#pacofilter>
+   paco.whilst <http://paco.readthedocs.io/en/latest/api.html#pacowhilst>
+   paco.partial <http://paco.readthedocs.io/en/latest/api.html#pacopartial>
+   paco.timeout <http://paco.readthedocs.io/en/latest/api.html#pacotimeout>
+   paco.compose <http://paco.readthedocs.io/en/latest/api.html#pacocompose>
+   paco.throttle <http://paco.readthedocs.io/en/latest/api.html#pacothrottle>
+   paco.constant <http://paco.readthedocs.io/en/latest/api.html#pacoconstant>
+   paco.dropwhile <http://paco.readthedocs.io/en/latest/api.html#pacodropwhile>
+   paco.filterfalse <http://paco.readthedocs.io/en/latest/api.html#pacofilterfalse>
+   paco.concurrent <http://paco.readthedocs.io/en/latest/api.html#pacoconcurrent>
+   paco.ConcurrentExecutor <http://paco.readthedocs.io/en/latest/api.html#pacoConcurrentExecutor>
 
-.. automodule:: pyco
+.. automodule:: paco
     :members:
     :undoc-members:
     :show-inheritance:

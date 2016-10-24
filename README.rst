@@ -1,12 +1,12 @@
-pyco |Build Status| |PyPI| |Coverage Status| |Documentation Status| |Stability| |Quality| |Versions|
+paco |Build Status| |PyPI| |Coverage Status| |Documentation Status| |Stability| |Quality| |Versions|
 ====================================================================================================
 
 Small utility library for generic coroutine-driven, asynchronous-oriented programming in Python +3.4.
 
-Built on top of `asyncio`_, pyco provides missing capabilities from Python `stdlib`
+Built on top of `asyncio`_, paco provides missing capabilities from Python `stdlib`
 to write asynchronous cooperative multitasking in a nice-ish way + some convenient functional helpers.
 
-Note: pyco is still beta.
+Note: paco is still beta.
 
 Features
 --------
@@ -31,75 +31,75 @@ Using ``pip`` package manager:
 
 .. code-block:: bash
 
-    pip install pyco
+    pip install paco
 
 Or install the latest sources from Github:
 
 .. code-block:: bash
 
-    pip install -e git+git://github.com/h2non/pyco.git#egg=pyco
+    pip install -e git+git://github.com/h2non/paco.git#egg=paco
 
 
 API
 ---
 
-- pyco.run_
-- pyco.partial_
-- pyco.apply_
-- pyco.constant_
-- pyco.throttle_
-- pyco.compose_
-- pyco.wraps_
-- pyco.once_
-- pyco.times_
-- pyco.defer_
-- pyco.timeout_
-- pyco.wait_
-- pyco.gather_
-- pyco.each_
-- pyco.series_
-- pyco.map_
-- pyco.filter_
-- pyco.reduce_
-- pyco.some_
-- pyco.every_
-- pyco.filterfalse_
-- pyco.dropwhile_
-- pyco.repeat_
-- pyco.until_
-- pyco.whilst_
-- pyco.race_
-- pyco.ConcurrentExecutor_
+- paco.run_
+- paco.partial_
+- paco.apply_
+- paco.constant_
+- paco.throttle_
+- paco.compose_
+- paco.wraps_
+- paco.once_
+- paco.times_
+- paco.defer_
+- paco.timeout_
+- paco.wait_
+- paco.gather_
+- paco.each_
+- paco.series_
+- paco.map_
+- paco.filter_
+- paco.reduce_
+- paco.some_
+- paco.every_
+- paco.filterfalse_
+- paco.dropwhile_
+- paco.repeat_
+- paco.until_
+- paco.whilst_
+- paco.race_
+- paco.ConcurrentExecutor_
 
 
-.. _pyco.map: http://pyco.readthedocs.io/en/latest/api.html#pyco.map
-.. _pyco.run: http://pyco.readthedocs.io/en/latest/api.html#pyco.run
-.. _pyco.each: http://pyco.readthedocs.io/en/latest/api.html#pyco.each
-.. _pyco.some: http://pyco.readthedocs.io/en/latest/api.html#pyco.some
-.. _pyco.race: http://pyco.readthedocs.io/en/latest/api.html#pyco.race
-.. _pyco.once: http://pyco.readthedocs.io/en/latest/api.html#pycoonce
-.. _pyco.wait: http://pyco.readthedocs.io/en/latest/api.html#pycowait
-.. _pyco.wraps: http://pyco.readthedocs.io/en/latest/api.html#pycowraps
-.. _pyco.defer: http://pyco.readthedocs.io/en/latest/api.html#pycodefer
-.. _pyco.apply: http://pyco.readthedocs.io/en/latest/api.html#pycoapply
-.. _pyco.every: http://pyco.readthedocs.io/en/latest/api.html#pycoevery
-.. _pyco.until: http://pyco.readthedocs.io/en/latest/api.html#pycountil
-.. _pyco.times: http://pyco.readthedocs.io/en/latest/api.html#pycotimes
-.. _pyco.series: http://pyco.readthedocs.io/en/latest/api.html#pycosearies
-.. _pyco.gather: http://pyco.readthedocs.io/en/latest/api.html#pycogather
-.. _pyco.repeat: http://pyco.readthedocs.io/en/latest/api.html#pycorepeat
-.. _pyco.reduce: http://pyco.readthedocs.io/en/latest/api.html#pycoreduce
-.. _pyco.filter: http://pyco.readthedocs.io/en/latest/api.html#pycofilter
-.. _pyco.whilst: http://pyco.readthedocs.io/en/latest/api.html#pycowhilst
-.. _pyco.partial: http://pyco.readthedocs.io/en/latest/api.html#pycopartial
-.. _pyco.timeout: http://pyco.readthedocs.io/en/latest/api.html#pycotimeout
-.. _pyco.compose: http://pyco.readthedocs.io/en/latest/api.html#pycocompose
-.. _pyco.throttle: http://pyco.readthedocs.io/en/latest/api.html#pycothrottle
-.. _pyco.constant: http://pyco.readthedocs.io/en/latest/api.html#pycoconstant
-.. _pyco.dropwhile: http://pyco.readthedocs.io/en/latest/api.html#pycodropwhile
-.. _pyco.filterfalse: http://pyco.readthedocs.io/en/latest/api.html#pycofilterfalse
-.. _pyco.concurrent: http://pyco.readthedocs.io/en/latest/api.html#pycoconcurrent
-.. _pyco.ConcurrentExecutor: http://pyco.readthedocs.io/en/latest/api.html#pycoConcurrentExecutor
+.. _paco.map: http://paco.readthedocs.io/en/latest/api.html#paco.map
+.. _paco.run: http://paco.readthedocs.io/en/latest/api.html#paco.run
+.. _paco.each: http://paco.readthedocs.io/en/latest/api.html#paco.each
+.. _paco.some: http://paco.readthedocs.io/en/latest/api.html#paco.some
+.. _paco.race: http://paco.readthedocs.io/en/latest/api.html#paco.race
+.. _paco.once: http://paco.readthedocs.io/en/latest/api.html#pacoonce
+.. _paco.wait: http://paco.readthedocs.io/en/latest/api.html#pacowait
+.. _paco.wraps: http://paco.readthedocs.io/en/latest/api.html#pacowraps
+.. _paco.defer: http://paco.readthedocs.io/en/latest/api.html#pacodefer
+.. _paco.apply: http://paco.readthedocs.io/en/latest/api.html#pacoapply
+.. _paco.every: http://paco.readthedocs.io/en/latest/api.html#pacoevery
+.. _paco.until: http://paco.readthedocs.io/en/latest/api.html#pacountil
+.. _paco.times: http://paco.readthedocs.io/en/latest/api.html#pacotimes
+.. _paco.series: http://paco.readthedocs.io/en/latest/api.html#pacosearies
+.. _paco.gather: http://paco.readthedocs.io/en/latest/api.html#pacogather
+.. _paco.repeat: http://paco.readthedocs.io/en/latest/api.html#pacorepeat
+.. _paco.reduce: http://paco.readthedocs.io/en/latest/api.html#pacoreduce
+.. _paco.filter: http://paco.readthedocs.io/en/latest/api.html#pacofilter
+.. _paco.whilst: http://paco.readthedocs.io/en/latest/api.html#pacowhilst
+.. _paco.partial: http://paco.readthedocs.io/en/latest/api.html#pacopartial
+.. _paco.timeout: http://paco.readthedocs.io/en/latest/api.html#pacotimeout
+.. _paco.compose: http://paco.readthedocs.io/en/latest/api.html#pacocompose
+.. _paco.throttle: http://paco.readthedocs.io/en/latest/api.html#pacothrottle
+.. _paco.constant: http://paco.readthedocs.io/en/latest/api.html#pacoconstant
+.. _paco.dropwhile: http://paco.readthedocs.io/en/latest/api.html#pacodropwhile
+.. _paco.filterfalse: http://paco.readthedocs.io/en/latest/api.html#pacofilterfalse
+.. _paco.concurrent: http://paco.readthedocs.io/en/latest/api.html#pacoconcurrent
+.. _paco.ConcurrentExecutor: http://paco.readthedocs.io/en/latest/api.html#pacoConcurrentExecutor
 
 Examples
 ^^^^^^^^
@@ -108,7 +108,7 @@ Asynchronously execute multiple HTTP requests concurrently.
 
 .. code-block:: python
 
-    import pyco
+    import paco
     import aiohttp
     import asyncio
 
@@ -127,7 +127,7 @@ Asynchronously execute multiple HTTP requests concurrently.
         ]
 
         # Map concurrent executor with concurrent limit of 3
-        responses = await pyco.map(fetch, urls, limit=3)
+        responses = await paco.map(fetch, urls, limit=3)
 
         for res in responses:
             print('Status:', res.status)
@@ -144,24 +144,24 @@ MIT - Tomas Aparicio
 .. _asynchronous: http://python.org
 .. _asyncio: https://docs.python.org/3.5/library/asyncio.html
 .. _Python: http://python.org
-.. _annotated API reference: https://h2non.github.io/pyco
+.. _annotated API reference: https://h2non.github.io/paco
 .. _async/await: https://www.python.org/dev/peps/pep-0492/
 .. _yield from: https://www.python.org/dev/peps/pep-0380/
 
-.. |Build Status| image:: https://travis-ci.org/h2non/pyco.svg?branch=master
-   :target: https://travis-ci.org/h2non/pyco
-.. |PyPI| image:: https://img.shields.io/pypi/v/pyco.svg?maxAge=2592000?style=flat-square
-   :target: https://pypi.python.org/pypi/pyco
-.. |Coverage Status| image:: https://coveralls.io/repos/github/h2non/pyco/badge.svg?branch=master
-   :target: https://coveralls.io/github/h2non/pyco?branch=master
-.. |Documentation Status| image:: https://readthedocs.org/projects/pyco/badge/?version=latest
-   :target: http://pyco.readthedocs.io/en/latest/?badge=latest
-.. |Quality| image:: https://codeclimate.com/github/h2non/pyco/badges/gpa.svg
-   :target: https://codeclimate.com/github/h2non/pyco
+.. |Build Status| image:: https://travis-ci.org/h2non/paco.svg?branch=master
+   :target: https://travis-ci.org/h2non/paco
+.. |PyPI| image:: https://img.shields.io/pypi/v/paco.svg?maxAge=2592000?style=flat-square
+   :target: https://pypi.python.org/pypi/paco
+.. |Coverage Status| image:: https://coveralls.io/repos/github/h2non/paco/badge.svg?branch=master
+   :target: https://coveralls.io/github/h2non/paco?branch=master
+.. |Documentation Status| image:: https://readthedocs.org/projects/paco/badge/?version=latest
+   :target: http://paco.readthedocs.io/en/latest/?badge=latest
+.. |Quality| image:: https://codeclimate.com/github/h2non/paco/badges/gpa.svg
+   :target: https://codeclimate.com/github/h2non/paco
    :alt: Code Climate
-.. |Stability| image:: https://img.shields.io/pypi/status/pyco.svg
-   :target: https://pypi.python.org/pypi/pyco
+.. |Stability| image:: https://img.shields.io/pypi/status/paco.svg
+   :target: https://pypi.python.org/pypi/paco
    :alt: Stability
-.. |Versions| image:: https://img.shields.io/pypi/pyversions/pyco.svg
-   :target: https://pypi.python.org/pypi/pyco
+.. |Versions| image:: https://img.shields.io/pypi/pyversions/paco.svg
+   :target: https://pypi.python.org/pypi/paco
    :alt: Python Versions

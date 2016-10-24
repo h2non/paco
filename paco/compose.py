@@ -24,7 +24,7 @@ def compose(*coros):
 
     Usage::
 
-        coro = pyco.compose(sum1, mul2, sum1)
+        coro = paco.compose(sum1, mul2, sum1)
         await coro(1)
         => 5
     """

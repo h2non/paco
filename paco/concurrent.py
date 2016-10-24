@@ -65,7 +65,7 @@ class ConcurrentExecutor(object):
     internally.
 
     ConcurrentExecutor is a low-level implementation that powers most of the
-    utility functions provided in `pyco`.
+    utility functions provided in `paco`.
 
     For most cases you won't need to rely on it, instead you can
     use the high-level API functions that provides a simpler abstraction for

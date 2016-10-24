@@ -8,7 +8,7 @@ def until(coro, coro_test, assert_coro=None, *args, **kw):
     """
     Repeatedly call `coro` coroutine function until `coro_test` returns `True`.
 
-    This function is the inverse of `pyco.whilst()`.
+    This function is the inverse of `paco.whilst()`.
 
     This function is a coroutine.
 
@@ -27,7 +27,7 @@ def until(coro, coro_test, assert_coro=None, *args, **kw):
 
     Usage::
 
-        await pyco.until(coro, [1, 2, 3, 4, 5])
+        await paco.until(coro, [1, 2, 3, 4, 5])
     """
     @asyncio.coroutine
     def assert_coro(value):

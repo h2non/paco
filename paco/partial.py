@@ -24,7 +24,7 @@ def partial(coro, *args, **kw):
 
     Usage::
 
-        task = pyco.partial(coro, 1, foo='bar')
+        task = paco.partial(coro, 1, foo='bar')
         await task(2, bar='foo')
     """
     assert_corofunction(coro=coro)

@@ -35,7 +35,7 @@ def times(coro, limit=1, raise_exception=False, return_value=None):
 
     Usage::
 
-        coro = pyco.times(coro, 3)
+        coro = paco.times(coro, 3)
         coro(1)
         coro(2)
         coro(3)

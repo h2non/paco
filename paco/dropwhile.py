@@ -35,7 +35,7 @@ def dropwhile(coro, iterable, loop=None):
         async def filter(num):
             return num < 4
 
-        await pyco.dropwhile(filter, [1, 2, 3, 4, 5, 1])
+        await paco.dropwhile(filter, [1, 2, 3, 4, 5, 1])
         => [4, 5, 1]
     """
     drop = False

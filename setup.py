@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-pyco
+paco
 ====
 Utility library for asynchronous coroutine-driven programming for Python +3.4.
 
@@ -31,7 +31,7 @@ def read_version(package):
 
 
 # Get package current version
-version = read_version('pyco')
+version = read_version('paco')
 
 
 class PyTest(TestCommand):
@@ -48,16 +48,16 @@ class PyTest(TestCommand):
 
 
 setup(
-    name='pyco',
+    name='paco',
     version='0.1.0',
     author='Tomas Aparicio',
     description=(
         'Small utility for asynchronous coroutines programming in Python +3.4.'
     ),
-    url='https://github.com/h2non/pyco',
+    url='https://github.com/h2non/paco',
     license='MIT',
     long_description=open('README.rst').read(),
-    py_modules=['pyco'],
+    py_modules=['paco'],
     zip_safe=False,
     tests_require=tests_require,
     packages=find_packages(exclude=['tests', 'examples']),
@@ -66,7 +66,7 @@ setup(
         'Intended Audience :: Developers',
         'Intended Audience :: System Administrators',
         'Operating System :: OS Independent',
-        'Development Status :: 3 - Beta',
+        'Development Status :: 4 - Beta',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',

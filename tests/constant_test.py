@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
-from pyco import constant
+from paco import constant
 from .helpers import run_in_loop
 
 

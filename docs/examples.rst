@@ -7,7 +7,7 @@ URL fetching with concurrency limit
 
 .. code-block:: python
 
-    import pyco
+    import paco
     import aiohttp
     import asyncio
 
@@ -26,7 +26,7 @@ URL fetching with concurrency limit
         ]
 
         # Map concurrent executor with 3 concurrent limit
-        responses = await pyco.map(fetch, urls, limit=3)
+        responses = await paco.map(fetch, urls, limit=3)
 
         for res in responses:
             print('Response:', res.status)

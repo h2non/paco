@@ -39,7 +39,7 @@ def reduce(coro, iterable, right=False, initializer=None, loop=None):
         async def reducer(acc, num):
            return acc + num
 
-        await pyco.reduce(reducer, [1, 2, 3, 4, 5], initializer=0)
+        await paco.reduce(reducer, [1, 2, 3, 4, 5], initializer=0)
         => 10
     """
     assert_corofunction(coro=coro)

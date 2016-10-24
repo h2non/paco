@@ -16,7 +16,7 @@ def constant(value, delay=None):
 
     Usage::
 
-        coro = pyco.constant('foo')
+        coro = paco.constant('foo')
         await coro()
         'foo'
     """

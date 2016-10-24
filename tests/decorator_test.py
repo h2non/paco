@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import asyncio
-from pyco.decorator import decorate
+from paco.decorator import decorate
 from .helpers import run_in_loop
 
 

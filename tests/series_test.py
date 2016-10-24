@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 import asyncio
-from pyco import series
+from paco import series
 from .helpers import run_in_loop
 
 

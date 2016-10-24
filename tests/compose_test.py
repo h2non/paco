@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 import asyncio
-from pyco import compose, partial
+from paco import compose, partial
 from .helpers import run_in_loop
 
 

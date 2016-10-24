@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import asyncio
-from pyco import dropwhile
+from paco import dropwhile
 from .helpers import run_in_loop
 
 

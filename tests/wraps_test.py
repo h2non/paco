@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from pyco import wraps
+from paco import wraps
 from .helpers import run_in_loop
 
 

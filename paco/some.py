@@ -35,7 +35,7 @@ def some(coro, iterable, limit=0, timeout=None, loop=None):
         async def test(num):
             return num > 3
 
-        await pyco.some(test, [1, 2, 3, 4, 5])
+        await paco.some(test, [1, 2, 3, 4, 5])
         => True
     """
     assert_corofunction(coro=coro)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import asyncio
-from pyco.observer import Observer
+from paco.observer import Observer
 from .helpers import run_in_loop
 
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 import asyncio
-from pyco import gather
+from paco import gather
 from .helpers import run_in_loop
 
 

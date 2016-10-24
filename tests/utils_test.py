@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from pyco.utils import isiter
+from paco.utils import isiter
 
 
 def test_isiter():

@@ -25,11 +25,11 @@ def defer(coro, delay=1):
     Usage::
 
         # Usage as function
-        await pyco.defer(coro, 1)
-        await pyco.defer(coro, 0.5)
+        await paco.defer(coro, 1)
+        await paco.defer(coro, 0.5)
 
         # Usage as decorator
-        @pyco.defer(delay=1)
+        @paco.defer(delay=1)
         async def task(n):
             return n * n
         await task(2)

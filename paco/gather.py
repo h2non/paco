@@ -45,7 +45,7 @@ def gather(*coros_or_futures, limit=0, loop=None, timeout=None,
 
     Usage::
 
-        await pyco.gather(
+        await paco.gather(
           task(1, foo='bar'),
           task(2, foo='bar'),
           task(3, foo='bar'),

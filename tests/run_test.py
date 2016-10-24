@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import asyncio
-from pyco import run
+from paco import run
 
 
 @asyncio.coroutine

@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 import asyncio
-from .utils import isiter
-from .concurrent import ConcurrentExecutor
+from .gather import gather
 
 
 @asyncio.coroutine
-def wait(*coros_or_futures, limit=0, timeout=None, loop=None,
-         return_exceptions=False, return_when='ALL_COMPLETED'):
+def series(*coros_or_futures, timeout=None,
+           loop=None, return_exceptions=False):
     """
-    Wait for the Futures and coroutine objects given by the sequence
-    futures to complete, with optional concurrency limit.
-    Coroutines will be wrapped in Tasks.
+    Run the given coroutine functions in series, each one
+    running once the previous execution has completed.
+
+    If any coroutines raises an exception, no more
+    coroutines are executed. Otherwise, the coroutines returned values
+    will be returned as `list`.
 
     ``timeout`` can be used to control the maximum number of seconds to
     wait before returning. timeout can be an int or float.
@@ -21,33 +23,28 @@ def wait(*coros_or_futures, limit=0, timeout=None, loop=None,
     the first raised exception will be immediately propagated to the
     returned future.
 
-    ``return_when`` indicates when this function should return.
-    It must be one of the following constants of the concurrent.futures module.
-
     All futures must share the same event loop.
 
     This functions is mostly compatible with Python standard
     ``asyncio.wait()``.
 
+    This function is a coroutine.
+
     Arguments:
         *coros_or_futures (iter|list):
             an iterable collection yielding coroutines functions.
-        limit (int):
-            optional concurrency execution limit. Use ``0`` for no limit.
         timeout (int/float):
             maximum number of seconds to wait before returning.
         return_exceptions (bool):
             exceptions in the tasks are treated the same as successful results,
             instead of raising them.
-        return_when (str):
-            indicates when this function should return.
         loop (asyncio.BaseEventLoop):
             optional event loop to use.
         *args (mixed):
             optional variadic argument to pass to the coroutines function.
 
     Returns:
-        tuple: Returns two sets of Future: (done, pending).
+        list: coroutines returned results.
 
     Raises:
         TypeError: in case of invalid coroutine object.
@@ -56,26 +53,13 @@ def wait(*coros_or_futures, limit=0, timeout=None, loop=None,
 
     Usage::
 
-        done, pending = await pyco.wait(
+        results = await paco.series(
           task(1, foo='bar'),
           task(2, foo='bar'),
           task(3, foo='bar'),
           task(4, foo='bar'),
-          limit=2, return_exceptions=True)
+          return_exceptions=True)
     """
-    # Support iterable as first argument for better interoperability
-    if len(coros_or_futures) == 1 and isiter(coros_or_futures[0]):
-        coros_or_futures = coros_or_futures[0]
-
-    # If no coroutines to schedule, return empty list
-    if len(coros_or_futures) == 0:
-        raise ValueError('Set of coroutines/Futures is empty.')
-
-    # Create concurrent executor
-    pool = ConcurrentExecutor(limit=limit, loop=loop,
-                              coros=coros_or_futures)
-
-    # Wait until all the tasks finishes
-    return (yield from pool.run(timeout=timeout,
-                                return_when=return_when,
-                                return_exceptions=return_exceptions))
+    return (yield from gather(*coros_or_futures,
+                              loop=loop, limit=1, timeout=timeout,
+                              return_exceptions=return_exceptions))

@@ -28,7 +28,7 @@ def timeout(coro, timeout=None, loop=None):
 
     Usage::
 
-        await pyco.timeout(coro, timeout=10)
+        await paco.timeout(coro, timeout=10)
     """
     @asyncio.coroutine
     def wrapper(*args, **kw):

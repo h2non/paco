@@ -9,7 +9,7 @@ def whilst(coro, coro_test, assert_coro=None, *args, **kw):
     """
     Repeatedly call `coro` coroutine function while `coro_test` returns `True`.
 
-    This function is the inverse of `pyco.until()`.
+    This function is the inverse of `paco.until()`.
 
     This function is a coroutine.
 
@@ -28,7 +28,7 @@ def whilst(coro, coro_test, assert_coro=None, *args, **kw):
 
     Usage::
 
-        await pyco.whilst(coro, [1, 2, 3, 4, 5])
+        await paco.whilst(coro, [1, 2, 3, 4, 5])
     """
     assert_corofunction(coro=coro, coro_test=coro_test)
 

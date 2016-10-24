@@ -4,11 +4,11 @@ NO_COLOR=\033[0m
 all: test
 
 export PYTHONPATH:=${PWD}
-version=`python -c 'import pyco; print(pyco.version)'`
-filename=pyco-`python -c 'import pyco; print(pyco.version)'`.tar.gz
+version=`python -c 'import paco; print(paco.version)'`
+filename=paco-`python -c 'import paco; print(paco.version)'`.tar.gz
 
 apidocs:
-	@sphinx-apidoc -f --follow-links -H "API documentation" -o docs/source pyco
+	@sphinx-apidoc -f --follow-links -H "API documentation" -o docs/source paco
 
 htmldocs:
 	@rm -rf docs/_build
@@ -20,10 +20,10 @@ lint:
 
 test: clean lint
 	@echo "$(OK_COLOR)==> Runnings tests...$(NO_COLOR)"
-	@py.test -s -v --cov pyco --cov-report term-missing
+	@py.test -s -v --cov paco --cov-report term-missing
 
 coverage:
-	@coverage run --source pyco -m py.test
+	@coverage run --source paco -m py.test
 	@coverage report
 
 tag:
@@ -38,7 +38,7 @@ clean:
 
 release: clean publish
 	@echo "$(OK_COLOR)==> Exporting to $(filename)...$(NO_COLOR)"
-	@tar czf $(filename) pyco setup.py README.rst LICENSE
+	@tar czf $(filename) paco setup.py README.rst LICENSE
 
 publish:
 	@python setup.py sdist register upload

@@ -37,7 +37,7 @@ def every(coro, iterable, limit=1, loop=None):
         async def test(num):
             return num > 10
 
-        await pyco.some(test, [1, 2, 3, 4, 5])
+        await paco.some(test, [1, 2, 3, 4, 5])
         => True
     """
     assert_corofunction(coro=coro)

@@ -32,7 +32,7 @@ def repeat(coro, times=1, step=1, limit=1, loop=None):
         async def task(num):
             return num * 2
 
-        await pyco.times(task, 10, limit=2)
+        await paco.times(task, 10, limit=2)
         => [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
     """
     assert_corofunction(coro=coro)

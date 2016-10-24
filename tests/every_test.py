@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import asyncio
-from pyco import every
+from paco import every
 from .helpers import run_in_loop
 
 

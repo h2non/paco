@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import asyncio
-from pyco.assertions import assert_corofunction, assert_iter
+from paco.assertions import assert_corofunction, assert_iter
 
 
 @asyncio.coroutine

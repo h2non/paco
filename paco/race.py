@@ -36,7 +36,7 @@ def race(iterable, loop=None, timeout=None, *args, **kw):
 
     Usage::
 
-        await pyco.race(coro)
+        await paco.race(coro)
     """
     assert_iter(iterable=iterable)
 

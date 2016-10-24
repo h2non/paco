@@ -48,7 +48,7 @@ def throttle(coro, limit=1, timeframe=1,
 
     Usage::
 
-        task = pyco.throttle(coro, limit=1, timeframe=1)
+        task = paco.throttle(coro, limit=1, timeframe=1)
         task(1)
         task(1) # ignored!
         time.sleep(1)

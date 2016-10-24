@@ -19,7 +19,7 @@ def wraps(fn):
         def mult(num, foo=None):
             return num * 2
 
-        coro = pyco.wrap(mult)
+        coro = paco.wrap(mult)
         await coro(2, foo='bar')
         => 4
     """

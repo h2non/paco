@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 import asyncio
-from pyco import concurrent
+from paco import concurrent
 from .helpers import sleep_coro, run_in_loop
 
 

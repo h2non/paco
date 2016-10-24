@@ -12,7 +12,7 @@ def each(coro, iterable, limit=0, loop=None,
     an asynchronous coroutine.
 
     You can optionally collect yielded values passing collect=True param,
-    which would be equivalent to `pyco.map()``.
+    which would be equivalent to `paco.map()``.
 
     Mapped values will be returned as an ordered list.
     Items order is preserved based on origin iterable order.
@@ -51,7 +51,7 @@ def each(coro, iterable, limit=0, loop=None,
         async def mul2(num):
             return mul * 2
 
-        await pyco.each(mul2, [1, 2, 3, 4, 5], limit=3)
+        await paco.each(mul2, [1, 2, 3, 4, 5], limit=3)
         => [2, 4, 6, 8, 10]
     """
     assert_corofunction(coro=coro)
