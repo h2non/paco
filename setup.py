@@ -49,7 +49,7 @@ class PyTest(TestCommand):
 
 setup(
     name='paco',
-    version='0.1.0',
+    version=version,
     author='Tomas Aparicio',
     description=(
         'Small utility for asynchronous coroutines programming in Python +3.4.'
