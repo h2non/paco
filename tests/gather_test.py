@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import time
 import asyncio
-from paco import gather
+from paco import gather, partial
 from .helpers import run_in_loop
 
 
@@ -27,6 +27,25 @@ def test_gather_sequential():
     results = run_in_loop(gather(coro(1), coro(2), coro(3), limit=1))
     assert results == [2, 4, 6]
     assert time.time() - start >= 0.3
+
+
+def test_gather_empty():
+    results = run_in_loop(gather(limit=1))
+    assert results == []
+
+
+def test_gather_coroutinefunction():
+    results = run_in_loop(gather(partial(coro, 1), partial(coro, 2), limit=1))
+    assert results == [2, 4]
+
+
+def test_gather_invalid_coro():
+    try:
+        run_in_loop(None)
+    except TypeError:
+        pass
+    else:
+        raise RuntimeError('must raise exception')
 
 
 def test_gather_return_exceptions():
