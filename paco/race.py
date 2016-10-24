@@ -48,11 +48,8 @@ def race(iterable, loop=None, timeout=None, *args, **kw):
     # Resolve first yielded data from coroutine and stop pending ones
     @asyncio.coroutine
     def resolver(index, coro):
-        nonlocal resolved
         nonlocal result
-
-        if resolved:
-            return None
+        nonlocal resolved
 
         value = yield from coro
         if not resolved:

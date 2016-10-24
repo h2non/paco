@@ -56,9 +56,6 @@ def some(coro, iterable, limit=0, timeout=None, loop=None):
     def tester(element):
         nonlocal passes
 
-        if passes:
-            return None
-
         if (yield from coro(element)):
             # Flag as not test passed
             passes = True

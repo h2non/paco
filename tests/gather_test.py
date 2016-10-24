@@ -41,7 +41,7 @@ def test_gather_coroutinefunction():
 
 def test_gather_invalid_coro():
     try:
-        run_in_loop(None)
+        run_in_loop(gather(None))
     except TypeError:
         pass
     else:

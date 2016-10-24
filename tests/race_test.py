@@ -33,3 +33,12 @@ def test_race_invalid_input():
         pass
     else:
         raise RuntimeError('must raise exception')
+
+
+def test_race_invalid_iterable_value():
+    try:
+        run_in_loop(race([None]))
+    except TypeError:
+        pass
+    else:
+        raise RuntimeError('must raise exception')

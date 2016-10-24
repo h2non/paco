@@ -38,3 +38,12 @@ def test_wait_return_exceptions():
 
     for future in done:
         assert str(future.result()) == 'foo'
+
+
+def test_wait_empty():
+    try:
+        run_in_loop(wait([]))
+    except ValueError:
+        pass
+    else:
+        raise RuntimeError('must raise exception')
