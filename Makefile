@@ -5,7 +5,7 @@ all: test
 
 export PYTHONPATH:=${PWD}
 version=`python -c 'import paco; print(paco.version)'`
-filename=paco-`python -c 'import paco; print(paco.version)'`.tar.gz
+filename=paco-`python -c 'import paco; print(paco.__version__)'`.tar.gz
 
 apidocs:
 	@sphinx-apidoc -f --follow-links -H "API documentation" -o docs/source paco
