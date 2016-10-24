@@ -8,29 +8,29 @@ API documentation
    paco.each <http://paco.readthedocs.io/en/latest/api.html#paco.each>
    paco.some <http://paco.readthedocs.io/en/latest/api.html#paco.some>
    paco.race <http://paco.readthedocs.io/en/latest/api.html#paco.race>
-   paco.once <http://paco.readthedocs.io/en/latest/api.html#pacoonce>
-   paco.wait <http://paco.readthedocs.io/en/latest/api.html#pacowait>
-   paco.wraps <http://paco.readthedocs.io/en/latest/api.html#pacowraps>
-   paco.defer <http://paco.readthedocs.io/en/latest/api.html#pacodefer>
-   paco.apply <http://paco.readthedocs.io/en/latest/api.html#pacoapply>
-   paco.every <http://paco.readthedocs.io/en/latest/api.html#pacoevery>
-   paco.until <http://paco.readthedocs.io/en/latest/api.html#pacountil>
-   paco.times <http://paco.readthedocs.io/en/latest/api.html#pacotimes>
-   paco.series <http://paco.readthedocs.io/en/latest/api.html#pacosearies>
-   paco.gather <http://paco.readthedocs.io/en/latest/api.html#pacogather>
-   paco.repeat <http://paco.readthedocs.io/en/latest/api.html#pacorepeat>
-   paco.reduce <http://paco.readthedocs.io/en/latest/api.html#pacoreduce>
-   paco.filter <http://paco.readthedocs.io/en/latest/api.html#pacofilter>
-   paco.whilst <http://paco.readthedocs.io/en/latest/api.html#pacowhilst>
-   paco.partial <http://paco.readthedocs.io/en/latest/api.html#pacopartial>
-   paco.timeout <http://paco.readthedocs.io/en/latest/api.html#pacotimeout>
-   paco.compose <http://paco.readthedocs.io/en/latest/api.html#pacocompose>
-   paco.throttle <http://paco.readthedocs.io/en/latest/api.html#pacothrottle>
-   paco.constant <http://paco.readthedocs.io/en/latest/api.html#pacoconstant>
-   paco.dropwhile <http://paco.readthedocs.io/en/latest/api.html#pacodropwhile>
-   paco.filterfalse <http://paco.readthedocs.io/en/latest/api.html#pacofilterfalse>
-   paco.concurrent <http://paco.readthedocs.io/en/latest/api.html#pacoconcurrent>
-   paco.ConcurrentExecutor <http://paco.readthedocs.io/en/latest/api.html#pacoConcurrentExecutor>
+   paco.once <http://paco.readthedocs.io/en/latest/api.html#paco.once>
+   paco.wait <http://paco.readthedocs.io/en/latest/api.html#paco.wait>
+   paco.wraps <http://paco.readthedocs.io/en/latest/api.html#paco.wraps>
+   paco.defer <http://paco.readthedocs.io/en/latest/api.html#paco.defer>
+   paco.apply <http://paco.readthedocs.io/en/latest/api.html#paco.apply>
+   paco.every <http://paco.readthedocs.io/en/latest/api.html#paco.every>
+   paco.until <http://paco.readthedocs.io/en/latest/api.html#paco.until>
+   paco.times <http://paco.readthedocs.io/en/latest/api.html#paco.times>
+   paco.series <http://paco.readthedocs.io/en/latest/api.html#paco.searies>
+   paco.gather <http://paco.readthedocs.io/en/latest/api.html#paco.gather>
+   paco.repeat <http://paco.readthedocs.io/en/latest/api.html#paco.repeat>
+   paco.reduce <http://paco.readthedocs.io/en/latest/api.html#paco.reduce>
+   paco.filter <http://paco.readthedocs.io/en/latest/api.html#paco.filter>
+   paco.whilst <http://paco.readthedocs.io/en/latest/api.html#paco.whilst>
+   paco.partial <http://paco.readthedocs.io/en/latest/api.html#paco.partial>
+   paco.timeout <http://paco.readthedocs.io/en/latest/api.html#paco.timeout>
+   paco.compose <http://paco.readthedocs.io/en/latest/api.html#paco.compose>
+   paco.throttle <http://paco.readthedocs.io/en/latest/api.html#paco.throttle>
+   paco.constant <http://paco.readthedocs.io/en/latest/api.html#paco.constant>
+   paco.dropwhile <http://paco.readthedocs.io/en/latest/api.html#paco.dropwhile>
+   paco.filterfalse <http://paco.readthedocs.io/en/latest/api.html#paco.filterfalse>
+   paco.concurrent <http://paco.readthedocs.io/en/latest/api.html#paco.concurrent>
+   paco.ConcurrentExecutor <http://paco.readthedocs.io/en/latest/api.html#paco.ConcurrentExecutor>
 
 .. automodule:: paco
     :members:
