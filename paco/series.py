@@ -25,8 +25,8 @@ def series(*coros_or_futures, timeout=None,
 
     All futures must share the same event loop.
 
-    This functions is mostly compatible with Python standard
-    ``asyncio.wait()``.
+    This functions is basically the sequential execution version of
+    ``asyncio.gather()``. Interface compatible with ``asyncio.gather()``.
 
     This function is a coroutine.
 
