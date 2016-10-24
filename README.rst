@@ -114,8 +114,8 @@ Asynchronously execute multiple HTTP requests concurrently.
 
     async def fetch(url):
         async with aiohttp.ClientSession() as session:
-            async with session.get(url) as resp:
-                return resp
+            async with session.get(url) as res:
+                return res
 
     async def fetch_urls():
         urls = [
@@ -132,8 +132,8 @@ Asynchronously execute multiple HTTP requests concurrently.
         for res in responses:
             print('Status:', res.status)
 
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(fetch_urls())
+    # Run in event loop
+    paco.run(fetch_urls())
 
 
 License

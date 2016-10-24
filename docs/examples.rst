@@ -13,8 +13,8 @@ URL fetching with concurrency limit
 
     async def fetch(url):
         async with aiohttp.ClientSession() as session:
-            async with session.get(url) as resp:
-                return resp
+            async with session.get(url) as res:
+                return res
 
     async def fetch_urls():
         urls = [
@@ -25,11 +25,11 @@ URL fetching with concurrency limit
             'https://duckduckgo.com',
         ]
 
-        # Map concurrent executor with 3 concurrent limit
+        # Map concurrent executor with concurrent limit of 3
         responses = await paco.map(fetch, urls, limit=3)
 
         for res in responses:
-            print('Response:', res.status)
+            print('Status:', res.status)
 
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(fetch_urls())
+    # Run in event loop
+    paco.run(fetch_urls())
