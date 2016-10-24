@@ -1,12 +1,10 @@
 paco |Build Status| |PyPI| |Coverage Status| |Documentation Status| |Stability| |Quality| |Versions|
 ====================================================================================================
 
-Small utility library for generic coroutine-driven, asynchronous-oriented programming in Python +3.4.
+Small and idiomatic utility library for coroutine-driven, asynchronous-oriented generic programming in Python +3.4.
 
 Built on top of `asyncio`_, paco provides missing capabilities from Python `stdlib`
-to write asynchronous cooperative multitasking in a nice-ish way + some convenient functional helpers.
-
-Note: paco is still beta.
+to write asynchronous concurrent cooperative multitasking in a nice-ish way, plus higher-order function goodness.
 
 Features
 --------
@@ -16,7 +14,7 @@ Features
 -  Useful iterables, decorators and functors.
 -  Provides coroutine-ready compose, throttle, partial, until, race and other functional helpers.
 -  Asynchronous coroutine port of Python built-in functions: `filter`, `map`, `dropwhile`, `filterfalse`, `reduce`...
--  Coroutines control flow and higher-order functions goodness.
+-  Concurrent iterables and higher-order functions.
 -  Better `asyncio.gather()` and `asyncio.wait()` implementations with optional concurrency control and ordered results.
 -  Good interoperability with `asyncio` and Python `stdlib` functions.
 -  Works with both `async/await`_ and `yield from`_ coroutines syntax.
@@ -103,7 +101,7 @@ API
 Examples
 ^^^^^^^^
 
-Asynchronously execute multiple HTTP requests concurrently.
+Asynchronously and concurrently execute multiple HTTP requests.
 
 .. code-block:: python
 
