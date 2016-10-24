@@ -19,7 +19,6 @@ Features
 -  Coroutines control flow and higher-order functions goodness.
 -  Better `asyncio.gather()` and `asyncio.wait()` implementations with optional concurrency control and ordered results.
 -  Good interoperability with `asyncio` and Python `stdlib` functions.
--  Partially ports Python `stdlib` higher-order functions and iterables to be used in async coroutines world.
 -  Works with both `async/await`_ and `yield from`_ coroutines syntax.
 -  Small and dependency free.
 -  Compatible with Python +3.4.
