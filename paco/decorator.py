@@ -1,4 +1,5 @@
 import asyncio
+import functools
 from inspect import isfunction
 from .assertions import assert_corofunction
 
@@ -22,6 +23,7 @@ def decorate(fn):
     if not isfunction(fn):
         raise TypeError('fn must be a callable object')
 
+    @functools.wraps(fn)
     def decorator(*args, **kw):
         for arg in args:
             if asyncio.iscoroutinefunction(arg):

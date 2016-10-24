@@ -28,7 +28,7 @@ def apply(coro, *args, **kw):
         TypeError: if coro argument is not a coroutine function.
 
     Returns:
-        coroutinefunction
+        coroutinefunction: wrapped coroutine function.
 
     Usage::
 
