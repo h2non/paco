@@ -14,12 +14,13 @@ Features
 -  Simple and idiomatic API, extending Python `stdlib` with async coroutines gotchas.
 -  Built-in configurable control-flow concurrency support.
 -  Useful iterables, decorators and functors.
--  Provides coroutine-ready compose, throttle, partial, until, race and other functional helpers.
+-  Coroutine-based functional helpers: compose, throttle, partial, until, throttle, race...
 -  Asynchronous coroutine port of Python built-in functions: `filter`, `map`, `dropwhile`, `filterfalse`, `reduce`...
 -  Concurrent iterables and higher-order functions.
 -  Better `asyncio.gather()` and `asyncio.wait()` implementations with optional concurrency control and ordered results.
--  Good interoperability with `asyncio` and Python `stdlib` functions.
 -  Works with both `async/await`_ and `yield from`_ coroutines syntax.
+-  Designed for intensive I/O-bound concurrent non-blocking tasks.
+-  Good interoperability with `asyncio` and Python `stdlib` functions.
 -  Small and dependency free.
 -  Compatible with Python +3.4.
 
