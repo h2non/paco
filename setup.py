@@ -50,9 +50,9 @@ class PyTest(TestCommand):
 
 with open('requirements-dev.txt') as f:
     tests_require = f.read().splitlines()
-with open('README.rst', 'r', 'utf-8') as f:
+with open('README.rst') as f:
     readme = f.read()
-with open('History.rst', 'r', 'utf-8') as f:
+with open('History.rst') as f:
     history = f.read()
 
 
