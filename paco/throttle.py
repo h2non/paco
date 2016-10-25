@@ -48,11 +48,22 @@ def throttle(coro, limit=1, timeframe=1,
 
     Usage::
 
+        # Use as simple wrapper
         task = paco.throttle(coro, limit=1, timeframe=1)
-        task(1)
-        task(1) # ignored!
+        await task(1)
+        await task(2) # ignored!
         time.sleep(1)
-        task(1) # executed!
+        await task(3) # executed!
+
+        # Use as decorator
+        @paco.throttle(limit=1, timeframe=1)
+        async def task(num):
+            return num * 2
+
+        await task(1) # => 2
+        await task(2) # => 2 (ignored)
+        time.sleep(1)
+        await task(3) # => 6
     """
     assert_corofunction(coro=coro)
 
