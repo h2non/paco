@@ -1,6 +1,12 @@
 History
 =======
 
+0.1.2 (2016-10-25)
+------------------
+
+- fix(setup.py): fix pip installation.
+- refactor(api): minor refactors in several functions and tests.
+
 0.1.1 (2016-10-24)
 ------------------
 
