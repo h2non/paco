@@ -18,7 +18,7 @@ def constant(value, delay=None):
 
         coro = paco.constant('foo')
         await coro()
-        'foo'
+        => 'foo'
     """
     @asyncio.coroutine
     def coro():

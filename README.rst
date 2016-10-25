@@ -4,7 +4,9 @@ paco |Build Status| |PyPI| |Coverage Status| |Documentation Status| |Stability| 
 Small and idiomatic utility library for coroutine-driven, asynchronous-oriented generic programming in Python +3.4.
 
 Built on top of `asyncio`_, paco provides missing capabilities from Python `stdlib`
-to write asynchronous concurrent cooperative multitasking in a nice-ish way, plus higher-order function goodness.
+to write asynchronous cooperative multitasking in a nice-ish way, plus higher-order function goodness.
+
+paco can be your utility belt to deal with I/O-bound non-blocking concurrent code in a better and elegant way.
 
 Features
 --------
