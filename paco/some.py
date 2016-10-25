@@ -55,6 +55,8 @@ def some(coro, iterable, limit=0, timeout=None, loop=None):
     @asyncio.coroutine
     def tester(element):
         nonlocal passes
+        if passes:
+            return None
 
         if (yield from coro(element)):
             # Flag as not test passed

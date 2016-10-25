@@ -57,6 +57,8 @@ def every(coro, iterable, limit=1, loop=None):
     @asyncio.coroutine
     def tester(element):
         nonlocal passes
+        if passes:
+            return None
 
         if not (yield from coro(element)):
             # Flag as not test passed

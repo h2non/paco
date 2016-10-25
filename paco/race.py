@@ -36,7 +36,8 @@ def race(iterable, loop=None, timeout=None, *args, **kw):
 
     Usage::
 
-        await paco.race(coro)
+        await paco.race(coro, coro2, coro3)
+        => coro2 # result
     """
     assert_iter(iterable=iterable)
 
