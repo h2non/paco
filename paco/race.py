@@ -6,16 +6,15 @@ from .assertions import assert_iter
 @asyncio.coroutine
 def race(iterable, loop=None, timeout=None, *args, **kw):
     """
-    Runs the tasks array of functions concurrently, without waiting until
-    the previous function has completed.
+    Runs coroutines from a given iterable concurrently without waiting until
+    the previous one has completed.
 
-    Once any of the tasks completes, the coroutine
-    main callback is immediately called.
-
-    This function implements the same interface as Python standard
-    `itertools.dropwhile()` function.
+    Once any of the tasks completes, the main coroutine
+    is immediately resolved, yielding the first resolved value.
 
     All coroutines will be executed in the same loop.
+
+    This function is a coroutine.
 
     Arguments:
         iterable (iterable): an iterable collection yielding
@@ -26,6 +25,8 @@ def race(iterable, loop=None, timeout=None, *args, **kw):
             of seconds to wait before returning. timeout can be an int or
             float. If timeout is not specified or None, there is no limit to
             the wait time.
+        *args (mixed): optional variadic argument to pass to coroutine
+            function, if provided.
 
     Raises:
         TypeError: if ``iterable`` argument is not iterable.
