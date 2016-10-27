@@ -41,5 +41,5 @@ def test_flat_map_invalid_coro():
 
 
 def test_flat_map_pipeline():
-    results = run_in_loop([1, [2], [(3, [4]), 5]] | flat_map(coro))
+    results = run_in_loop([1, [2], [(3, [4]), 5]] | flat_map(coro, limit=1))
     assert results == [2, 4, 6, 8, 10]
