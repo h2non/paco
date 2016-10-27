@@ -5,7 +5,7 @@ API documentation
 
    paco.run <http://paco.readthedocs.io/en/latest/api.html#paco.run>
    paco.map <http://paco.readthedocs.io/en/latest/api.html#paco.map>
-   paco.map_flat <http://paco.readthedocs.io/en/latest/api.html#paco.map_flat>
+   paco.flat_map <http://paco.readthedocs.io/en/latest/api.html#paco.flat_map>
    paco.each <http://paco.readthedocs.io/en/latest/api.html#paco.each>
    paco.some <http://paco.readthedocs.io/en/latest/api.html#paco.some>
    paco.race <http://paco.readthedocs.io/en/latest/api.html#paco.race>

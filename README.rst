@@ -60,7 +60,7 @@ API
 - paco.each_
 - paco.series_
 - paco.map_
-- paco.map_flat_
+- paco.flat__map
 - paco.filter_
 - paco.reduce_
 - paco.some_
@@ -75,7 +75,7 @@ API
 
 
 .. _paco.map: http://paco.readthedocs.io/en/latest/api.html#paco.map
-.. _paco.map_flat: http://paco.readthedocs.io/en/latest/api.html#paco.map_flat
+.. _paco.flat_map: http://paco.readthedocs.io/en/latest/api.html#paco.flat_map
 .. _paco.run: http://paco.readthedocs.io/en/latest/api.html#paco.run
 .. _paco.each: http://paco.readthedocs.io/en/latest/api.html#paco.each
 .. _paco.some: http://paco.readthedocs.io/en/latest/api.html#paco.some
