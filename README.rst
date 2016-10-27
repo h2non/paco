@@ -17,7 +17,7 @@ Features
 -  Coroutine-based functional helpers: compose, throttle, partial, until, throttle, race...
 -  Asynchronous coroutine port of Python built-in functions: `filter`, `map`, `dropwhile`, `filterfalse`, `reduce`...
 -  Concurrent iterables and higher-order functions.
--  Better ``asyncio.gather()`` and ``asyncio.wait()`` implementations with optional concurrency control and ordered results.
+-  Better ``asyncio.gather()`` and ``asyncio.wait()`` with optional concurrency control and ordered results.
 -  Works with both `async/await`_ and `yield from`_ coroutines syntax.
 -  Designed for intensive I/O-bound concurrent non-blocking tasks.
 -  Good interoperability with ``asyncio`` and Python ``stdlib`` functions.
