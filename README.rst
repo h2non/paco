@@ -139,7 +139,7 @@ Asynchronously and concurrently execute multiple HTTP requests.
 
 
 
-Concurrent pipeline-style chain composition of functors over any iterable object.
+Concurrent pipeline-style composition of functors over an iterable object.
 
 .. code-block:: python
 
