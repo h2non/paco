@@ -8,7 +8,7 @@ from .assertions import assert_corofunction, assert_iter
 
 @overload
 @asyncio.coroutine
-def map_flat(coro, iterable, limit=0, loop=None, timeout=None,
+def flat_map(coro, iterable, limit=0, loop=None, timeout=None,
              return_exceptions=False, initializer=None, *args, **kw):
     """
     Concurrently iterates values yielded from an iterable, passing them to
@@ -55,11 +55,11 @@ def map_flat(coro, iterable, limit=0, loop=None, timeout=None,
         async def mul2(num):
             return mul * 2
 
-        await paco.map_flat(mul2, [1, [2], [3, [4]], [(5,)]], limit=1)
+        await paco.flat_map(mul2, [1, [2], [3, [4]], [(5,)]], limit=1)
         => [2, 4, 6, 8, 10]
 
         # Pipeline style
-        await [1, [2], [3, [4]], [(5,)]] | paco.map_flat(mul2)
+        await [1, [2], [3, [4]], [(5,)]] | paco.flat_map(mul2)
         => [2, 4, 6, 8, 10]
     """
     assert_corofunction(coro=coro)

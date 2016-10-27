@@ -1,6 +1,12 @@
 History
 =======
 
+0.1.3 (2016-10-27)
+------------------
+
+- feat(#17): add ``flat_map`` function.
+- feat(#18): add pipeline-style operator overloading composition.
+
 0.1.2 (2016-10-25)
 ------------------
 

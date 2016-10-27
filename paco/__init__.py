@@ -21,7 +21,7 @@ from .series import series
 from .partial import partial
 from .timeout import timeout
 from .compose import compose
-from .map_flat import map_flat
+from .flat_map import flat_map
 from .constant import constant
 from .throttle import throttle
 from .dropwhile import dropwhile
@@ -31,7 +31,7 @@ __author__ = 'Tomas Aparicio'
 __license__ = 'MIT'
 
 # Current package version
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 __all__ = (
     'map',
@@ -57,7 +57,7 @@ __all__ = (
     'timeout',
     'compose',
     'throttle',
-    'map_flat',
+    'flat_map',
     'constant',
     'dropwhile',
     'filterfalse',
