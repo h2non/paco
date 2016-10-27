@@ -60,7 +60,7 @@ API
 - paco.each_
 - paco.series_
 - paco.map_
-- paco.flat__map
+- paco.flat_map_
 - paco.filter_
 - paco.reduce_
 - paco.some_
