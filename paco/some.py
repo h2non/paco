@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 import asyncio
 from .partial import partial
+from .decorator import overload
 from .concurrent import ConcurrentExecutor
 from .assertions import assert_corofunction, assert_iter
 
 
+@overload
 @asyncio.coroutine
 def some(coro, iterable, limit=0, timeout=None, loop=None):
     """
@@ -13,6 +15,8 @@ def some(coro, iterable, limit=0, timeout=None, loop=None):
     iteration stops and `True` will be returned.
 
     This function is a coroutine.
+
+    This function can be composed in a pipeline chain with ``|`` operator.
 
     Arguments:
         coro (coroutine function): coroutine function for test values.

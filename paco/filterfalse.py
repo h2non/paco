@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import asyncio
 from .filter import filter
+from .decorator import overload
 
 
 @asyncio.coroutine
@@ -11,6 +12,7 @@ def assert_false(element):
     return not element
 
 
+@overload
 @asyncio.coroutine
 def filterfalse(coro, iterable, limit=0, loop=None):
     """
@@ -26,6 +28,8 @@ def filterfalse(coro, iterable, limit=0, loop=None):
     `filterfalse()` function.
 
     This function is a coroutine.
+
+    This function can be composed in a pipeline chain with ``|`` operator.
 
     Arguments:
         coro (coroutine function): coroutine filter function to call accepting

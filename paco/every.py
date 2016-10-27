@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 import asyncio
 from .partial import partial
+from .decorator import overload
 from .concurrent import ConcurrentExecutor
 from .assertions import assert_corofunction, assert_iter
 
 
+@overload
 @asyncio.coroutine
 def every(coro, iterable, limit=1, loop=None):
     """
@@ -17,6 +19,8 @@ def every(coro, iterable, limit=1, loop=None):
     You can increase the concurrency limit for a fast race condition scenario.
 
     This function is a coroutine.
+
+    This function can be composed in a pipeline chain with ``|`` operator.
 
     Arguments:
         coro (coroutine function): coroutine function to call with values

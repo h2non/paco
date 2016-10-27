@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import asyncio
+from .decorator import overload
 from .concurrent import ConcurrentExecutor
 from .assertions import assert_corofunction, assert_iter
 
@@ -18,6 +19,7 @@ def assert_true(element):
     return element
 
 
+@overload
 @asyncio.coroutine
 def filter(coro, iterable, assert_fn=None, limit=0, loop=None):
     """
@@ -33,6 +35,8 @@ def filter(coro, iterable, assert_fn=None, limit=0, loop=None):
     `filter()` function.
 
     This function is a coroutine.
+
+    This function can be composed in a pipeline chain with ``|`` operator.
 
     Arguments:
         coro (coroutine function): coroutine filter function to call accepting

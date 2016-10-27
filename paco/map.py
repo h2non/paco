@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import asyncio
 from .each import each
+from .decorator import overload
 
 
+@overload
 @asyncio.coroutine
 def map(coro, iterable, limit=0, loop=None, timeout=None,
         return_exceptions=False, *args, **kw):
@@ -19,6 +21,8 @@ def map(coro, iterable, limit=0, loop=None, timeout=None,
     `map()` function.
 
     This function is a coroutine.
+
+    This function can be composed in a pipeline chain with ``|`` operator.
 
     Arguments:
         coro (coroutinefunction): map coroutine function to use.

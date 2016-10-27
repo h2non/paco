@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import asyncio
+from .decorator import overload
 from .concurrent import ConcurrentExecutor
 from .assertions import assert_corofunction, assert_iter
 
 
+@overload
 @asyncio.coroutine
 def each(coro, iterable, limit=0, loop=None,
          collect=False, timeout=None, return_exceptions=False, *args, **kw):
@@ -22,6 +24,8 @@ def each(coro, iterable, limit=0, loop=None,
     All coroutines will be executed in the same loop.
 
     This function is a coroutine.
+
+    This function can be composed in a pipeline chain with ``|`` operator.
 
     Arguments:
         coro (coroutinefunction): coroutine iterator function that accepts

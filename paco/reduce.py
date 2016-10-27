@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import asyncio
+from .decorator import overload
 from .concurrent import ConcurrentExecutor
 from .assertions import assert_corofunction, assert_iter
 
 
+@overload
 @asyncio.coroutine
 def reduce(coro, iterable, right=False, initializer=None, loop=None):
     """

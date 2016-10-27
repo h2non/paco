@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import asyncio
 from .filter import filter
+from .decorator import overload
 
 
+@overload
 @asyncio.coroutine
 def dropwhile(coro, iterable, loop=None):
     """
@@ -16,6 +18,8 @@ def dropwhile(coro, iterable, loop=None):
     `itertools.dropwhile()`, but designed to be used with async coroutines.
 
     This function is a coroutine.
+
+    This function can be composed in a pipeline chain with ``|`` operator.
 
     Arguments:
         coro (coroutine function): coroutine function to call with values

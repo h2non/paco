@@ -21,6 +21,7 @@ Features
 -  Works with both `async/await`_ and `yield from`_ coroutines syntax.
 -  Designed for intensive I/O-bound concurrent non-blocking tasks.
 -  Good interoperability with `asyncio` and Python `stdlib` functions.
+-  Composable pipelines of functors for iterables via `|` operator overloading.
 -  Small and dependency free.
 -  Compatible with Python +3.4.
 
@@ -110,7 +111,6 @@ Asynchronously and concurrently execute multiple HTTP requests.
 
     import paco
     import aiohttp
-    import asyncio
 
     async def fetch(url):
         async with aiohttp.ClientSession() as session:
@@ -135,6 +135,36 @@ Asynchronously and concurrently execute multiple HTTP requests.
     # Run in event loop
     paco.run(fetch_urls())
 
+
+
+Concurrent pipeline-style chain composition of functors over any iterable object.
+
+.. code-block:: python
+
+    import paco
+
+    async def filterer(x):
+        return x < 8
+
+    async def mapper(x):
+        return x * 2
+
+    async def drop(x):
+        return x < 10
+
+    async def reducer(acc, x):
+        return acc + x
+
+    async def task(numbers):
+        return await (numbers
+                       | paco.filter(filterer)
+                       | paco.map(mapper)
+                       | paco.dropwhile(drop)
+                       | paco.reduce(reducer, initializer=0))
+
+    # Run in event loop
+    number = paco.run(task((1, 2, 3, 4, 5, 6, 7, 8, 9, 10)))
+    print('Number:', number) # => 36
 
 License
 -------
