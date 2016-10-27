@@ -3,8 +3,9 @@ API documentation
 
 .. toctree::
 
-   paco.map <http://paco.readthedocs.io/en/latest/api.html#paco.map>
    paco.run <http://paco.readthedocs.io/en/latest/api.html#paco.run>
+   paco.map <http://paco.readthedocs.io/en/latest/api.html#paco.map>
+   paco.map_flat <http://paco.readthedocs.io/en/latest/api.html#paco.map_flat>
    paco.each <http://paco.readthedocs.io/en/latest/api.html#paco.each>
    paco.some <http://paco.readthedocs.io/en/latest/api.html#paco.some>
    paco.race <http://paco.readthedocs.io/en/latest/api.html#paco.race>

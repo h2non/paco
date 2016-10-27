@@ -21,7 +21,7 @@ Features
 -  Works with both `async/await`_ and `yield from`_ coroutines syntax.
 -  Designed for intensive I/O-bound concurrent non-blocking tasks.
 -  Good interoperability with ``asyncio`` and Python ``stdlib`` functions.
--  Composable pipelines of functors for iterables via ``|` operator overloading.
+-  Composable pipelines of functors for iterables via ``|`` operator overloading.
 -  Small and dependency free.
 -  Compatible with Python +3.4.
 
@@ -60,6 +60,7 @@ API
 - paco.each_
 - paco.series_
 - paco.map_
+- paco.map_flat_
 - paco.filter_
 - paco.reduce_
 - paco.some_
@@ -74,6 +75,7 @@ API
 
 
 .. _paco.map: http://paco.readthedocs.io/en/latest/api.html#paco.map
+.. _paco.map_flat: http://paco.readthedocs.io/en/latest/api.html#paco.map_flat
 .. _paco.run: http://paco.readthedocs.io/en/latest/api.html#paco.run
 .. _paco.each: http://paco.readthedocs.io/en/latest/api.html#paco.each
 .. _paco.some: http://paco.readthedocs.io/en/latest/api.html#paco.some

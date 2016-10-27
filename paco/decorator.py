@@ -83,7 +83,18 @@ class PipeOverloader(object):
             return self.__trigger(iterable)
 
     def __call__(self, *args, **kw):
-        return self.__fn(*args, **kw)
+        """
+        Maintain callable object behaviour.
+        """
+        _args = self.__args + args
+        _kw = self.__kw
+        _kw.update(kw)
+
+        #  Clean memoized falues
+        self.__args = None
+        self.__kw = None
+
+        return self.__fn(*_args, **_kw)
 
 
 def overload(fn):

@@ -21,6 +21,7 @@ from .series import series
 from .partial import partial
 from .timeout import timeout
 from .compose import compose
+from .map_flat import map_flat
 from .constant import constant
 from .throttle import throttle
 from .dropwhile import dropwhile
@@ -56,6 +57,7 @@ __all__ = (
     'timeout',
     'compose',
     'throttle',
+    'map_flat',
     'constant',
     'dropwhile',
     'filterfalse',
