@@ -87,6 +87,7 @@ class ConcurrentExecutor(object):
         pool.add(coroutine, 'foo', 1)
         await pool.run(return_exceptions=True)
     """
+
     def __init__(self, limit=10, loop=None, coros=None):
         """
         Creates a new ConcurrentExecutor instance.
