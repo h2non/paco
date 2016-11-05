@@ -112,6 +112,15 @@ class ConcurrentExecutor(object):
         if isiter(coros):
             self.extend(*coros)
 
+    def __len__(self):
+        """
+        Returns the current length of the coroutines pool queue.
+
+        Returns:
+            int: current coroutines pool length.
+        """
+        return len(self.pool)
+
     def reset(self):
         """
         Resets the executer scheduler internal state.
