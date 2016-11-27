@@ -190,10 +190,7 @@ MIT - Tomas Aparicio
    :target: http://paco.readthedocs.io/en/latest/?badge=latest
 .. |Quality| image:: https://codeclimate.com/github/h2non/paco/badges/gpa.svg
    :target: https://codeclimate.com/github/h2non/paco
-   :alt: Code Climate
 .. |Stability| image:: https://img.shields.io/pypi/status/paco.svg
    :target: https://pypi.python.org/pypi/paco
-   :alt: Stability
 .. |Versions| image:: https://img.shields.io/pypi/pyversions/paco.svg
    :target: https://pypi.python.org/pypi/paco
-   :alt: Python Versions
