@@ -241,6 +241,7 @@ class ConcurrentExecutor(object):
 
         # Wait until all the coroutines finish
         return (yield from asyncio.wait(coros,
+                                        loop=self.loop,
                                         timeout=timeout,
                                         return_when=return_when))
 
