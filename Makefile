@@ -4,7 +4,7 @@ NO_COLOR=\033[0m
 all: test
 
 export PYTHONPATH:=${PWD}
-version=`python -c 'import paco; print(paco.version)'`
+version=`python -c 'import paco; print(paco.__version__)'`
 filename=paco-`python -c 'import paco; print(paco.__version__)'`.tar.gz
 
 apidocs:
@@ -32,19 +32,17 @@ bump:
 bump-minor:
 	@bumpversion --commit --tag --current-version $(version) minor paco/__init__.py --allow-dirty
 
-tag:
-	@echo "$(OK_COLOR)==> Creating tag $(version)...$(NO_COLOR)"
-	@git tag -a "v$(version)" -m "Version $(version)"
-	@echo "$(OK_COLOR)==> Pushing tag $(version) to origin...$(NO_COLOR)"
+push-tag:
+	@echo "$(OK_COLOR)==> Pushing tag to remote...$(NO_COLOR)"
 	@git push origin "v$(version)"
 
 clean:
 	@echo "$(OK_COLOR)==> Cleaning up files that are already in .gitignore...$(NO_COLOR)"
 	@for pattern in `cat .gitignore`; do find . -name "$$pattern" -delete; done
 
-release: clean bump publish
-	@echo "$(OK_COLOR)==> Exporting to $(filename)...$(NO_COLOR)"
-	@tar czf $(filename) paco setup.py README.rst LICENSE
+release: clean bump push-tag publish
+	@echo "$(OK_COLOR)==> Done! $(NO_COLOR)"
 
 publish:
+	@echo "$(OK_COLOR)==> Releasing package ...$(NO_COLOR)"
 	@python setup.py sdist register upload
