@@ -26,6 +26,12 @@ coverage:
 	@coverage run --source paco -m py.test
 	@coverage report
 
+bump:
+	@bumpversion --commit --tag --current-version $(version) patch paco/__init__.py --allow-dirty
+
+bump-minor:
+	@bumpversion --commit --tag --current-version $(version) minor paco/__init__.py --allow-dirty
+
 tag:
 	@echo "$(OK_COLOR)==> Creating tag $(version)...$(NO_COLOR)"
 	@git tag -a "v$(version)" -m "Version $(version)"
@@ -36,7 +42,7 @@ clean:
 	@echo "$(OK_COLOR)==> Cleaning up files that are already in .gitignore...$(NO_COLOR)"
 	@for pattern in `cat .gitignore`; do find . -name "$$pattern" -delete; done
 
-release: clean publish
+release: clean bump publish
 	@echo "$(OK_COLOR)==> Exporting to $(filename)...$(NO_COLOR)"
 	@tar czf $(filename) paco setup.py README.rst LICENSE
 

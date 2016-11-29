@@ -1,6 +1,11 @@
 History
 =======
 
+0.1.4 (2016-11-28)
+------------------
+
+- fix(#24): explicitly pass loop instance to ``asyncio.wait`` (b76d128).
+
 0.1.3 (2016-10-27)
 ------------------
 
