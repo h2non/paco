@@ -20,7 +20,7 @@ lint:
 
 test: clean lint
 	@echo "$(OK_COLOR)==> Runnings tests...$(NO_COLOR)"
-	@py.test -s -v --cov paco --cov-report term-missing
+	@py.test -s -v --capture sys --cov paco --cov-report term-missing
 
 coverage:
 	@coverage run --source paco -m py.test
