@@ -73,6 +73,18 @@ def test_concurrent_sequential():
         assert future.result() >= 0.05
 
 
+def test_concurrent_ignore_empty():
+    runner = concurrent(ignore_empty=True)
+    done, pending = run_in_loop(runner.run())
+    assert len(done) == 0
+    assert len(pending) == 0
+
+    runner = concurrent()
+    done, pending = run_in_loop(runner.run(ignore_empty=True))
+    assert len(done) == 0
+    assert len(pending) == 0
+
+
 def test_concurrent_observe():
     start = []
     finish = []

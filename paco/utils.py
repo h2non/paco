@@ -9,4 +9,4 @@ def isiter(x):
     Returns:
         bool
     """
-    return hasattr(x, '__iter__')
+    return hasattr(x, '__iter__') and not isinstance(x, (str, bytes))
