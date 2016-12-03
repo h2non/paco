@@ -186,7 +186,7 @@ MIT - Tomas Aparicio
    :target: https://pypi.python.org/pypi/paco
 .. |Coverage Status| image:: https://coveralls.io/repos/github/h2non/paco/badge.svg?branch=master
    :target: https://coveralls.io/github/h2non/paco?branch=master
-.. |Documentation Status| image:: https://readthedocs.org/projects/paco/badge/?version=latest
+.. |Documentation Status| image:: https://img.shields.io/badge/docs-latest-green.svg?style=flat
    :target: http://paco.readthedocs.io/en/latest/?badge=latest
 .. |Quality| image:: https://codeclimate.com/github/h2non/paco/badges/gpa.svg
    :target: https://codeclimate.com/github/h2non/paco
