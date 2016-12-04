@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# import time
+import pytest
 import asyncio
 from paco import flat_map
 from .helpers import run_in_loop
@@ -23,21 +23,13 @@ def test_flat_map_sequential():
 
 
 def test_flat_map_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(flat_map(coro, None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')
 
 
 def test_flat_map_invalid_coro():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(flat_map(None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')
 
 
 def test_flat_map_pipeline():

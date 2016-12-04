@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import pytest
 import asyncio
 from paco import dropwhile
 from .helpers import run_in_loop
@@ -20,9 +21,5 @@ def test_dropwhile_empty():
 
 
 def test_dropwhile_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(dropwhile(coro, None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')

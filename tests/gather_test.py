@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+import pytest
 import asyncio
 from paco import gather, partial
 from .helpers import run_in_loop
@@ -40,12 +41,8 @@ def test_gather_coroutinefunction():
 
 
 def test_gather_invalid_coro():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(gather(None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')
 
 
 def test_gather_return_exceptions():

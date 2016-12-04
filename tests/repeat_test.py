@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import pytest
 import asyncio
 from paco import repeat
 from .helpers import run_in_loop
@@ -34,9 +35,5 @@ def test_repeat_concurrency():
 
 
 def test_repeat_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(repeat(None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import pytest
 import asyncio
 from paco import times
 from .helpers import run_in_loop
@@ -49,18 +50,10 @@ def test_times_raise_exception():
     assert args == (1, 2)
     assert kw == {'foo': 'bar'}
 
-    try:
+    with pytest.raises(RuntimeError):
         run_in_loop(task, 3, foo='foo')
-    except Exception as err:
-        assert isinstance(err, RuntimeError)
-    else:
-        raise RuntimeError('function must raise an exception')
 
 
 def test_times_invalid_coro():
-    try:
+    with pytest.raises(TypeError):
         times(None)
-    except Exception as err:
-        assert isinstance(err, TypeError)
-    else:
-        raise RuntimeError('function must raise an exception')

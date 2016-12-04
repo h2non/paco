@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import pytest
 import asyncio
 from paco import until
 from .helpers import run_in_loop
@@ -22,9 +23,5 @@ def test_until():
 
 
 def test_until_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(until(None, None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')

@@ -68,6 +68,7 @@ def wait(*coros_or_futures, limit=0, timeout=None, loop=None,
         coros_or_futures = coros_or_futures[0]
 
     # If no coroutines to schedule, return empty list
+    # Mimics asyncio behaviour.
     if len(coros_or_futures) == 0:
         raise ValueError('Set of coroutines/Futures is empty.')
 

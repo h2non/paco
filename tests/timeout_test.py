@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+import pytest
 import asyncio
 from paco import timeout
 from .helpers import run_in_loop
@@ -20,12 +21,10 @@ def test_timeout():
 def test_timeout_exceeded():
     task = timeout(coro, timeout=0.2)
     now = time.time()
-    try:
+
+    with pytest.raises(Exception):
         run_in_loop(task, delay=1)
-    except asyncio.TimeoutError as err:
-        pass
-    else:
-        raise RuntimeError('must raise timeout exception')
+
     assert time.time() - now >= 0.2
 
 

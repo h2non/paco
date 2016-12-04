@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import pytest
 import asyncio
 from paco import reduce
 from .helpers import run_in_loop
@@ -34,18 +35,10 @@ def test_reduce_empty():
 
 
 def test_reduce_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(reduce(coro, None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')
 
 
 def test_reduce_invalid_coro():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(reduce(None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')

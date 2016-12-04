@@ -92,7 +92,7 @@ def filter(coro, iterable, assert_fn=None, limit=0, loop=None):
         pool.add(filterer(index, element))
 
     # Wait until all coroutines finish
-    yield from pool.run()
+    yield from pool.run(ignore_empty=True)
 
     # Returns filtered elements
     return [x for x in results if x is not None]

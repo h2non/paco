@@ -32,7 +32,7 @@ Using ``pip`` package manager:
 
 .. code-block:: bash
 
-    pip install paco
+    pip install --upgrade paco
 
 Or install the latest sources from Github:
 

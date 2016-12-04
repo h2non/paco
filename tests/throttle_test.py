@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+import pytest
 import asyncio
 from paco import throttle
 from .helpers import run_in_loop
@@ -40,21 +41,13 @@ def test_throttle_raise_exception():
     task = throttle(coro, limit=1, timeframe=1, raise_exception=True)
     assert run_in_loop(task, 1) == 1
 
-    try:
+    with pytest.raises(RuntimeError):
         run_in_loop(task, 2)
-    except Exception as err:
-        assert isinstance(err, RuntimeError)
-    else:
-        raise RuntimeError('function must raise an exception')
 
 
 def test_throttle_invalid_coro():
-    try:
+    with pytest.raises(TypeError):
         throttle(None)
-    except Exception as err:
-        assert isinstance(err, TypeError)
-    else:
-        raise RuntimeError('function must raise an exception')
 
 
 def test_decorator():

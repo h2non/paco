@@ -83,7 +83,7 @@ def each(coro, iterable, limit=0, loop=None,
         pool.add(collector(index, value))
 
     # Wait until all the coroutines finishes
-    yield from pool.run(timeout=timeout)
+    yield from pool.run(timeout=timeout, ignore_empty=True)
 
     # Returns list of mapped results in order
     return results

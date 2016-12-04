@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+import pytest
 import asyncio
 from paco import concurrent
 from .helpers import sleep_coro, run_in_loop
@@ -83,6 +84,11 @@ def test_concurrent_ignore_empty():
     done, pending = run_in_loop(runner.run(ignore_empty=True))
     assert len(done) == 0
     assert len(pending) == 0
+
+
+def test_concurrent_empty_error():
+    with pytest.raises(ValueError):
+        run_in_loop(concurrent().run())
 
 
 def test_concurrent_observe():
