@@ -62,7 +62,7 @@ setup(
     author='Tomas Aparicio',
     description=(
         'Small utility for asynchronous coroutine '
-        'generic programming in Python +3.4.'
+        'generic programming in Python +3.4'
     ),
     url='https://github.com/h2non/paco',
     license='MIT',
