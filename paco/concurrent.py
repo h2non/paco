@@ -92,11 +92,17 @@ class ConcurrentExecutor(object):
 
     Usage::
 
-        pool = ConcurrentExecutor(3)
-        pool.add(coroutine, 'foo', 1)
-        pool.add(coroutine, 'foo', 1)
-        pool.add(coroutine, 'foo', 1)
-        await pool.run(return_exceptions=True)
+        async def sum(x, y):
+            return x + y
+
+        pool = paco.ConcurrentExecutor(limit=2)
+        pool.add(sum, 1, 2)
+        pool.add(sum, None, 'str')
+
+        done, pending = await pool.run(return_exceptions=True)
+        [task.result() for task in done]
+        # => [3, TypeError("unsupported operand type(s) for +: 'NoneType' and 'str'")]
+
     """
     def __init__(self, limit=10, loop=None, coros=None, ignore_empty=False):
         self.running = False

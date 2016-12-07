@@ -45,12 +45,15 @@ def gather(*coros_or_futures, limit=0, loop=None, timeout=None,
 
     Usage::
 
+        async def sum(x, y):
+            return x + y
+
         await paco.gather(
-          task(1, foo='bar'),
-          task(2, foo='bar'),
-          task(3, foo='bar'),
-          task(4, foo='bar'),
-          limit=2, return_exceptions=True)
+            sum(1, 2),
+            sum(None, 'str'),
+            return_exceptions=True)
+        # => [3, TypeError("unsupported operand type(s) for +: 'NoneType' and 'str'")]
+
     """
     # If no coroutines to schedule, return empty list (as Python stdlib)
     if len(coros_or_futures) == 0:

@@ -53,12 +53,15 @@ def series(*coros_or_futures, timeout=None,
 
     Usage::
 
-        results = await paco.series(
-          task(1, foo='bar'),
-          task(2, foo='bar'),
-          task(3, foo='bar'),
-          task(4, foo='bar'),
-          return_exceptions=True)
+        async def sum(x, y):
+            return x + y
+
+        await paco.series(
+            sum(1, 2),
+            sum(2, 3),
+            sum(3, 4))
+        # => [3, 5, 7]
+
     """
     return (yield from gather(*coros_or_futures,
                               loop=loop, limit=1, timeout=timeout,

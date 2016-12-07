@@ -36,11 +36,12 @@ def some(coro, iterable, limit=0, timeout=None, loop=None):
 
     Usage::
 
-        async def test(num):
+        async def gt_3(num):
             return num > 3
 
         await paco.some(test, [1, 2, 3, 4, 5])
-        => True
+        # => True
+
     """
     assert_corofunction(coro=coro)
     assert_iter(iterable=iterable)

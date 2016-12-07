@@ -27,11 +27,21 @@ def once(coro, raise_exception=False, return_value=None):
 
     Usage::
 
-        task = paco.once(coro, return_value='exceeded')
-        task(1, foo='bar')
-        => 1
-        task(2, foo='baz')
-        => 'exceeded'
+        async def mul_2(num):
+            return num * 2
+
+        once = paco.once(mul_2)
+        await once(2)
+        # => 4
+        await once(3)
+        # => 4
+
+        once = paco.once(mul_2, return_value='exceeded')
+        await once(2)
+        # => 4
+        await once(3)
+        # => 'exceeded'
+
     """
     return times(coro,
                  limit=1,
