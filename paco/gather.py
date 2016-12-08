@@ -52,7 +52,7 @@ def gather(*coros_or_futures, limit=0, loop=None, timeout=None,
             sum(1, 2),
             sum(None, 'str'),
             return_exceptions=True)
-        # => [3, TypeError("unsupported operand type(s) for +: 'NoneType' and 'str'")]
+        # => [3, TypeError("unsupported operand type(s) for +: 'NoneType' and 'str'")]  # noqa
 
     """
     # If no coroutines to schedule, return empty list (as Python stdlib)

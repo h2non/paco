@@ -101,7 +101,7 @@ class ConcurrentExecutor(object):
 
         done, pending = await pool.run(return_exceptions=True)
         [task.result() for task in done]
-        # => [3, TypeError("unsupported operand type(s) for +: 'NoneType' and 'str'")]
+        # => [3, TypeError("unsupported operand type(s) for +: 'NoneType' and 'str'")]  # noqa
 
     """
     def __init__(self, limit=10, loop=None, coros=None, ignore_empty=False):
