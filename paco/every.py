@@ -38,11 +38,15 @@ def every(coro, iterable, limit=1, loop=None):
 
     Usage::
 
-        async def test(num):
+        async def gt_10(num):
             return num > 10
 
-        await paco.some(test, [1, 2, 3, 4, 5])
-        => True
+        await paco.every(gt_10, [1, 2, 3, 11])
+        # => False
+
+        await paco.every(gt_10, [11, 12, 13])
+        # => True
+
     """
     assert_corofunction(coro=coro)
     assert_iter(iterable=iterable)

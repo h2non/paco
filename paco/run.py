@@ -12,6 +12,15 @@ def run(coro, loop=None):
 
     Returns:
         mixed: returned value by coroutine.
+
+    Usage::
+
+        async def mul_2(num):
+            return num * 2
+
+        paco.run(mul_2(4))
+        # => 8
+
     """
     loop = loop or asyncio.get_event_loop()
     return loop.run_until_complete(coro)

@@ -43,8 +43,12 @@ def map(coro, iterable, limit=0, loop=None, timeout=None,
 
     Usage::
 
-        await paco.map(mul2, [1, 2, 3, 4, 5], limit=3)
-        [2, 4, 6, 8, 10]
+        async def mul_2(num):
+            return num * 2
+
+        await paco.map(mul_2, [1, 2, 3, 4, 5])
+        # => [2, 4, 6, 8, 10]
+
     """
     # Call each iterable but collecting yielded values
     return (yield from each(coro, iterable,
