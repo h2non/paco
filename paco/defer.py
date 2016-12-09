@@ -25,15 +25,17 @@ def defer(coro, delay=1):
     Usage::
 
         # Usage as function
-        await paco.defer(coro, 1)
-        await paco.defer(coro, 0.5)
+        await paco.defer(coro, delay=1)
+        await paco.defer(coro, delay=0.5)
 
         # Usage as decorator
         @paco.defer(delay=1)
-        async def task(n):
-            return n * n
-        await task(2)
-        => 4
+        async def mul_2(num):
+            return num * 2
+
+        await mul_2(2)
+        # => 4
+
     """
     assert_corofunction(coro=coro)
 

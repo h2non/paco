@@ -52,11 +52,15 @@ def each(coro, iterable, limit=0, loop=None,
 
     Usage::
 
-        async def mul2(num):
-            return mul * 2
+        async def mul_2(num):
+            return num * 2
 
-        await paco.each(mul2, [1, 2, 3, 4, 5], limit=3)
-        => [2, 4, 6, 8, 10]
+        await paco.each(mul_2, [1, 2, 3, 4, 5])
+        # => None
+
+        await paco.each(mul_2, [1, 2, 3, 4, 5], collect=True)
+        # => [2, 4, 6, 8, 10]
+
     """
     assert_corofunction(coro=coro)
     assert_iter(iterable=iterable)

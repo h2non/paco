@@ -45,7 +45,8 @@ def reduce(coro, iterable, right=False, initializer=None, limit=1, loop=None):
            return acc + num
 
         await paco.reduce(reducer, [1, 2, 3, 4, 5], initializer=0)
-        => 10
+        # => 15
+
     """
     assert_corofunction(coro=coro)
     assert_iter(iterable=iterable)

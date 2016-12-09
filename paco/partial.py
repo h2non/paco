@@ -24,8 +24,13 @@ def partial(coro, *args, **kw):
 
     Usage::
 
-        task = paco.partial(coro, 1, foo='bar')
-        await task(2, bar='foo')
+        async def pow(x, y):
+            return x ** y
+
+        pow_2 = paco.partial(pow, 2)
+        await pow_2(4)
+        # => 16
+
     """
     assert_corofunction(coro=coro)
 

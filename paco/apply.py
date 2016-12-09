@@ -32,8 +32,17 @@ def apply(coro, *args, **kw):
 
     Usage::
 
-        task = paco.apply(coro, 1, 2, foo='bar')
-        await task()
+        async def hello(name, mark='!'):
+            print('Hello, {name}{mark}'.format(name=name, mark=mark))
+
+        hello_mike = paco.apply(hello, 'Mike')
+        await hello_mike()
+        # => Hello, Mike!
+
+        hello_mike = paco.apply(hello, 'Mike', mark='?')
+        await hello_mike()
+        # => Hello, Mike?
+
     """
     assert_corofunction(coro=coro)
 

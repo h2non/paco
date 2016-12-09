@@ -37,8 +37,20 @@ def race(iterable, loop=None, timeout=None, *args, **kw):
 
     Usage::
 
-        await paco.race(coro, coro2, coro3)
-        => coro2 # result
+        async def coro1():
+            await asyncio.sleep(2)
+            return 1
+
+        async def coro2():
+            return 2
+
+        async def coro3():
+            await asyncio.sleep(1)
+            return 3
+
+        await paco.race([coro1, coro2, coro3])
+        # => 2
+
     """
     assert_iter(iterable=iterable)
 

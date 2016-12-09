@@ -35,11 +35,18 @@ def times(coro, limit=1, raise_exception=False, return_value=None):
 
     Usage::
 
-        coro = paco.times(coro, 3)
-        coro(1)
-        coro(2)
-        coro(3)
-        coro(4)  # ignored
+        async def mul_2(num):
+            return num * 2
+
+        timed = paco.times(mul_2, 3)
+        await timed(2)
+        # => 4
+        await timed(3)
+        # => 6
+        await timed(4)
+        # => 8
+        await timed(5)  # ignored!
+        # => 8
     """
     assert_corofunction(coro=coro)
 

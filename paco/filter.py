@@ -59,8 +59,15 @@ def filter(coro, iterable, assert_fn=None, limit=0, loop=None):
         async def iseven(num):
             return num % 2 == 0
 
-        await paco.filter(coro, [1, 2, 3, 4, 5], limit=3)
-        => [2, 4]
+        async def assert_false(el):
+            return not el
+
+        await paco.filter(iseven, [1, 2, 3, 4, 5])
+        # => [2, 4]
+
+        await paco.filter(iseven, [1, 2, 3, 4, 5], assert_fn=assert_false)
+        # => [1, 3, 5]
+
     """
     assert_corofunction(coro=coro)
     assert_iter(iterable=iterable)
