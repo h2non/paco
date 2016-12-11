@@ -2,8 +2,16 @@
 import pytest
 import asyncio
 from paco.assertions import (assert_corofunction,
-                             assert_iter,
+                             assert_iter, isiter,
                              iscoro_or_corofunc)
+
+
+def test_isiter():
+    assert isiter(())
+    assert isiter([])
+    assert not isiter('foo')
+    assert not isiter(bytes())
+    assert not isiter(True)
 
 
 @asyncio.coroutine

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import asyncio
-from .utils import isiter
+from .assertions import isiter
 from .concurrent import ConcurrentExecutor
 
 

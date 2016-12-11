@@ -16,7 +16,7 @@ Usage::
 import asyncio
 from collections import deque, namedtuple
 from .observer import Observer
-from .utils import isiter
+from .assertions import isiter
 
 # Task represents an immutable tuple storing the index order
 # and coroutine object.

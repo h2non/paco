@@ -49,3 +49,8 @@ def test_decorate_invalid_input():
 def test_decorate_invalid_coroutine():
     with pytest.raises(TypeError):
         decorate(sample)(1)()
+
+
+def test_decorate_invalid_coroutine_param():
+    with pytest.raises(TypeError):
+        decorate(sample)(None)(None)
