@@ -48,11 +48,11 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 
-with open('requirements-dev.txt') as f:
+with open('requirements-dev.txt', encoding='utf-8') as f:
     tests_require = f.read().splitlines()
-with open('README.rst') as f:
+with open('README.rst', encoding='utf-8') as f:
     readme = f.read()
-with open('History.rst') as f:
+with open('History.rst', encoding='utf-8') as f:
     history = f.read()
 
 
@@ -61,8 +61,8 @@ setup(
     version=version,
     author='Tomas Aparicio',
     description=(
-        'Small utility for asynchronous coroutine '
-        'generic programming in Python +3.4'
+        'Small utility library for coroutine-driven, '
+        'asynchronous-based generic programming'
     ),
     url='https://github.com/h2non/paco',
     license='MIT',
@@ -79,7 +79,7 @@ setup(
         'Intended Audience :: Developers',
         'Intended Audience :: System Administrators',
         'Operating System :: OS Independent',
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Natural Language :: English',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.4',
