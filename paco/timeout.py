@@ -75,7 +75,7 @@ class TimeoutLimit(object):
                                'inside a task')
         if self._timeout is not None:
             self._cancel_handler = self._loop.call_later(
-                self._timeout, self._cancel_task)
+                self._timeout, self.cancel)
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
