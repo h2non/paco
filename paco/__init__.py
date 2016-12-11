@@ -19,7 +19,7 @@ from .reduce import reduce
 from .whilst import whilst
 from .series import series
 from .partial import partial
-from .timeout import timeout
+from .timeout import timeout, TimeoutLimit
 from .compose import compose
 from .flat_map import flat_map
 from .constant import constant
@@ -58,6 +58,7 @@ __all__ = (
     'some',
     'throttle',
     'timeout',
+    'TimeoutLimit',
     'times',
     'until',
     'wait',

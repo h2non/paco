@@ -3,7 +3,7 @@ import asyncio
 import functools
 from .utils import isiter
 from inspect import isfunction, getargspec
-from .assertions import assert_corofunction
+from .assertions import iscoro_or_corofunc
 
 
 def decorate(fn):
@@ -27,19 +27,26 @@ def decorate(fn):
 
     @functools.wraps(fn)
     def decorator(*args, **kw):
+        # If coroutine object is passed
         for arg in args:
-            if asyncio.iscoroutinefunction(arg):
+            if iscoro_or_corofunc(arg):
                 return fn(*args, **kw)
 
         # Explicit argument must be at least a coroutine
         if len(args) and args[0] is None:
-            raise TypeError('first argument cannot be None')
+            raise TypeError('first argument cannot be empty')
 
         def wrapper(coro, *_args, **_kw):
-            assert_corofunction(coro=coro)
+            # coro must be a valid type
+            if not iscoro_or_corofunc(coro):
+                raise TypeError('first argument must be a '
+                                'coroutine or coroutine function')
+
             # Merge call arguments
             _args = ((coro,) + (args + _args))
             kw.update(_kw)
+
+            # Trigger original decorated function
             return fn(*_args, **kw)
         return wrapper
     return decorator

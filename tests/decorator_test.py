@@ -14,7 +14,7 @@ def sample(coro, *args, **kw):
     return coro(*args, **kw)
 
 
-def test_decorate_arguments():
+def test_decorate_with_arguments():
     wrapper = decorate(sample)
     task = wrapper(1, foo='bar')
     args, kw = run_in_loop(task, coro, 2, bar='baz')
@@ -26,6 +26,15 @@ def test_decorate_arguments():
 def test_decorate_coro_argument():
     wrapper = decorate(sample)
     task = wrapper(coro, 1, foo='bar')
+    args, kw = run_in_loop(task)
+
+    assert args == (1,)
+    assert kw == {'foo': 'bar'}
+
+
+def test_decorate_coro_object_argument():
+    wrapper = decorate(lambda coro: coro)
+    task = wrapper(coro(1, foo='bar'))
     args, kw = run_in_loop(task)
 
     assert args == (1,)
