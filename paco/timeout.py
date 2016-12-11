@@ -88,5 +88,8 @@ class TimeoutLimit(object):
             self._cancel_handler = None
         self._task = None
 
-    def _cancel_task(self):
+    def cancel(self):
+        """
+        Cancels current task running task in the context manager.
+        """
         self._cancelled = self._task.cancel()
