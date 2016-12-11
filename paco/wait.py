@@ -56,18 +56,21 @@ def wait(*coros_or_futures, limit=0, timeout=None, loop=None,
 
     Usage::
 
+        async def sum(x, y):
+            return x + y
+
         done, pending = await paco.wait(
-          task(1, foo='bar'),
-          task(2, foo='bar'),
-          task(3, foo='bar'),
-          task(4, foo='bar'),
-          limit=2, return_exceptions=True)
+            sum(1, 2),
+            sum(3, 4))
+        [task.result() for task in done]
+        # => [3, 7]
     """
     # Support iterable as first argument for better interoperability
     if len(coros_or_futures) == 1 and isiter(coros_or_futures[0]):
         coros_or_futures = coros_or_futures[0]
 
     # If no coroutines to schedule, return empty list
+    # Mimics asyncio behaviour.
     if len(coros_or_futures) == 0:
         raise ValueError('Set of coroutines/Futures is empty.')
 

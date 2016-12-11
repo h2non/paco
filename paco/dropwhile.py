@@ -40,7 +40,8 @@ def dropwhile(coro, iterable, loop=None):
             return num < 4
 
         await paco.dropwhile(filter, [1, 2, 3, 4, 5, 1])
-        => [4, 5, 1]
+        # => [4, 5, 1]
+
     """
     drop = False
 

@@ -14,7 +14,7 @@ Features
 -  Simple and idiomatic API, extending Python ``stdlib`` with async coroutines gotchas.
 -  Built-in configurable control-flow concurrency support.
 -  Useful iterables, decorators, functors and convenient helpers.
--  Coroutine-based functional helpers: compose, throttle, partial, until, throttle, race...
+-  Coroutine-based functional helpers: compose, throttle, partial, timeout, times, until, race...
 -  Asynchronous coroutine port of Python built-in functions: `filter`, `map`, `dropwhile`, `filterfalse`, `reduce`...
 -  Concurrent iterables and higher-order functions.
 -  Better ``asyncio.gather()`` and ``asyncio.wait()`` with optional concurrency control and ordered results.
@@ -32,7 +32,7 @@ Using ``pip`` package manager:
 
 .. code-block:: bash
 
-    pip install paco
+    pip install --upgrade paco
 
 Or install the latest sources from Github:
 
@@ -44,65 +44,67 @@ Or install the latest sources from Github:
 API
 ---
 
-- paco.run_
-- paco.partial_
-- paco.apply_
-- paco.constant_
-- paco.throttle_
-- paco.compose_
-- paco.wraps_
-- paco.once_
-- paco.times_
-- paco.defer_
-- paco.timeout_
-- paco.wait_
-- paco.gather_
-- paco.each_
-- paco.series_
-- paco.map_
-- paco.flat_map_
-- paco.filter_
-- paco.reduce_
-- paco.some_
-- paco.every_
-- paco.filterfalse_
-- paco.dropwhile_
-- paco.repeat_
-- paco.until_
-- paco.whilst_
-- paco.race_
 - paco.ConcurrentExecutor_
+- paco.apply_
+- paco.compose_
+- paco.concurrent_
+- paco.constant_
+- paco.defer_
+- paco.dropwhile_
+- paco.each_
+- paco.every_
+- paco.filter_
+- paco.filterfalse_
+- paco.flat_map_
+- paco.gather_
+- paco.map_
+- paco.once_
+- paco.partial_
+- paco.race_
+- paco.reduce_
+- paco.repeat_
+- paco.run_
+- paco.series_
+- paco.some_
+- paco.throttle_
+- paco.timeout_
+- paco.times_
+- paco.until_
+- paco.wait_
+- paco.whilst_
+- paco.wraps_
 
 
-.. _paco.map: http://paco.readthedocs.io/en/latest/api.html#paco.map
-.. _paco.flat_map: http://paco.readthedocs.io/en/latest/api.html#paco.flat_map
-.. _paco.run: http://paco.readthedocs.io/en/latest/api.html#paco.run
-.. _paco.each: http://paco.readthedocs.io/en/latest/api.html#paco.each
-.. _paco.some: http://paco.readthedocs.io/en/latest/api.html#paco.some
-.. _paco.race: http://paco.readthedocs.io/en/latest/api.html#paco.race
-.. _paco.once: http://paco.readthedocs.io/en/latest/api.html#paco.once
-.. _paco.wait: http://paco.readthedocs.io/en/latest/api.html#paco.wait
-.. _paco.wraps: http://paco.readthedocs.io/en/latest/api.html#paco.wraps
-.. _paco.defer: http://paco.readthedocs.io/en/latest/api.html#paco.defer
-.. _paco.apply: http://paco.readthedocs.io/en/latest/api.html#paco.apply
-.. _paco.every: http://paco.readthedocs.io/en/latest/api.html#paco.every
-.. _paco.until: http://paco.readthedocs.io/en/latest/api.html#paco.until
-.. _paco.times: http://paco.readthedocs.io/en/latest/api.html#paco.times
-.. _paco.series: http://paco.readthedocs.io/en/latest/api.html#paco.searies
-.. _paco.gather: http://paco.readthedocs.io/en/latest/api.html#paco.gather
-.. _paco.repeat: http://paco.readthedocs.io/en/latest/api.html#paco.repeat
-.. _paco.reduce: http://paco.readthedocs.io/en/latest/api.html#paco.reduce
-.. _paco.filter: http://paco.readthedocs.io/en/latest/api.html#paco.filter
-.. _paco.whilst: http://paco.readthedocs.io/en/latest/api.html#paco.whilst
-.. _paco.partial: http://paco.readthedocs.io/en/latest/api.html#paco.partial
-.. _paco.timeout: http://paco.readthedocs.io/en/latest/api.html#paco.timeout
-.. _paco.compose: http://paco.readthedocs.io/en/latest/api.html#paco.compose
-.. _paco.throttle: http://paco.readthedocs.io/en/latest/api.html#paco.throttle
-.. _paco.constant: http://paco.readthedocs.io/en/latest/api.html#paco.constant
-.. _paco.dropwhile: http://paco.readthedocs.io/en/latest/api.html#paco.dropwhile
-.. _paco.filterfalse: http://paco.readthedocs.io/en/latest/api.html#paco.filterfalse
-.. _paco.concurrent: http://paco.readthedocs.io/en/latest/api.html#paco.concurrent
 .. _paco.ConcurrentExecutor: http://paco.readthedocs.io/en/latest/api.html#paco.ConcurrentExecutor
+.. _paco.apply: http://paco.readthedocs.io/en/latest/api.html#paco.apply
+.. _paco.compose: http://paco.readthedocs.io/en/latest/api.html#paco.compose
+.. _paco.concurrent: http://paco.readthedocs.io/en/latest/api.html#paco.concurrent
+.. _paco.constant: http://paco.readthedocs.io/en/latest/api.html#paco.constant
+.. _paco.defer: http://paco.readthedocs.io/en/latest/api.html#paco.defer
+.. _paco.dropwhile: http://paco.readthedocs.io/en/latest/api.html#paco.dropwhile
+.. _paco.each: http://paco.readthedocs.io/en/latest/api.html#paco.each
+.. _paco.every: http://paco.readthedocs.io/en/latest/api.html#paco.every
+.. _paco.filter: http://paco.readthedocs.io/en/latest/api.html#paco.filter
+.. _paco.filterfalse: http://paco.readthedocs.io/en/latest/api.html#paco.filterfalse
+.. _paco.flat_map: http://paco.readthedocs.io/en/latest/api.html#paco.flat_map
+.. _paco.gather: http://paco.readthedocs.io/en/latest/api.html#paco.gather
+.. _paco.map: http://paco.readthedocs.io/en/latest/api.html#paco.map
+.. _paco.once: http://paco.readthedocs.io/en/latest/api.html#paco.once
+.. _paco.partial: http://paco.readthedocs.io/en/latest/api.html#paco.partial
+.. _paco.race: http://paco.readthedocs.io/en/latest/api.html#paco.race
+.. _paco.reduce: http://paco.readthedocs.io/en/latest/api.html#paco.reduce
+.. _paco.repeat: http://paco.readthedocs.io/en/latest/api.html#paco.repeat
+.. _paco.run: http://paco.readthedocs.io/en/latest/api.html#paco.run
+.. _paco.series: http://paco.readthedocs.io/en/latest/api.html#paco.searies
+.. _paco.some: http://paco.readthedocs.io/en/latest/api.html#paco.some
+.. _paco.throttle: http://paco.readthedocs.io/en/latest/api.html#paco.throttle
+.. _paco.timeout: http://paco.readthedocs.io/en/latest/api.html#paco.timeout
+.. _paco.times: http://paco.readthedocs.io/en/latest/api.html#paco.times
+.. _paco.until: http://paco.readthedocs.io/en/latest/api.html#paco.until
+.. _paco.wait: http://paco.readthedocs.io/en/latest/api.html#paco.wait
+.. _paco.whilst: http://paco.readthedocs.io/en/latest/api.html#paco.whilst
+.. _paco.wraps: http://paco.readthedocs.io/en/latest/api.html#paco.wraps
+
 
 Examples
 ^^^^^^^^
@@ -186,14 +188,11 @@ MIT - Tomas Aparicio
    :target: https://pypi.python.org/pypi/paco
 .. |Coverage Status| image:: https://coveralls.io/repos/github/h2non/paco/badge.svg?branch=master
    :target: https://coveralls.io/github/h2non/paco?branch=master
-.. |Documentation Status| image:: https://readthedocs.org/projects/paco/badge/?version=latest
+.. |Documentation Status| image:: https://img.shields.io/badge/docs-latest-green.svg?style=flat
    :target: http://paco.readthedocs.io/en/latest/?badge=latest
 .. |Quality| image:: https://codeclimate.com/github/h2non/paco/badges/gpa.svg
    :target: https://codeclimate.com/github/h2non/paco
-   :alt: Code Climate
 .. |Stability| image:: https://img.shields.io/pypi/status/paco.svg
    :target: https://pypi.python.org/pypi/paco
-   :alt: Stability
 .. |Versions| image:: https://img.shields.io/pypi/pyversions/paco.svg
    :target: https://pypi.python.org/pypi/paco
-   :alt: Python Versions

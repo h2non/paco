@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+import pytest
 import asyncio
 from paco import map
 from .helpers import run_in_loop
@@ -27,19 +28,15 @@ def test_map_sequential():
     assert time.time() - init >= 0.5
 
 
+def test_map_empty():
+    assert run_in_loop(map(coro, [])) == []
+
+
 def test_map_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(map(coro, None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')
 
 
 def test_map_invalid_coro():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(map(None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')

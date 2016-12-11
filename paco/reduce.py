@@ -45,7 +45,8 @@ def reduce(coro, iterable, right=False, initializer=None, limit=1, loop=None):
            return acc + num
 
         await paco.reduce(reducer, [1, 2, 3, 4, 5], initializer=0)
-        => 10
+        # => 15
+
     """
     assert_corofunction(coro=coro)
     assert_iter(iterable=iterable)
@@ -77,7 +78,7 @@ def reduce(coro, iterable, right=False, initializer=None, limit=1, loop=None):
         pool.add(reducer(element))
 
     # Wait until all coroutines finish
-    yield from pool.run()
+    yield from pool.run(ignore_empty=True)
 
     # Returns final reduced value
     return acc

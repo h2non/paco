@@ -29,11 +29,12 @@ def repeat(coro, times=1, step=1, limit=1, loop=None):
 
     Usage::
 
-        async def task(num):
+        async def mul_2(num):
             return num * 2
 
-        await paco.times(task, 10, limit=2)
-        => [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+        await paco.repeat(mul_2, times=5)
+        # => [2, 4, 6, 8, 10]
+
     """
     assert_corofunction(coro=coro)
 

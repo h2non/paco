@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import pytest
 import asyncio
 from paco import every
 from .helpers import run_in_loop
@@ -30,9 +31,5 @@ def test_every_empty():
 
 
 def test_every_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(every(coro, None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')

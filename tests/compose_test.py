@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+import pytest
 import asyncio
 from paco import compose, partial
 from .helpers import run_in_loop
@@ -33,11 +34,7 @@ def test_compose_exception():
 
     task = compose(*(coro_exception,) * 5)
 
-    try:
+    with pytest.raises(ValueError):
         run_in_loop(task, 0)
-    except ValueError as err:
-        pass
-    else:
-        raise RuntimeError('ValueError exception must be raised')
 
     assert count == 2

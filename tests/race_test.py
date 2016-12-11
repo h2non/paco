@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import pytest
 import asyncio
 from paco import race
 from .helpers import run_in_loop
@@ -27,18 +28,10 @@ def test_race_timeout():
 
 
 def test_race_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(race(None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')
 
 
 def test_race_invalid_iterable_value():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(race([None]))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')

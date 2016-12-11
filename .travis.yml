@@ -3,8 +3,14 @@ language: python
 python:
   - "3.4"
   - "3.5"
+  - "3.6-dev"
+  - "nightly"
 
 sudo: false
+
+matrix:
+  allow_failures:
+    - python: nightly
 
 install:
   - pip install -r requirements-dev.txt

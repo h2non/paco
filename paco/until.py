@@ -27,7 +27,19 @@ def until(coro, coro_test, assert_coro=None, *args, **kw):
 
     Usage::
 
-        await paco.until(coro, [1, 2, 3, 4, 5])
+        calls = 0
+
+        async def task():
+            nonlocal calls
+            calls += 1
+            return calls
+
+        async def calls_gt_4():
+            return calls > 4
+
+        await paco.until(task, calls_gt_4)
+        # => [1, 2, 3, 4, 5]
+
     """
     @asyncio.coroutine
     def assert_coro(value):

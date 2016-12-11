@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+import pytest
 import asyncio
 from paco import filterfalse
 from .helpers import run_in_loop
@@ -28,18 +29,10 @@ def test_filterfalse_collect_sequential():
 
 
 def test_filterfalse_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(filterfalse(even, None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')
 
 
 def test_filterfalse_invalid_coro():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(filterfalse(None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')

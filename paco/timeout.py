@@ -29,6 +29,7 @@ def timeout(coro, timeout=None, loop=None):
     Usage::
 
         await paco.timeout(coro, timeout=10)
+
     """
     @asyncio.coroutine
     def wrapper(*args, **kw):

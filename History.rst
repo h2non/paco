@@ -1,6 +1,16 @@
 History
 =======
 
+0.1.5 (2016-12-04)
+------------------
+
+- fix(#25): allow empty iterables in iterators functions, such as ``map``, ``filter``, ``reduce``.
+
+0.1.4 (2016-11-28)
+------------------
+
+- fix(#24): explicitly pass loop instance to ``asyncio.wait``.
+
 0.1.3 (2016-10-27)
 ------------------
 

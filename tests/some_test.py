@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import pytest
 import asyncio
 from paco import some
 from .helpers import run_in_loop
@@ -30,9 +31,5 @@ def test_some_empty():
 
 
 def test_some_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(some(coro, None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')

@@ -17,21 +17,22 @@ def wraps(fn):
 
     Usage::
 
-        # Use as function wrapper
-        def mult(num, foo=None):
+        def mul_2(num):
             return num * 2
 
-        coro = paco.wraps(mult)
-        await coro(2, foo='bar')
-        => 4
+        # Use as function wrapper
+        coro = paco.wraps(mul_2)
+        await coro(2)
+        # => 4
 
         # Use as decorator
         @paco.wraps
-        def mult(num):
+        def mul_2(num):
             return num * 2
 
-        await mult(2)
-        => 4
+        await mul_2(2)
+        # => 4
+
     """
     @functools.wraps(fn)
     @asyncio.coroutine

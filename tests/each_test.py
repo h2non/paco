@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+import pytest
 import asyncio
 from paco import each
 from .helpers import run_in_loop
@@ -50,29 +51,18 @@ def test_each_exception():
 
     init = time.time()
     task = each(coro, [1, 2, 3, 4, 5], limit=1)
-    try:
+
+    with pytest.raises(ValueError):
         run_in_loop(task)
-    except ValueError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')
 
     assert time.time() - init >= 0.3
 
 
 def test_each_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(each(coro, None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')
 
 
 def test_each_invalid_coro():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(each(None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')

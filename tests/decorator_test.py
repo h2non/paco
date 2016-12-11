@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import pytest
 import asyncio
 from paco.decorator import decorate
 from .helpers import run_in_loop
@@ -32,18 +33,10 @@ def test_decorate_coro_argument():
 
 
 def test_decorate_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         decorate(None)
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('exception must be raised')
 
 
 def test_decorate_invalid_coroutine():
-    try:
+    with pytest.raises(TypeError):
         decorate(sample)(1)()
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('exception must be raised')

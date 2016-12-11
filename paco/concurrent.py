@@ -79,32 +79,38 @@ class ConcurrentExecutor(object):
         - task.start (task): triggered before coroutine starts.
         - task.finish (task, result): triggered when the coroutine finished.
 
+    Arguments:
+        limit (int): concurrency limit. Defaults to 10.
+        coros (list[coroutine], optional): list of coroutines to schedule.
+        loop (asyncio.BaseEventLoop, optional): loop to run.
+            Defaults to asyncio.get_event_loop().
+        ignore_empty (bool, optional): do not raise an exception if there are
+            no coroutines to schedule are empty.
+
+    Returns:
+        ConcurrentExecutor
+
     Usage::
 
-        pool = ConcurrentExecutor(3)
-        pool.add(coroutine, 'foo', 1)
-        pool.add(coroutine, 'foo', 1)
-        pool.add(coroutine, 'foo', 1)
-        await pool.run(return_exceptions=True)
+        async def sum(x, y):
+            return x + y
+
+        pool = paco.ConcurrentExecutor(limit=2)
+        pool.add(sum, 1, 2)
+        pool.add(sum, None, 'str')
+
+        done, pending = await pool.run(return_exceptions=True)
+        [task.result() for task in done]
+        # => [3, TypeError("unsupported operand type(s) for +: 'NoneType' and 'str'")]  # noqa
     """
 
-    def __init__(self, limit=10, loop=None, coros=None):
-        """
-        Creates a new ConcurrentExecutor instance.
-
-        Arguments:
-            limit (int): concurrency limit. Defaults to 10.
-            loop (asyncio.BaseEventLoop): optional loop to run.
-                Defaults to asyncio.get_event_loop().
-
-        Returns:
-            ConcurrentExecutor
-        """
+    def __init__(self, limit=10, loop=None, coros=None, ignore_empty=False):
         self.running = False
         self.return_exceptions = False
         self.limit = max(int(limit), 0)
         self.pool = deque()
         self.observer = Observer()
+        self.ignore_empty = ignore_empty
         self.loop = loop or asyncio.get_event_loop()
         self.semaphore = asyncio.Semaphore(self.limit, loop=self.loop)
 
@@ -251,6 +257,7 @@ class ConcurrentExecutor(object):
 
         # Wait until all the coroutines finish
         return (yield from asyncio.wait(coros,
+                                        loop=self.loop,
                                         timeout=timeout,
                                         return_when=return_when))
 
@@ -291,28 +298,44 @@ class ConcurrentExecutor(object):
     @asyncio.coroutine
     def run(self, timeout=None,
             return_exceptions=None,
-            return_when='ALL_COMPLETED'):
+            return_when='ALL_COMPLETED',
+            ignore_empty=None):
         """
         Executes the registered coroutines in the executor queue.
 
         Arguments:
             timeout (int/float): max execution timeout. No limit by default.
+            return_exceptions (bool): in case of coroutine exception.
+            return_when (str): sets when coroutine should be resolved.
+                See `asyncio.wait`_ for supported values.
+            ignore_empty (bool, optional): do not raise an exception if there are
+                no coroutines to schedule are empty.
 
         Returns:
-            asyncio.Future (tuple): two sets of Futures: (done, pending)
+            asyncio.Future (tuple): two sets of Futures: ``(done, pending)``
 
         Raises:
             ValueError: if there is no coroutines to schedule.
             RuntimeError: if executor is still running.
             TimeoutError: if execution takes more than expected.
+
+        .. _asyncio.wait: https://docs.python.org/3/library/asyncio-task.html#asyncio.wait  # noqa
         """
         # Only allow 1 concurrent execution
         if self.running:
             raise RuntimeError('executor is already running')
 
+        # Overwrite ignore empty behaviour, if explicitly defined
+        ignore_empty = (self.ignore_empty if ignore_empty is None
+                        else ignore_empty)
+
         # Check we have coroutines to schedule
         if len(self.pool) == 0:
-            raise ValueError('no coroutines to schedule')
+            # If ignore empty mode enabled, just return an empty tuple
+            if ignore_empty:
+                return (tuple(), tuple())
+            # Othwerise raise an exception
+            raise ValueError('Set of coroutines is empty')
 
         # Set executor state to running
         self.running = True
@@ -354,7 +377,7 @@ class ConcurrentExecutor(object):
         Checks the executor running state.
 
         Returns:
-            bool: True if the executur is running, otherwise False.
+            bool: ``True`` if the executur is running, otherwise ``False``.
         """
         return self.running
 

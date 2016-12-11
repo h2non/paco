@@ -24,9 +24,16 @@ def compose(*coros):
 
     Usage::
 
-        coro = paco.compose(sum1, mul2, sum1)
-        await coro(1)
-        => 5
+        async def sum_1(num):
+            return num + 1
+
+        async def mul_2(num):
+            return num * 2
+
+        coro = paco.compose(sum_1, mul_2, sum_1)
+        await coro(2)
+        # => 7
+
     """
     # Make list to inherit built-in type methods
     coros = list(coros)

@@ -42,8 +42,20 @@ def race(iterable, loop=None, timeout=None, *args, **kw):
 
     Usage::
 
-        await paco.race(coro, coro2, coro3)
-        => coro2 # result
+        async def coro1():
+            await asyncio.sleep(2)
+            return 1
+
+        async def coro2():
+            return 2
+
+        async def coro3():
+            await asyncio.sleep(1)
+            return 3
+
+        await paco.race([coro1, coro2, coro3])
+        # => 2
+
     """
     assert_iter(iterable=iterable)
 
@@ -82,7 +94,11 @@ def race(iterable, loop=None, timeout=None, *args, **kw):
             coro = coro(*args, **kw)
 
         # Store future tasks
+<<<<<<< HEAD
         coros.append(ensure_future(resolver(index, coro)))
+=======
+        coros.append(asyncio.async(resolver(index, coro), loop=loop))
+>>>>>>> master
 
     # Run coroutines concurrently
     yield from asyncio.wait(coros, timeout=timeout, loop=loop)

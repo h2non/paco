@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+import pytest
 import asyncio
 from paco import wait
 from .helpers import run_in_loop
@@ -41,9 +42,5 @@ def test_wait_return_exceptions():
 
 
 def test_wait_empty():
-    try:
+    with pytest.raises(ValueError):
         run_in_loop(wait([]))
-    except ValueError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')

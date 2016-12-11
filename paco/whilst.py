@@ -28,7 +28,19 @@ def whilst(coro, coro_test, assert_coro=None, *args, **kw):
 
     Usage::
 
-        await paco.whilst(coro, [1, 2, 3, 4, 5])
+        calls = 0
+
+        async def task():
+            nonlocal calls
+            calls += 1
+            return calls
+
+        async def calls_lt_4():
+            return calls > 4
+
+        await paco.until(task, calls_lt_4)
+        # => [1, 2, 3, 4, 5]
+
     """
     assert_corofunction(coro=coro, coro_test=coro_test)
 

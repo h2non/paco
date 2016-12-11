@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import pytest
 import asyncio
 from paco import whilst
 from .helpers import run_in_loop
@@ -22,9 +23,5 @@ def test_whilst():
 
 
 def test_whilst_invalid_input():
-    try:
+    with pytest.raises(TypeError):
         run_in_loop(whilst(None, None))
-    except TypeError:
-        pass
-    else:
-        raise RuntimeError('must raise exception')
