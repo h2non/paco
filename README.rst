@@ -6,7 +6,7 @@ Small and idiomatic utility library for coroutine-driven, asynchronous-oriented 
 Built on top of `asyncio`_, paco provides missing capabilities from Python `stdlib`
 to write asynchronous cooperative multitasking in a nice-ish way, plus higher-order function goodness.
 
-paco can be your utility belt to deal with I/O-bound non-blocking concurrent code in a better and elegant way.
+paco can be your utility belt to deal with I/O-bound non-blocking concurrent code in a bette and elegant way.
 
 Features
 --------
@@ -19,6 +19,7 @@ Features
 -  Concurrent iterables and higher-order functions.
 -  Better ``asyncio.gather()`` and ``asyncio.wait()`` with optional concurrency control and ordered results.
 -  Works with both `async/await`_ and `yield from`_ coroutines syntax.
+-  Reliable coroutine timeout handler context manager.
 -  Designed for intensive I/O-bound concurrent non-blocking tasks.
 -  Good interoperability with ``asyncio`` and Python ``stdlib`` functions.
 -  Composable pipelines of functors for iterables via ``|`` operator overloading.
@@ -68,6 +69,7 @@ API
 - paco.some_
 - paco.throttle_
 - paco.timeout_
+- paco.TimeoutLimit_
 - paco.times_
 - paco.until_
 - paco.wait_
@@ -99,6 +101,7 @@ API
 .. _paco.some: http://paco.readthedocs.io/en/latest/api.html#paco.some
 .. _paco.throttle: http://paco.readthedocs.io/en/latest/api.html#paco.throttle
 .. _paco.timeout: http://paco.readthedocs.io/en/latest/api.html#paco.timeout
+.. _paco.TimeoutLimit: http://paco.readthedocs.io/en/latest/api.html#paco.TimeoutLimit
 .. _paco.times: http://paco.readthedocs.io/en/latest/api.html#paco.times
 .. _paco.until: http://paco.readthedocs.io/en/latest/api.html#paco.until
 .. _paco.wait: http://paco.readthedocs.io/en/latest/api.html#paco.wait

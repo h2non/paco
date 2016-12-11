@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import asyncio
-from .utils import isiter
+from .assertions import isiter
 from .reduce import reduce
 from .decorator import overload
 from .assertions import assert_corofunction, assert_iter

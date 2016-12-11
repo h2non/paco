@@ -16,6 +16,7 @@ class Observer(object):
     interface and built-in coroutines support for asynchronous-first approach,
     desiged as abstract class to be inherited or embed by observable classes.
     """
+
     def __init__(self):
         self._pool = {}
 

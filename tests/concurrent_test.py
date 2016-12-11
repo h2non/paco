@@ -21,6 +21,8 @@ def test_concurrent_single():
 
     p = concurrent(10)
     p.add(coro, 2)
+    assert len(p) == 1
+    assert p.__len__() == 1
     assert len(p.pool) == 1
 
     done, pending = run_in_loop(p.run())

@@ -27,6 +27,7 @@ API documentation
    paco.some <http://paco.readthedocs.io/en/latest/api.html#paco.some>
    paco.throttle <http://paco.readthedocs.io/en/latest/api.html#paco.throttle>
    paco.timeout <http://paco.readthedocs.io/en/latest/api.html#paco.timeout>
+   paco.TimeoutLimit <http://paco.readthedocs.io/en/latest/api.html#paco.TimeoutLimit>
    paco.times <http://paco.readthedocs.io/en/latest/api.html#paco.times>
    paco.until <http://paco.readthedocs.io/en/latest/api.html#paco.until>
    paco.wait <http://paco.readthedocs.io/en/latest/api.html#paco.wait>

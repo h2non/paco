@@ -16,7 +16,7 @@ Usage::
 import asyncio
 from collections import deque, namedtuple
 from .observer import Observer
-from .utils import isiter
+from .assertions import isiter
 
 # Task represents an immutable tuple storing the index order
 # and coroutine object.
@@ -102,8 +102,8 @@ class ConcurrentExecutor(object):
         done, pending = await pool.run(return_exceptions=True)
         [task.result() for task in done]
         # => [3, TypeError("unsupported operand type(s) for +: 'NoneType' and 'str'")]  # noqa
-
     """
+
     def __init__(self, limit=10, loop=None, coros=None, ignore_empty=False):
         self.running = False
         self.return_exceptions = False
@@ -117,6 +117,15 @@ class ConcurrentExecutor(object):
         # Register coroutines in the pool
         if isiter(coros):
             self.extend(*coros)
+
+    def __len__(self):
+        """
+        Returns the current length of the coroutines pool queue.
+
+        Returns:
+            int: current coroutines pool length.
+        """
+        return len(self.pool)
 
     def reset(self):
         """

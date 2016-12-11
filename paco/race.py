@@ -2,6 +2,11 @@
 import asyncio
 from .assertions import assert_iter
 
+try:
+    from asyncio import ensure_future
+except ImportError:
+    ensure_future = asyncio.async
+
 
 @asyncio.coroutine
 def race(iterable, loop=None, timeout=None, *args, **kw):
@@ -89,7 +94,7 @@ def race(iterable, loop=None, timeout=None, *args, **kw):
             coro = coro(*args, **kw)
 
         # Store future tasks
-        coros.append(asyncio.async(resolver(index, coro), loop=loop))
+        coros.append(ensure_future(resolver(index, coro)))
 
     # Run coroutines concurrently
     yield from asyncio.wait(coros, timeout=timeout, loop=loop)
