@@ -1,6 +1,19 @@
 History
 =======
 
+0.1.6 / 2016-12-11
+------------------
+
+  * feat(pipe): isolate pipe operator overload code
+  * refactor: decorator and util functions
+  * feat(#11): timeout limit context manager.
+  * refactor(core): several minor refactors
+  * fix(docs): comment out latex sphinx settings
+  * fix(docs): use current package version
+  * Documentation examples improvements (#27)
+  * feat(history): update
+  * feat: add pool length magic method
+
 0.1.5 (2016-12-04)
 ------------------
 
