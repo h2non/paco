@@ -8,6 +8,7 @@ API documentation
    paco.compose <http://paco.readthedocs.io/en/latest/api.html#paco.compose>
    paco.concurrent <http://paco.readthedocs.io/en/latest/api.html#paco.concurrent>
    paco.constant <http://paco.readthedocs.io/en/latest/api.html#paco.constant>
+   paco.curry <http://paco.readthedocs.io/en/latest/api.html#paco.curry>
    paco.defer <http://paco.readthedocs.io/en/latest/api.html#paco.defer>
    paco.dropwhile <http://paco.readthedocs.io/en/latest/api.html#paco.dropwhile>
    paco.each <http://paco.readthedocs.io/en/latest/api.html#paco.each>

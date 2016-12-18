@@ -50,6 +50,7 @@ API
 - paco.compose_
 - paco.concurrent_
 - paco.constant_
+- paco.curry_
 - paco.defer_
 - paco.dropwhile_
 - paco.each_
@@ -82,6 +83,7 @@ API
 .. _paco.compose: http://paco.readthedocs.io/en/latest/api.html#paco.compose
 .. _paco.concurrent: http://paco.readthedocs.io/en/latest/api.html#paco.concurrent
 .. _paco.constant: http://paco.readthedocs.io/en/latest/api.html#paco.constant
+.. _paco.curry: http://paco.readthedocs.io/en/latest/api.html#paco.curry
 .. _paco.defer: http://paco.readthedocs.io/en/latest/api.html#paco.defer
 .. _paco.dropwhile: http://paco.readthedocs.io/en/latest/api.html#paco.dropwhile
 .. _paco.each: http://paco.readthedocs.io/en/latest/api.html#paco.each
