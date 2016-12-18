@@ -1,4 +1,5 @@
 import asyncio
+import inspect
 
 
 def isiter(x):
@@ -13,6 +14,38 @@ def isiter(x):
         bool
     """
     return hasattr(x, '__iter__') and not isinstance(x, (str, bytes))
+
+
+def iscallable(x):
+    """
+    Returns `True` if the given value is a callable primitive object.
+
+    Arguments:
+        x (mixed): value to check.
+
+    Returns:
+        bool
+    """
+    return any([
+        isfunc(x),
+        asyncio.iscoroutinefunction(x)
+    ])
+
+
+def isfunc(x):
+    """
+    Returns `True` if the given value is a function or method object.
+
+    Arguments:
+        x (mixed): value to check.
+
+    Returns:
+        bool
+    """
+    return any([
+        inspect.isfunction(x) and not asyncio.iscoroutinefunction(x),
+        inspect.ismethod(x) and not asyncio.iscoroutinefunction(x)
+    ])
 
 
 def iscoro_or_corofunc(x):

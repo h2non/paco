@@ -5,6 +5,7 @@ from .some import some
 from .race import race
 from .once import once
 from .wait import wait
+from .curry import curry
 from .wraps import wraps
 from .apply import apply
 from .defer import defer
@@ -33,12 +34,14 @@ __license__ = 'MIT'
 # Current package version
 __version__ = '0.1.6'
 
+# Explicit symbols to export
 __all__ = (
     'ConcurrentExecutor',
     'apply',
     'compose',
     'concurrent',
     'constant',
+    'curry',
     'defer',
     'dropwhile',
     'each',
