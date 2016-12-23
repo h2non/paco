@@ -6,7 +6,7 @@ Small and idiomatic utility library for coroutine-driven, asynchronous-oriented 
 Built on top of `asyncio`_, paco provides missing capabilities from Python `stdlib`
 to write asynchronous cooperative multitasking in a nice-ish way, plus higher-order function goodness.
 
-paco can be your utility belt to deal with I/O-bound non-blocking concurrent code in a bette and elegant way.
+paco can be your utility belt to deal with I/O-bound non-blocking concurrent code in a better and elegant way.
 
 Features
 --------
@@ -22,7 +22,7 @@ Features
 -  Reliable coroutine timeout handler context manager.
 -  Designed for intensive I/O-bound concurrent non-blocking tasks.
 -  Good interoperability with ``asyncio`` and Python ``stdlib`` functions.
--  Composable pipelines of functors for iterables via ``|`` operator overloading.
+-  [Composable pipelines](#examples) of functors for iterables via ``|`` operator overloading.
 -  Small and dependency free.
 -  Compatible with Python +3.4.
 
