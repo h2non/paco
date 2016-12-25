@@ -22,7 +22,7 @@ Features
 -  Reliable coroutine timeout handler context manager.
 -  Designed for intensive I/O-bound concurrent non-blocking tasks.
 -  Good interoperability with ``asyncio`` and Python ``stdlib`` functions.
--  [Composable pipelines](#examples) of functors for iterables via ``|`` operator overloading.
+-  `Composable pipelines`_ of functors for iterables via ``|`` operator overloading.
 -  Small and dependency free.
 -  Compatible with Python +3.4.
 
@@ -186,6 +186,7 @@ MIT - Tomas Aparicio
 .. _annotated API reference: https://h2non.github.io/paco
 .. _async/await: https://www.python.org/dev/peps/pep-0492/
 .. _yield from: https://www.python.org/dev/peps/pep-0380/
+.. _Composable pipelines: #examples
 
 .. |Build Status| image:: https://travis-ci.org/h2non/paco.svg?branch=master
    :target: https://travis-ci.org/h2non/paco
