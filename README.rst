@@ -22,7 +22,7 @@ Features
 -  Reliable coroutine timeout handler context manager.
 -  Designed for intensive I/O-bound concurrent non-blocking tasks.
 -  Good interoperability with ``asyncio`` and Python ``stdlib`` functions.
--  `Composable pipelines`_ of functors for iterables via ``|`` operator overloading.
+-  `Composable pipelines`_ of functors for transducers-like chain via ``|`` operator overloading.
 -  Small and dependency free.
 -  Compatible with Python +3.4.
 
@@ -146,7 +146,7 @@ Asynchronously and concurrently execute multiple HTTP requests.
 
 
 
-Concurrent pipeline-style composition of functors over an iterable object.
+Concurrent pipeline-style composition of transform functors over an iterable object.
 
 .. code-block:: python
 
