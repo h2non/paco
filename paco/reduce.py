@@ -7,7 +7,7 @@ from .assertions import assert_corofunction, assert_iter
 
 @overload
 @asyncio.coroutine
-def reduce(coro, iterable, right=False, initializer=None, limit=1, loop=None):
+def reduce(coro, iterable, initializer=None, limit=1, right=False, loop=None):
     """
     Apply function of two arguments cumulatively to the items of sequence,
     from left to right, so as to reduce the sequence to a single value.
@@ -23,14 +23,13 @@ def reduce(coro, iterable, right=False, initializer=None, limit=1, loop=None):
     This function can be composed in a pipeline chain with ``|`` operator.
 
     Arguments:
-        coro (coroutine function): coroutine function to call with values
-            to reduce.
-        iterable (iterable): an iterable collection yielding
-            coroutines functions.
-        right (bool): reduce iterable from right to left.
+        coro (coroutine function): reducer coroutine binary function.
+        iterable (iterable|asynchronousiterable): an iterable collection
+            yielding coroutines functions.
         initializer (mixed): initial accumulator value used in
             the first reduction call.
         limit (int): max iteration concurrency limit. Use ``0`` for no limit.
+        right (bool): reduce iterable from right to left.
         loop (asyncio.BaseEventLoop): optional event loop to use.
 
     Raises:

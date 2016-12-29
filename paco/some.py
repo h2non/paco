@@ -20,7 +20,8 @@ def some(coro, iterable, limit=0, timeout=None, loop=None):
 
     Arguments:
         coro (coroutine function): coroutine function for test values.
-        iterable (iterable): an iterable.
+        iterable (iterable|asynchronousiterable): an iterable collection
+            yielding coroutines functions.
         limit (int): max concurrency limit. Use ``0`` for no limit.
         timeout can be used to control the maximum number
             of seconds to wait before returning. timeout can be an int or

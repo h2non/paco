@@ -1,10 +1,13 @@
 import asyncio
 import inspect
 
+# Safe alias to inspect.isasyncgen for Python 3.6+
+isasyncgen = getattr(inspect, 'isasyncgen', lambda x: False)
+
 
 def isiter(x):
     """
-    Returns True if the given value implements an valid iterable
+    Returns `True` if the given value implements an valid iterable
     interface.
 
     Arguments:
@@ -14,6 +17,22 @@ def isiter(x):
         bool
     """
     return hasattr(x, '__iter__') and not isinstance(x, (str, bytes))
+
+
+def isgenerator(x):
+    """
+    Returns `True` if the given value is sync or async generator coroutine.
+
+    Arguments:
+        x (mixed): value to check if it is an iterable.
+
+    Returns:
+        bool
+    """
+    return any([
+        hasattr(x, '__next__'),
+        hasattr(x, '__anext__')
+    ])
 
 
 def iscallable(x):
@@ -87,5 +106,5 @@ def assert_iter(**kw):
         TypeError: if assertion fails.
     """
     for name, value in kw.items():
-        if not hasattr(value, '__iter__'):
-            raise TypeError('{} must be an iterable'.format(name))
+        if not isiter(value):
+            raise TypeError('{} must be an iterable object'.format(name))

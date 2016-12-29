@@ -30,8 +30,8 @@ def each(coro, iterable, limit=0, loop=None,
     Arguments:
         coro (coroutinefunction): coroutine iterator function that accepts
             iterable values.
-        iterable (iter): an iterable collection yielding
-            coroutines functions. Asynchronous iterables are not supported.
+        iterable (iterable|asynchronousiterable): an iterable collection
+            yielding coroutines functions.
         limit (int): max iteration concurrency limit. Use ``0`` for no limit.
         collect (bool): return yielded values from coroutines. Default False.
         loop (asyncio.BaseEventLoop): optional event loop to use.

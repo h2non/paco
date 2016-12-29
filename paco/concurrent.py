@@ -381,5 +381,6 @@ class ConcurrentExecutor(object):
         """
         return self.running
 
+
 # Semantic shortcut to ConcurrentExecutor()
 concurrent = ConcurrentExecutor

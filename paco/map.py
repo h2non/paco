@@ -26,8 +26,8 @@ def map(coro, iterable, limit=0, loop=None, timeout=None,
 
     Arguments:
         coro (coroutinefunction): map coroutine function to use.
-        iterable (iter): an iterable collection yielding coroutines functions.
-            Asynchronous iterables are not supported.
+        iterable (iterable|asynchronousiterable): an iterable collection
+            yielding coroutines functions.
         limit (int): max concurrency limit. Use ``0`` for no limit.
         loop (asyncio.BaseEventLoop): optional event loop to use.
         timeout (int|float): timeout can be used to control the maximum number

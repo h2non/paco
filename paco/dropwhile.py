@@ -24,8 +24,8 @@ def dropwhile(coro, iterable, loop=None):
     Arguments:
         coro (coroutine function): coroutine function to call with values
             to reduce.
-        iterable (iterable): an iterable collection yielding
-            coroutines functions.
+        iterable (iterable|asynchronousiterable): an iterable collection
+            yielding coroutines functions.
         loop (asyncio.BaseEventLoop): optional event loop to use.
 
     Raises:

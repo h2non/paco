@@ -5,23 +5,27 @@ import paco
 from paco.pipe import overload
 
 
+@asyncio.coroutine
+def filterer(x):
+    return x < 8
+
+
+@asyncio.coroutine
+def mapper(x):
+    return x * 2
+
+
+@asyncio.coroutine
+def drop(x):
+    return x < 10
+
+
+@asyncio.coroutine
+def reducer(acc, x):
+    return acc + x
+
+
 def test_pipe_operator_overload():
-    @asyncio.coroutine
-    def filterer(x):
-        return x < 8
-
-    @asyncio.coroutine
-    def mapper(x):
-        return x * 2
-
-    @asyncio.coroutine
-    def drop(x):
-        return x < 10
-
-    @asyncio.coroutine
-    def reducer(acc, x):
-        return acc + x
-
     @asyncio.coroutine
     def task(numbers):
         return (yield from (numbers
@@ -32,6 +36,36 @@ def test_pipe_operator_overload():
 
     result = paco.run(task((1, 2, 3, 4, 5, 6, 7, 8, 9, 10)))
     assert result == 36
+
+
+def test_pipe_async_generator():
+    class AsyncGenerator(object):
+        def __init__(self, values=None):
+            self.pos = 0
+            self.values = values or [1, 2, 3]
+
+        @asyncio.coroutine
+        def __aiter__(self):
+            self.pos = 0
+            return self
+
+        @asyncio.coroutine
+        def __anext__(self):
+            if self.pos == len(self.values):
+                raise StopAsyncIteration
+
+            value = self.values[self.pos]
+            self.pos += 1
+            return value
+
+    @asyncio.coroutine
+    def task(numbers):
+        return (yield from (AsyncGenerator(numbers)
+                            | paco.map(mapper)
+                            | paco.reduce(reducer, initializer=0)))
+
+    result = paco.run(task([1, 2, 3, 4, 5]))
+    assert result == 30
 
 
 def test_overload_error():

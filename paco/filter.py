@@ -41,8 +41,8 @@ def filter(coro, iterable, assert_fn=None, limit=0, loop=None):
     Arguments:
         coro (coroutine function): coroutine filter function to call accepting
             iterable values.
-        iterable (iterable): an iterable collection yielding
-            coroutines functions.
+        iterable (iterable|asynchronousiterable): an iterable collection
+            yielding coroutines functions.
         assert_fn (coroutinefunction): optional assertion function.
         limit (int): max filtering concurrency limit. Use ``0`` for no limit.
         loop (asyncio.BaseEventLoop): optional event loop to use.

@@ -1,0 +1,19 @@
+import paco
+import asyncio
+
+
+async def task():
+    for i in range(10):
+        yield i
+
+
+async def reducer(acc, x):
+    acc.append(x * 2)
+    return acc
+
+
+loop = asyncio.get_event_loop()
+
+job = paco.reduce(reducer, task(), initializer=[])
+
+print('Result:', loop.run_until_complete(job))

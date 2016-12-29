@@ -1,8 +1,42 @@
 # -*- coding: utf-8 -*-
+import asyncio
 import functools
 from inspect import isfunction
-from .assertions import iscoro_or_corofunc
+from .generator import consume
+from .assertions import iscoro_or_corofunc, isgenerator
 from .pipe import overload  # noqa
+
+
+def generator_consumer(coro):  # pragma: no cover
+    """
+    Decorator wrapper that consumes sync/async generators provided as
+    interable input argument.
+
+    This function is only intended to be used internally.
+
+    Arguments:
+        coro (coroutinefunction): function to decorate
+
+    Raises:
+        TypeError: if function or coroutine function is not provided.
+
+    Returns:
+        function: decorated function.
+    """
+    if not asyncio.iscoroutinefunction(coro):
+        raise TypeError('coro must be a coroutine function')
+
+    @functools.wraps(coro)
+    @asyncio.coroutine
+    def wrapper(*args, **kw):
+        if len(args) > 1 and isgenerator(args[1]):
+            args = list(args)
+            args[1] = (yield from consume(args[1])
+                       if hasattr(args[1], '__anext__')
+                       else list(args[1]))
+            args = tuple(args)
+        return (yield from coro(*args, **kw))
+    return wrapper
 
 
 def decorate(fn):

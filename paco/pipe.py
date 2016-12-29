@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 import asyncio
 import functools
-from .assertions import isiter
 from inspect import isfunction, getargspec
+from .generator import consume
+from .assertions import isiter
+
+# Yielded iterable error
+IterableError = TypeError('pipeline yielded a non iterable object')
 
 
 class PipeOverloader(object):
@@ -18,9 +22,13 @@ class PipeOverloader(object):
     def __await_coro(self, coro):
         return (yield from self.__trigger((yield from coro)))
 
+    @asyncio.coroutine
+    def __consume_generator(self, iterable):
+        return (yield from self.__trigger((yield from consume(iterable))))
+
     def __trigger(self, iterable):
         if not isiter(iterable):
-            raise TypeError('the pipeline yielded a non iterable object')
+            raise IterableError
 
         # Compose arguments, placing iterable as second one
         args = self.__args[:1] + (iterable,) + self.__args[1:]
@@ -38,10 +46,16 @@ class PipeOverloader(object):
         """
         Overloads ``|`` operator expressions.
         """
+        if not iterable:
+            raise IterableError
+
+        if hasattr(iterable, '__anext__'):
+            return self.__consume_generator(iterable)
+
         if asyncio.iscoroutine(iterable):
             return self.__await_coro(iterable)
-        else:
-            return self.__trigger(iterable)
+
+        return self.__trigger(iterable)
 
     def __call__(self, *args, **kw):
         """
