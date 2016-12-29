@@ -1,3 +1,4 @@
+setuptools>=32
 coveralls~=1.1
 flake8~=3.2.1
 pytest~=3.0.3

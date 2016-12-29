@@ -61,8 +61,8 @@ setup(
     version=version,
     author='Tomas Aparicio',
     description=(
-        'Small utility library for coroutine-driven, '
-        'asynchronous-based generic programming'
+        'Small utility library for coroutine-based '
+        'asynchronous generic programming'
     ),
     url='https://github.com/h2non/paco',
     license='MIT',
