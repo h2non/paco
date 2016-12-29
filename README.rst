@@ -4,17 +4,17 @@ paco |Build Status| |PyPI| |Coverage Status| |Documentation Status| |Stability| 
 Small and idiomatic utility library for coroutine-driven, asynchronous-oriented generic programming in Python +3.4.
 
 Built on top of `asyncio`_, paco provides missing capabilities from Python `stdlib`
-to write asynchronous cooperative multitasking in a nice-ish way, plus higher-order function goodness,
+in order to write asynchronous cooperative multitasking in a nice-ish way.
+Also, paco aims to port some of `functools`_ and `itertools`_ standard functions to the asynchronous world.
 
-Inspired by `functools`_ and `itertools`_ Python standard packages.
-
-paco can be your utility belt to deal with I/O-bound non-blocking concurrent code in a better and elegant way.
+paco can be your utility belt to deal with asynchronous, I/O-bound, non-blocking concurrent code in a cleaner and idiomatic way.
 
 Features
 --------
 
 -  Simple and idiomatic API, extending Python ``stdlib`` with async coroutines gotchas.
--  Built-in configurable control-flow concurrency support.
+-  Built-in configurable control-flow concurrency support (throttle).
+-  No fancy abstractions: it just works with the plain async coroutines.
 -  Useful iterables, decorators, functors and convenient helpers.
 -  Coroutine-based functional helpers: compose, throttle, partial, timeout, times, until, race...
 -  Asynchronous coroutine port of Python built-in functions: `filter`, `map`, `dropwhile`, `filterfalse`, `reduce`...
@@ -22,7 +22,7 @@ Features
 -  Concurrent iterables and higher-order functions.
 -  Better ``asyncio.gather()`` and ``asyncio.wait()`` with optional concurrency control and ordered results.
 -  Works with both `async/await`_ and `yield from`_ coroutines syntax.
--  Reliable coroutine timeout handler context manager.
+-  Reliable coroutine timeout limit handler via context manager.
 -  Designed for intensive I/O-bound concurrent non-blocking tasks.
 -  Good interoperability with ``asyncio`` and Python ``stdlib`` functions.
 -  `Composable pipelines`_ of functors for transducers-like chain via ``|`` operator overloading.
