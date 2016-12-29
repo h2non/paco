@@ -54,7 +54,7 @@ def test_pipe_async_generator():
         @asyncio.coroutine
         def __anext__(self):
             if self.pos == len(self.values):
-                raise StopAsyncIteration
+                raise StopAsyncIteration  # noqa
 
             value = self.values[self.pos]
             self.pos += 1

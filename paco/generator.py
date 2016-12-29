@@ -27,7 +27,7 @@ def consume(generator):  # pragma: no cover
     while True:
         try:
             buf.append((yield from generator.__anext__()))
-        except StopAsyncIteration:
+        except StopAsyncIteration:  # noqa
             break
 
     return buf
