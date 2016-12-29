@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import asyncio
-import functools
 
 
 def wraps(fn):
@@ -34,13 +33,4 @@ def wraps(fn):
         # => 4
 
     """
-    # If already a coroutine function, just return it
-    if asyncio.iscoroutinefunction(fn):
-        return fn
-
-    @functools.wraps(fn)
-    @asyncio.coroutine
-    def wrapper(*args, **kw):
-        return fn(*args, **kw)
-
-    return wrapper
+    return asyncio.coroutine(fn)
