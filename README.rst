@@ -4,7 +4,9 @@ paco |Build Status| |PyPI| |Coverage Status| |Documentation Status| |Stability| 
 Small and idiomatic utility library for coroutine-driven, asynchronous-oriented generic programming in Python +3.4.
 
 Built on top of `asyncio`_, paco provides missing capabilities from Python `stdlib`
-to write asynchronous cooperative multitasking in a nice-ish way, plus higher-order function goodness.
+to write asynchronous cooperative multitasking in a nice-ish way, plus higher-order function goodness,
+
+Inspired by `functools`_ and `itertools`_ Python standard packages.
 
 paco can be your utility belt to deal with I/O-bound non-blocking concurrent code in a better and elegant way.
 
@@ -16,6 +18,7 @@ Features
 -  Useful iterables, decorators, functors and convenient helpers.
 -  Coroutine-based functional helpers: compose, throttle, partial, timeout, times, until, race...
 -  Asynchronous coroutine port of Python built-in functions: `filter`, `map`, `dropwhile`, `filterfalse`, `reduce`...
+-  Supports asynchronous iterables and generators (`PEP0525`_)
 -  Concurrent iterables and higher-order functions.
 -  Better ``asyncio.gather()`` and ``asyncio.wait()`` with optional concurrency control and ordered results.
 -  Works with both `async/await`_ and `yield from`_ coroutines syntax.
@@ -187,6 +190,9 @@ MIT - Tomas Aparicio
 .. _async/await: https://www.python.org/dev/peps/pep-0492/
 .. _yield from: https://www.python.org/dev/peps/pep-0380/
 .. _Composable pipelines: #examples
+.. _itertools: https://docs.python.org/3/library/itertools.html
+.. _functools: https://docs.python.org/3/library/functools.html
+.. _PEP0525: https://www.python.org/dev/peps/pep-0525/
 
 .. |Build Status| image:: https://travis-ci.org/h2non/paco.svg?branch=master
    :target: https://travis-ci.org/h2non/paco
