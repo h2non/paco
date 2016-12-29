@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-import asyncio
+import sys
 import pytest
+import asyncio
 import paco
 from paco.pipe import overload
 
@@ -38,6 +39,7 @@ def test_pipe_operator_overload():
     assert result == 36
 
 
+@pytest.mark.skipif(sys.version_info < (3, 5), reason='requires Python 3.5+')
 def test_pipe_async_generator():
     class AsyncGenerator(object):
         def __init__(self, values=None):
