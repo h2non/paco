@@ -62,6 +62,7 @@ API
 - paco.filterfalse_
 - paco.flat_map_
 - paco.gather_
+- paco.identity_
 - paco.map_
 - paco.once_
 - paco.partial_
@@ -96,6 +97,7 @@ API
 .. _paco.filterfalse: http://paco.readthedocs.io/en/latest/api.html#paco.filterfalse
 .. _paco.flat_map: http://paco.readthedocs.io/en/latest/api.html#paco.flat_map
 .. _paco.gather: http://paco.readthedocs.io/en/latest/api.html#paco.gather
+.. _paco.identity: http://paco.readthedocs.io/en/latest/api.html#paco.identity
 .. _paco.map: http://paco.readthedocs.io/en/latest/api.html#paco.map
 .. _paco.once: http://paco.readthedocs.io/en/latest/api.html#paco.once
 .. _paco.partial: http://paco.readthedocs.io/en/latest/api.html#paco.partial

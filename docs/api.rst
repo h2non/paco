@@ -17,6 +17,7 @@ API documentation
    paco.filterfalse <http://paco.readthedocs.io/en/latest/api.html#paco.filterfalse>
    paco.flat_map <http://paco.readthedocs.io/en/latest/api.html#paco.flat_map>
    paco.gather <http://paco.readthedocs.io/en/latest/api.html#paco.gather>
+   paco.identity <http://paco.readthedocs.io/en/latest/api.html#paco.identity>
    paco.map <http://paco.readthedocs.io/en/latest/api.html#paco.map>
    paco.once <http://paco.readthedocs.io/en/latest/api.html#paco.once>
    paco.partial <http://paco.readthedocs.io/en/latest/api.html#paco.partial>
