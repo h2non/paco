@@ -60,6 +60,7 @@ setup(
     name='paco',
     version=version,
     author='Tomas Aparicio',
+    author_email='tomas+python@aparicio.me',
     description=(
         'Small utility library for coroutine-based '
         'asynchronous generic programming'
