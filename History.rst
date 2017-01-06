@@ -5,11 +5,11 @@ History
 v0.1.9 / 2017-01-06
 -------------------
 
-  * feat(api): add identity function
-  * feat(#31): add thunk function
-  * feat(package): add wheel package distribution
-  * refactor(wraps): simplify implementation
-  * fix(History): remove indentation
+* feat(api): add identity function
+* feat(#31): add thunk function
+* feat(package): add wheel package distribution
+* refactor(wraps): simplify implementation
+* fix(History): remove indentation
 
 v0.1.8 / 2016-12-29
 -------------------
