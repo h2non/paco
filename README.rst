@@ -72,6 +72,7 @@ API
 - paco.series_
 - paco.some_
 - paco.throttle_
+- paco.thunk_
 - paco.timeout_
 - paco.TimeoutLimit_
 - paco.times_
@@ -105,6 +106,7 @@ API
 .. _paco.series: http://paco.readthedocs.io/en/latest/api.html#paco.searies
 .. _paco.some: http://paco.readthedocs.io/en/latest/api.html#paco.some
 .. _paco.throttle: http://paco.readthedocs.io/en/latest/api.html#paco.throttle
+.. _paco.thunk: http://paco.readthedocs.io/en/latest/api.html#paco.thunk
 .. _paco.timeout: http://paco.readthedocs.io/en/latest/api.html#paco.timeout
 .. _paco.TimeoutLimit: http://paco.readthedocs.io/en/latest/api.html#paco.TimeoutLimit
 .. _paco.times: http://paco.readthedocs.io/en/latest/api.html#paco.times

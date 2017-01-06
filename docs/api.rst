@@ -27,6 +27,7 @@ API documentation
    paco.series <http://paco.readthedocs.io/en/latest/api.html#paco.searies>
    paco.some <http://paco.readthedocs.io/en/latest/api.html#paco.some>
    paco.throttle <http://paco.readthedocs.io/en/latest/api.html#paco.throttle>
+   paco.thunk <http://paco.readthedocs.io/en/latest/api.html#paco.thunk>
    paco.timeout <http://paco.readthedocs.io/en/latest/api.html#paco.timeout>
    paco.TimeoutLimit <http://paco.readthedocs.io/en/latest/api.html#paco.TimeoutLimit>
    paco.times <http://paco.readthedocs.io/en/latest/api.html#paco.times>
