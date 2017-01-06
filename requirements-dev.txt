@@ -1,3 +1,4 @@
+wheel>=0.29
 setuptools>=32
 coveralls~=1.1
 flake8~=3.2.1

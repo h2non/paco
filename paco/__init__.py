@@ -12,6 +12,7 @@ from .defer import defer
 from .every import every
 from .until import until
 from .times import times
+from .thunk import thunk
 from .gather import gather
 from .repeat import repeat
 from .filter import filter
@@ -60,6 +61,7 @@ __all__ = (
     'series',
     'some',
     'throttle',
+    'thunk',
     'timeout',
     'TimeoutLimit',
     'times',
