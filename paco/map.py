@@ -53,4 +53,5 @@ def map(coro, iterable, limit=0, loop=None, timeout=None,
     # Call each iterable but collecting yielded values
     return (yield from each(coro, iterable,
                             limit=limit, loop=loop,
-                            timeout=timeout, collect=True))
+                            timeout=timeout, collect=True,
+                            return_exceptions=return_exceptions))
