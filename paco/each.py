@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import asyncio
 from .decorator import overload
-from .concurrent import ConcurrentExecutor
+from .concurrent import ConcurrentExecutor, safe_run
 from .assertions import assert_corofunction, assert_iter
 
 
@@ -77,7 +77,8 @@ def each(coro, iterable, limit=0, loop=None,
 
     @asyncio.coroutine
     def collector(index, item):
-        result = yield from coro(item, *args, **kw)
+        result = yield from safe_run(coro(item, *args, **kw),
+                                     return_exceptions=return_exceptions)
         if collect:
             results[index] = result
         return result
@@ -87,7 +88,9 @@ def each(coro, iterable, limit=0, loop=None,
         pool.add(collector(index, value))
 
     # Wait until all the coroutines finishes
-    yield from pool.run(timeout=timeout, ignore_empty=True)
+    yield from pool.run(return_exceptions=return_exceptions,
+                        ignore_empty=True,
+                        timeout=timeout)
 
     # Returns list of mapped results in order
     return results

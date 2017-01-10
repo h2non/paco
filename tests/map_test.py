@@ -40,3 +40,16 @@ def test_map_invalid_input():
 def test_map_invalid_coro():
     with pytest.raises(TypeError):
         run_in_loop(map(None))
+
+
+def test_map_return_exceptions():
+    @asyncio.coroutine
+    def coro(num):
+        raise ValueError('foo')
+
+    task = map(coro, [1, 2, 3, 4, 5], return_exceptions=True)
+    results = run_in_loop(task)
+    assert len(results) == 5
+
+    for err in results:
+        assert str(err) == 'foo'
