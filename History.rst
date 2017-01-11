@@ -2,6 +2,13 @@
 History
 =======
 
+v0.1.10 / 2017-01-11
+--------------------
+
+* fix(each.py,map.py): fixed `return_exceptions` kwarg
+* fix(setup.py): add author email
+* fix(Makefile): remove package file
+
 v0.1.9 / 2017-01-06
 -------------------
 
