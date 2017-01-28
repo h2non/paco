@@ -18,6 +18,7 @@ API documentation
    paco.flat_map <http://paco.readthedocs.io/en/latest/api.html#paco.flat_map>
    paco.gather <http://paco.readthedocs.io/en/latest/api.html#paco.gather>
    paco.identity <http://paco.readthedocs.io/en/latest/api.html#paco.identity>
+   paco.interval <http://paco.readthedocs.io/en/latest/api.html#paco.interval>
    paco.map <http://paco.readthedocs.io/en/latest/api.html#paco.map>
    paco.once <http://paco.readthedocs.io/en/latest/api.html#paco.once>
    paco.partial <http://paco.readthedocs.io/en/latest/api.html#paco.partial>

@@ -63,6 +63,7 @@ API
 - paco.flat_map_
 - paco.gather_
 - paco.identity_
+- paco.interval_
 - paco.map_
 - paco.once_
 - paco.partial_
@@ -98,6 +99,7 @@ API
 .. _paco.flat_map: http://paco.readthedocs.io/en/latest/api.html#paco.flat_map
 .. _paco.gather: http://paco.readthedocs.io/en/latest/api.html#paco.gather
 .. _paco.identity: http://paco.readthedocs.io/en/latest/api.html#paco.identity
+.. _paco.interval: http://paco.readthedocs.io/en/latest/api.html#paco.interval
 .. _paco.map: http://paco.readthedocs.io/en/latest/api.html#paco.map
 .. _paco.once: http://paco.readthedocs.io/en/latest/api.html#paco.once
 .. _paco.partial: http://paco.readthedocs.io/en/latest/api.html#paco.partial
