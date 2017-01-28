@@ -3,6 +3,11 @@ import asyncio
 from .decorator import decorate
 from .assertions import assert_corofunction
 
+try:
+    ensure_future = asyncio.ensure_future
+except:
+    ensure_future = getattr(asyncio, 'async')
+
 
 @decorate
 def interval(coro, interval=1, times=None):
@@ -62,6 +67,6 @@ def interval(coro, interval=1, times=None):
             yield from asyncio.sleep(interval)
 
     def wrapper(*args, **kw):
-        return asyncio.ensure_future(schedule(times, *args, **kw))
+        return ensure_future(schedule(times, *args, **kw))
 
     return wrapper
