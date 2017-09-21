@@ -9,6 +9,11 @@ Also, paco aims to port some of `functools`_ and `itertools`_ standard functions
 
 paco can be your utility belt to deal with asynchronous, I/O-bound, non-blocking concurrent code in a cleaner and idiomatic way.
 
+.. raw:: html
+    <a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/1MpD3pzt63uUeG43NP4tDHPY/h2non/paco'>
+      <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/1MpD3pzt63uUeG43NP4tDHPY/h2non/paco.svg' />
+    </a>
+
 Features
 --------
 
