@@ -4,7 +4,7 @@ paco
 ====
 Utility library for asynchronous coroutine-driven programming for Python +3.4.
 
-:copyright: (c) 2016 Tomas Aparicio
+:copyright: (c) 2016-2017 Tomas Aparicio
 :license: MIT
 """
 
