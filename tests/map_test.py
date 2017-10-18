@@ -42,6 +42,16 @@ def test_map_invalid_coro():
         run_in_loop(map(None))
 
 
+def test_map_exceptions():
+    @asyncio.coroutine
+    def coro(num):
+        raise ValueError('foo')
+
+    task = map(coro, [1, 2, 3, 4, 5], return_exceptions=True)
+    for exp in run_in_loop(task):
+        assert isinstance(exp, ValueError)
+
+
 def test_map_return_exceptions():
     @asyncio.coroutine
     def coro(num):

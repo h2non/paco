@@ -81,6 +81,7 @@ def each(coro, iterable, limit=0, loop=None,
                                      return_exceptions=return_exceptions)
         if collect:
             results[index] = result
+
         return result
 
     # Iterate and pass elements to coroutine

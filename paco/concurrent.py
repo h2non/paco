@@ -241,7 +241,7 @@ class ConcurrentExecutor(object):
         return set(done), set(pending)
 
     @asyncio.coroutine
-    def _run_concurrently(self, timeout=None, return_when=None):
+    def _run_concurrently(self, timeout=None, return_when='ALL_COMPLETED'):
         coros = []
         limit = self.limit
 
@@ -255,7 +255,7 @@ class ConcurrentExecutor(object):
             else:
                 coros.append(self._schedule_coro(task))
 
-        # Wait until all the coroutines finish
+        # Wait until all the coroutines finishes
         return (yield from asyncio.wait(coros,
                                         loop=self.loop,
                                         timeout=timeout,
@@ -296,9 +296,10 @@ class ConcurrentExecutor(object):
             return (yield from self._run_coro(task))
 
     @asyncio.coroutine
-    def run(self, timeout=None,
-            return_exceptions=None,
+    def run(self,
+            timeout=None,
             return_when='ALL_COMPLETED',
+            return_exceptions=None,
             ignore_empty=None):
         """
         Executes the registered coroutines in the executor queue.
