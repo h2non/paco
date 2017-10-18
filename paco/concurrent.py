@@ -241,7 +241,7 @@ class ConcurrentExecutor(object):
         return set(done), set(pending)
 
     @asyncio.coroutine
-    def _run_concurrently(self, timeout=None, return_when='ALL_COMPLETED'):
+    def _run_concurrently(self, timeout=None, return_when=None):
         coros = []
         limit = self.limit
 
