@@ -2,6 +2,19 @@
 History
 =======
 
+v0.2.0 / 2017-10-21
+-------------------
+
+  * feat(examples): add examples file
+  * feat(v2): v2 pre-release, propagate raise exception if return_exceptions is False
+  * refactor(tests): add map error exception assertion test
+  * Merge branch 'master' of https://github.com/h2non/paco
+  * refactor(tests): add map error exception assertion test
+  * feat(docs): add sponsor banner
+  * feat(docs): add sponsor banner
+  * feat(LICENSE): update copyright year
+  * Update setup.py
+
 v0.1.11 / 2017-01-28
 --------------------
 
