@@ -64,7 +64,7 @@ class ConcurrentExecutor(object):
     subscribe normal functions or coroutines to certain events that happen
     internally.
 
-    ConcurrentExecutor is a low-level implementation that powers most of the
+    ConcurrentExecutor is_running a low-level implementation that powers most of the
     utility functions provided in `paco`.
 
     For most cases you won't need to rely on it, instead you can
@@ -78,6 +78,8 @@ class ConcurrentExecutor(object):
         - finish (executor): triggered when all the coroutine finished.
         - task.start (task): triggered before coroutine starts.
         - task.finish (task, result): triggered when the coroutine finished.
+        - task.error (task, error): triggered when a coroutined task
+            raised an exception.
 
     Arguments:
         limit (int): concurrency limit. Defaults to 10.
@@ -105,6 +107,7 @@ class ConcurrentExecutor(object):
     """
 
     def __init__(self, limit=10, loop=None, coros=None, ignore_empty=False):
+        self.errors = []
         self.running = False
         self.return_exceptions = False
         self.limit = max(int(limit), 0)
@@ -135,7 +138,7 @@ class ConcurrentExecutor(object):
             RuntimeError: is the executor is still running.
         """
         if self.running:
-            raise RuntimeError('executor is still running')
+            raise RuntimeError('paco: executor is still running')
 
         self.pool.clear()
         self.observer.clear()
@@ -198,7 +201,7 @@ class ConcurrentExecutor(object):
 
         # Verify coroutine
         if not asyncio.iscoroutine(coro):
-            raise TypeError('coro must be a coroutine object')
+            raise TypeError('paco: coro must be a coroutine object')
 
         # Store coroutine with arguments for deferred execution
         index = max(len(self.pool), 0)
@@ -234,14 +237,13 @@ class ConcurrentExecutor(object):
                 future.set_result(result)
 
             # Swap future between queues
-            future = pending.pop()
-            done.append(future)
+            done.append(pending.pop())
 
         # Build futures tuple to be compatible with asyncio.wait() interface
         return set(done), set(pending)
 
     @asyncio.coroutine
-    def _run_concurrently(self, timeout=None, return_when=None):
+    def _run_concurrently(self, timeout=None, return_when='ALL_COMPLETED'):
         coros = []
         limit = self.limit
 
@@ -274,8 +276,13 @@ class ConcurrentExecutor(object):
         index, coro = task
 
         # Safe coroutine execution
-        result = yield from safe_run(coro,
-                                     return_exceptions=self.return_exceptions)
+        try:
+            result = yield from safe_run(
+                coro, return_exceptions=self.return_exceptions)
+        except Exception as err:
+            self.errors.append(err)
+            yield from self.observer.trigger('task.error', task, err)
+            raise err  # important: re-raise exception for asyncio propagation
 
         # Trigger task post-execution event
         yield from self.observer.trigger('task.finish', task, result)
@@ -298,7 +305,7 @@ class ConcurrentExecutor(object):
     @asyncio.coroutine
     def run(self,
             timeout=None,
-            return_when='ALL_COMPLETED',
+            return_when=None,
             return_exceptions=None,
             ignore_empty=None):
         """
@@ -324,7 +331,7 @@ class ConcurrentExecutor(object):
         """
         # Only allow 1 concurrent execution
         if self.running:
-            raise RuntimeError('executor is already running')
+            raise RuntimeError('paco: executor is already running')
 
         # Overwrite ignore empty behaviour, if explicitly defined
         ignore_empty = (self.ignore_empty if ignore_empty is None
@@ -336,7 +343,7 @@ class ConcurrentExecutor(object):
             if ignore_empty:
                 return (tuple(), tuple())
             # Othwerise raise an exception
-            raise ValueError('Set of coroutines is empty')
+            raise ValueError('paco: pool of coroutines is empty')
 
         # Set executor state to running
         self.running = True
@@ -345,8 +352,14 @@ class ConcurrentExecutor(object):
         if return_exceptions is not None:
             self.return_exceptions = return_exceptions
 
+        if return_exceptions is False and return_when is None:
+            return_when = 'FIRST_EXCEPTION'
+
+        if return_when is None:
+            return_when = 'ALL_COMPLETED'
+
         # Trigger pre-execution event
-        self.observer.trigger('start', self)
+        yield from self.observer.trigger('start', self)
 
         # Sequential coroutines execution
         if self.limit == 1:
@@ -361,8 +374,14 @@ class ConcurrentExecutor(object):
         # Reset internal state and queue
         self.running = False
 
+        # Raise exception, if needed
+        if self.return_exceptions is False and self.errors:
+            err = self.errors[0]
+            err.errors = self.errors[1:]
+            raise err
+
         # Trigger pre-execution event
-        self.observer.trigger('finish', self)
+        yield from self.observer.trigger('finish', self)
 
         # Reset executor state to defaults after each execution
         self.reset()

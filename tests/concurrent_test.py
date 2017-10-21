@@ -132,3 +132,48 @@ def test_concurrent_observe():
 
     finish.sort()
     assert finish == [4, 8, 12]
+
+
+def test_concurrent_observe_exception():
+    start = []
+    error = []
+    finish = []
+
+    @asyncio.coroutine
+    def coro(num):
+        if num > 4:
+            raise ValueError('invalid number')
+        return num * 2
+
+    @asyncio.coroutine
+    def on_start(task):
+        start.append(task)
+
+    @asyncio.coroutine
+    def on_error(task, err):
+        error.append(err)
+
+    @asyncio.coroutine
+    def on_finish(task, result):
+        finish.append(result)
+
+    p = concurrent(1)
+    p.on('task.start', on_start)
+    p.on('task.error', on_error)
+    p.on('task.finish', on_finish)
+
+    p.add(coro, 2)
+    p.add(coro, 4)
+    p.add(coro, 6)
+    assert len(p.pool) == 3
+
+    with pytest.raises(ValueError):
+        run_in_loop(p.run(return_exceptions=False))
+
+    # Assert event calls
+    assert len(start) == 3
+    assert len(error) == 1
+    assert len(finish) == 2
+
+    finish.sort()
+    assert finish == [4, 8]
