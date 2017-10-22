@@ -16,7 +16,7 @@ htmldocs:
 
 lint:
 	@echo "$(OK_COLOR)==> Linting code...$(NO_COLOR)"
-	@flake8 .
+	@flake8 --exclude examples .
 
 test: clean lint
 	@echo "$(OK_COLOR)==> Runnings tests...$(NO_COLOR)"
