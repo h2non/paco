@@ -14,18 +14,18 @@ Features
 
 -  Simple and idiomatic API, extending Python ``stdlib`` with async coroutines gotchas.
 -  Built-in configurable control-flow concurrency support (throttle).
--  No fancy abstractions: it just works with the plain async coroutines.
+-  No fancy abstractions: it just works with the plain asynchronous coroutines.
 -  Useful iterables, decorators, functors and convenient helpers.
--  Coroutine-based functional helpers: compose, throttle, partial, timeout, times, until, race...
--  Asynchronous coroutine port of Python built-in functions: `filter`, `map`, `dropwhile`, `filterfalse`, `reduce`...
+-  Coroutine-based functional helpers: ``compose``, ``throttle``, ``partial``, ``timeout``, ``times``, ``until``, ``race``...
+-  Asynchronous coroutines port of Python built-in functions: `filter`, `map`, `dropwhile`, `filterfalse`, `reduce`...
 -  Supports asynchronous iterables and generators (`PEP0525`_)
 -  Concurrent iterables and higher-order functions.
 -  Better ``asyncio.gather()`` and ``asyncio.wait()`` with optional concurrency control and ordered results.
 -  Works with both `async/await`_ and `yield from`_ coroutines syntax.
 -  Reliable coroutine timeout limit handler via context manager.
--  Designed for intensive I/O-bound concurrent non-blocking tasks.
+-  Designed for intensive I/O bound concurrent non-blocking tasks.
 -  Good interoperability with ``asyncio`` and Python ``stdlib`` functions.
--  `Composable pipelines`_ of functors for transducers-like chain via ``|`` operator overloading.
+-  `Composable pipelines`_ of functors via ``|`` operator overloading.
 -  Small and dependency free.
 -  Compatible with Python +3.4.
 
@@ -107,7 +107,7 @@ API
 .. _paco.reduce: http://paco.readthedocs.io/en/latest/api.html#paco.reduce
 .. _paco.repeat: http://paco.readthedocs.io/en/latest/api.html#paco.repeat
 .. _paco.run: http://paco.readthedocs.io/en/latest/api.html#paco.run
-.. _paco.series: http://paco.readthedocs.io/en/latest/api.html#paco.searies
+.. _paco.series: http://paco.readthedocs.io/en/latest/api.html#paco.series
 .. _paco.some: http://paco.readthedocs.io/en/latest/api.html#paco.some
 .. _paco.throttle: http://paco.readthedocs.io/en/latest/api.html#paco.throttle
 .. _paco.thunk: http://paco.readthedocs.io/en/latest/api.html#paco.thunk
