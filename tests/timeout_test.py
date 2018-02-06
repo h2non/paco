@@ -13,7 +13,6 @@ except ImportError:
 
 @asyncio.coroutine
 def coro(delay=1):
-    print('>>>> DELAY:', delay)
     yield from asyncio.sleep(delay)
 
 
