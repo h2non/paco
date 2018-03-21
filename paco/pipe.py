@@ -92,8 +92,9 @@ def overload(fn):
     if not isfunction(fn):
         raise TypeError('fn must be a callable object')
 
-    args = getargspec(fn).args
-    if len(args) < 2 or args[1] != 'iterable':
+    spec = getargspec(fn)
+    args = spec.args
+    if not spec.varargs and (len(args) < 2 or args[1] != 'iterable'):
         raise ValueError('invalid function signature or arity')
 
     @functools.wraps(fn)
