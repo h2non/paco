@@ -91,7 +91,7 @@ def throttle(coro, limit=1, timeframe=1,
 
     def stop():
         if raise_exception:
-            raise RuntimeError('coroutine throttle limit exceeded')
+            raise RuntimeError('paco: coroutine throttle limit exceeded')
         if return_value:
             return return_value
         return result

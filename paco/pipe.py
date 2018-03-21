@@ -90,12 +90,12 @@ def overload(fn):
         function: decorated function
     """
     if not isfunction(fn):
-        raise TypeError('fn must be a callable object')
+        raise TypeError('paco: fn must be a callable object')
 
     spec = getargspec(fn)
     args = spec.args
     if not spec.varargs and (len(args) < 2 or args[1] != 'iterable'):
-        raise ValueError('invalid function signature or arity')
+        raise ValueError('paco: invalid function signature or arity')
 
     @functools.wraps(fn)
     def decorator(*args, **kw):

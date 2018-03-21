@@ -87,7 +87,8 @@ def race(iterable, loop=None, timeout=None, *args, **kw):
         # Validate yielded object
         isfunction = asyncio.iscoroutinefunction(coro)
         if not isfunction and not asyncio.iscoroutine(coro):
-            raise TypeError('coro must be a coroutine or coroutine function')
+            raise TypeError(
+                'paco: coro must be a coroutine or coroutine function')
 
         # Init coroutine function, if required
         if isfunction:

@@ -71,8 +71,8 @@ class TimeoutLimit(object):
     def __enter__(self):
         self._task = asyncio.Task.current_task(loop=self._loop)
         if self._task is None:
-            raise RuntimeError('Timeout context manager should be used '
-                               'inside a task')
+            raise RuntimeError('paco: timeout context manager should '
+                               'be used inside a task')
         if self._timeout is not None:
             self._cancel_handler = self._loop.call_later(
                 self._timeout, self.cancel)

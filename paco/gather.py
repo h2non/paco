@@ -75,7 +75,8 @@ def gather(*coros_or_futures, limit=0, loop=None, timeout=None,
         if asyncio.iscoroutinefunction(coro):
             coro = coro()
         if not asyncio.iscoroutine(coro):
-            raise TypeError('only coroutines or coroutine functions allowed')
+            raise TypeError(
+                'paco: only coroutines or coroutine functions allowed')
 
         # Add coroutine to the executor pool
         pool.add(collect(coro, index, results,

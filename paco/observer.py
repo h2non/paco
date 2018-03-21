@@ -31,8 +31,8 @@ class Observer(object):
         """
         iscoroutine = asyncio.iscoroutinefunction(fn)
         if not iscoroutine and not isfunction(fn):
-            raise TypeError('fn param must be a callable object '
-                            'or coroutine function')
+            raise TypeError('paco: fn param must be a callable '
+                            'object or coroutine function')
 
         observers = self._pool.get(event)
         if not observers:

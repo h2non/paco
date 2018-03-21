@@ -24,7 +24,7 @@ def generator_consumer(coro):  # pragma: no cover
         function: decorated function.
     """
     if not asyncio.iscoroutinefunction(coro):
-        raise TypeError('coro must be a coroutine function')
+        raise TypeError('paco: coro must be a coroutine function')
 
     @functools.wraps(coro)
     @asyncio.coroutine
@@ -56,7 +56,7 @@ def decorate(fn):
         function: decorated function.
     """
     if not isfunction(fn):
-        raise TypeError('fn must be a callable object')
+        raise TypeError('paco: fn must be a callable object')
 
     @functools.wraps(fn)
     def decorator(*args, **kw):
@@ -67,12 +67,12 @@ def decorate(fn):
 
         # Explicit argument must be at least a coroutine
         if len(args) and args[0] is None:
-            raise TypeError('first argument cannot be empty')
+            raise TypeError('paco: first argument cannot be empty')
 
         def wrapper(coro, *_args, **_kw):
             # coro must be a valid type
             if not iscoro_or_corofunc(coro):
-                raise TypeError('first argument must be a '
+                raise TypeError('paco: first argument must be a '
                                 'coroutine or coroutine function')
 
             # Merge call arguments

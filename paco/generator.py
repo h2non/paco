@@ -20,7 +20,8 @@ def consume(generator):  # pragma: no cover
         return list(generator)
 
     if not PY_35:
-        raise RuntimeError('asynchronous iterator protocol not supported')
+        raise RuntimeError(
+            'paco: asynchronous iterator protocol not supported')
 
     # If asynchronous generator, consume it generator protocol manually
     buf = []

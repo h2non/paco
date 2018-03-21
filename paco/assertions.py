@@ -92,7 +92,8 @@ def assert_corofunction(**kw):
     """
     for name, value in kw.items():
         if not asyncio.iscoroutinefunction(value):
-            raise TypeError('{} must be a coroutine function'.format(name))
+            raise TypeError(
+                'paco: {} must be a coroutine function'.format(name))
 
 
 def assert_iter(**kw):
@@ -107,4 +108,5 @@ def assert_iter(**kw):
     """
     for name, value in kw.items():
         if not isiter(value):
-            raise TypeError('{} must be an iterable object'.format(name))
+            raise TypeError(
+                'paco: {} must be an iterable object'.format(name))

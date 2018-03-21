@@ -124,8 +124,8 @@ def curry(arity_or_fn=None, ignore_kwargs=False, evaluator=None, *args, **kw):
 
     def wrapper(fn, *args, **kw):
         if not iscallable(fn):
-            raise TypeError('first argument must a coroutine function, a '
-                            'function or a method.')
+            raise TypeError('paco: first argument must a coroutine function, '
+                            'a function or a method.')
 
         # Infer function arity, if required
         arity = (arity_or_fn if isinstance(arity_or_fn, int)

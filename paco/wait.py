@@ -72,7 +72,7 @@ def wait(*coros_or_futures, limit=0, timeout=None, loop=None,
     # If no coroutines to schedule, return empty list
     # Mimics asyncio behaviour.
     if len(coros_or_futures) == 0:
-        raise ValueError('Set of coroutines/Futures is empty.')
+        raise ValueError('paco: set of coroutines/futures is empty')
 
     # Create concurrent executor
     pool = ConcurrentExecutor(limit=limit, loop=loop,

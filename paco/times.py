@@ -3,7 +3,7 @@ import asyncio
 from .decorator import decorate
 from .assertions import assert_corofunction
 
-ExceptionMessage = 'coroutine cannot be executed more than {} times'
+ExceptionMessage = 'paco: coroutine cannot be executed more than {} times'
 
 
 @decorate
