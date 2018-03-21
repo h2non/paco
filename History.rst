@@ -2,6 +2,14 @@
 History
 =======
 
+v0.2.1 / 2018-03-21
+-------------------
+
+* fix(#37): allow overload function signatures with variadic arguments
+* refactor(timeout_test): remove print statement
+* fix(docs): bad link to API reference
+* refactor(docs): remove codesponsor
+
 v0.2.0 / 2017-10-21
 -------------------
 
