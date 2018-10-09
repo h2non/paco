@@ -2,6 +2,16 @@
 History
 =======
 
+0.2.2 / 2018-10-09
+------------------
+
+  * Merge pull request #40 from thatmattbone/master
+  * add loop param to paco.interval()
+  * fix(setup): use space based indentation
+  * fix(travis): use cpython 3.7-dev release
+  * refactor(errors): use "paco" prefix in exception messages
+  * chore(History): add version changes
+
 v0.2.1 / 2018-03-21
 -------------------
 
