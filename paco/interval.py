@@ -10,7 +10,7 @@ except:
 
 
 @decorate
-def interval(coro, interval=1, times=None):
+def interval(coro, interval=1, times=None, loop=None):
     """
     Schedules the execution of a coroutine function every `x` amount of
     seconds.
@@ -26,6 +26,8 @@ def interval(coro, interval=1, times=None):
         interval (int/float): number of seconds to repeat the coroutine
             execution.
         times (int): optional maximum time of executions. Infinite by default.
+        loop (asyncio.BaseEventLoop, optional): loop to run.
+            Defaults to asyncio.get_event_loop().
 
     Raises:
         TypeError: if coro argument is not a coroutine function.
@@ -67,6 +69,6 @@ def interval(coro, interval=1, times=None):
             yield from asyncio.sleep(interval)
 
     def wrapper(*args, **kw):
-        return ensure_future(schedule(times, *args, **kw))
+        return ensure_future(schedule(times, *args, **kw), loop=loop)
 
     return wrapper
