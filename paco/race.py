@@ -5,7 +5,7 @@ from .assertions import assert_iter
 try:
     from asyncio import ensure_future
 except ImportError:
-    ensure_future = asyncio.async
+    ensure_future = getattr(asyncio, 'async')
 
 
 @asyncio.coroutine
