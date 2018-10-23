@@ -2,6 +2,12 @@
 History
 =======
 
+v0.2.3 / 2018-10-23
+-------------------
+
+  * Merge pull request #42 from dylanjw/fix_syntax_error
+  * Use getattr to avoid async keyword
+
 0.2.2 / 2018-10-09
 ------------------
 
