@@ -26,7 +26,7 @@ API documentation
    paco.reduce <http://paco.readthedocs.io/en/latest/api.html#paco.reduce>
    paco.repeat <http://paco.readthedocs.io/en/latest/api.html#paco.repeat>
    paco.run <http://paco.readthedocs.io/en/latest/api.html#paco.run>
-   paco.series <http://paco.readthedocs.io/en/latest/api.html#paco.searies>
+   paco.series <http://paco.readthedocs.io/en/latest/api.html#paco.series>
    paco.some <http://paco.readthedocs.io/en/latest/api.html#paco.some>
    paco.throttle <http://paco.readthedocs.io/en/latest/api.html#paco.throttle>
    paco.thunk <http://paco.readthedocs.io/en/latest/api.html#paco.thunk>
