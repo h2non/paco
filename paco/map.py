@@ -54,4 +54,5 @@ def map(coro, iterable, limit=0, loop=None, timeout=None,
     return (yield from each(coro, iterable,
                             limit=limit, loop=loop,
                             timeout=timeout, collect=True,
-                            return_exceptions=return_exceptions))
+                            return_exceptions=return_exceptions,
+                            *args, **kw))
