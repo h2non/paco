@@ -2,6 +2,14 @@
 History
 =======
 
+0.2.4 / 2019-08-28
+------------------
+
+  * Merge pull request #46 from lmicra/patch-1
+  * Update map.py
+  * Merge pull request #43 from dylanjw/fix_doc_typo
+  * Fix typo: series, not searies
+
 v0.2.3 / 2018-10-23
 -------------------
 
