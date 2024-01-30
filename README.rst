@@ -1,5 +1,5 @@
-paco |Build Status| |PyPI| |Coverage Status| |Documentation Status| |Stability| |Quality| |Versions|
-====================================================================================================
+paco |PyPI| |Coverage Status| |Documentation Status| |Stability| |Quality| |Versions|
+=====================================================================================
 
 Small and idiomatic utility library for coroutine-driven asynchronous generic programming in Python +3.4.
 
@@ -200,8 +200,6 @@ MIT - Tomas Aparicio
 .. _functools: https://docs.python.org/3/library/functools.html
 .. _PEP0525: https://www.python.org/dev/peps/pep-0525/
 
-.. |Build Status| image:: https://travis-ci.org/h2non/paco.svg?branch=master
-   :target: https://travis-ci.org/h2non/paco
 .. |PyPI| image:: https://img.shields.io/pypi/v/paco.svg?maxAge=2592000?style=flat-square
    :target: https://pypi.python.org/pypi/paco
 .. |Coverage Status| image:: https://coveralls.io/repos/github/h2non/paco/badge.svg?branch=master
